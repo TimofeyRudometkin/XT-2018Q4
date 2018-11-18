@@ -1,0 +1,6 @@
+C:\Облако\GitHub\TimofeyRudometkin\Epam.Task1\Epam.Task1.Simple\bin\Debug\Epam.Task1.Simple.exe.config
+C:\Облако\GitHub\TimofeyRudometkin\Epam.Task1\Epam.Task1.Simple\bin\Debug\Epam.Task1.Simple.exe
+C:\Облако\GitHub\TimofeyRudometkin\Epam.Task1\Epam.Task1.Simple\bin\Debug\Epam.Task1.Simple.pdb
+C:\Облако\GitHub\TimofeyRudometkin\Epam.Task1\Epam.Task1.Simple\obj\Debug\Epam.Task1.Simple.csproj.CoreCompileInputs.cache
+C:\Облако\GitHub\TimofeyRudometkin\Epam.Task1\Epam.Task1.Simple\obj\Debug\Epam.Task1.Simple.exe
+C:\Облако\GitHub\TimofeyRudometkin\Epam.Task1\Epam.Task1.Simple\obj\Debug\Epam.Task1.Simple.pdb

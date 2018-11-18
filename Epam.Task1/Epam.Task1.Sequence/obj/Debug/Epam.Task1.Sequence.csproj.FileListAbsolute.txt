@@ -1,0 +1,7 @@
+C:\Облако\GitHub\TimofeyRudometkin\Epam.Task1\Epam.Task1.Sequence\bin\Debug\Epam.Task1.Sequence.exe.config
+C:\Облако\GitHub\TimofeyRudometkin\Epam.Task1\Epam.Task1.Sequence\bin\Debug\Epam.Task1.Sequence.exe
+C:\Облако\GitHub\TimofeyRudometkin\Epam.Task1\Epam.Task1.Sequence\bin\Debug\Epam.Task1.Sequence.pdb
+C:\Облако\GitHub\TimofeyRudometkin\Epam.Task1\Epam.Task1.Sequence\obj\Debug\Epam.Task1.Sequence.csprojAssemblyReference.cache
+C:\Облако\GitHub\TimofeyRudometkin\Epam.Task1\Epam.Task1.Sequence\obj\Debug\Epam.Task1.Sequence.csproj.CoreCompileInputs.cache
+C:\Облако\GitHub\TimofeyRudometkin\Epam.Task1\Epam.Task1.Sequence\obj\Debug\Epam.Task1.Sequence.exe
+C:\Облако\GitHub\TimofeyRudometkin\Epam.Task1\Epam.Task1.Sequence\obj\Debug\Epam.Task1.Sequence.pdb

@@ -1,0 +1,7 @@
+C:\Облако\GitHub\TimofeyRudometkin\Epam.Task1\Epam.Task1.Square\bin\Debug\Epam.Task1.Square.exe.config
+C:\Облако\GitHub\TimofeyRudometkin\Epam.Task1\Epam.Task1.Square\bin\Debug\Epam.Task1.Square.exe
+C:\Облако\GitHub\TimofeyRudometkin\Epam.Task1\Epam.Task1.Square\bin\Debug\Epam.Task1.Square.pdb
+C:\Облако\GitHub\TimofeyRudometkin\Epam.Task1\Epam.Task1.Square\obj\Debug\Epam.Task1.Square.csprojAssemblyReference.cache
+C:\Облако\GitHub\TimofeyRudometkin\Epam.Task1\Epam.Task1.Square\obj\Debug\Epam.Task1.Square.csproj.CoreCompileInputs.cache
+C:\Облако\GitHub\TimofeyRudometkin\Epam.Task1\Epam.Task1.Square\obj\Debug\Epam.Task1.Square.exe
+C:\Облако\GitHub\TimofeyRudometkin\Epam.Task1\Epam.Task1.Square\obj\Debug\Epam.Task1.Square.pdb
