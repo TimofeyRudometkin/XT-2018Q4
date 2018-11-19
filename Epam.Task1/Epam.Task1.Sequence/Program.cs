@@ -8,34 +8,44 @@ namespace Epam.Task1.Sequence
 {
     class Program
     {
-        private static string Task0_1(int N)
+        private static void Task0_1(int N)
         {
-            string TheGeneratedString = "";
-            //Ноль не является положительным числом, но добавим проверку
-            if (N < 1)
-                return TheGeneratedString = "Введённое число не является положительным числом, возможно вы ввели '0'.";
+            Console.Write(1);
 
-            //Добавляем в строку первое число
-            TheGeneratedString = "1";
-
-            //Если в строке содержится болше одного числа
-            if (N > 1)
+            //Формируем строку до значения N-1
+            for (int i = 2; i <= N; i++)
             {
-                //Формируем строку до значения N-1
-                for (int i = 2; i < N; i++)
-                {
-                    TheGeneratedString = TheGeneratedString + ", " + i;
-                }
-                //Добавляем в строку число N и возвращаем полученную строку
-                TheGeneratedString = TheGeneratedString + ", " + N;
+                Console.Write(", " + i);
             }
-            return TheGeneratedString;
+
+            Console.WriteLine();
+            Console.WriteLine("Введите положительное число, чтобы продолжить, '0' или отрицательное число для выхода из программы.");
         }
         static void Main(string[] args)
         {
-            Console.WriteLine("Введите положительное число.");
-            string Result = Task0_1(Convert.ToInt32(Console.ReadLine()));
-            Console.WriteLine(Result);
+            Console.WriteLine("Введите положительное число, чтобы продолжить, '0' или отрицательное число для выхода из программы.");
+
+            while (true)
+            {
+                try
+                {
+                    int NumberToCheck = int.Parse(Console.ReadLine());
+
+                    if (NumberToCheck <= 0)
+                    {
+                        break;
+                    }
+                    Task0_1(NumberToCheck);
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Введена строка не являющаяся положительным целым числом, повторите ввод положительного целого числа, '0' или отрицательное число для выхода из программы.");
+                }
+                catch (OverflowException)
+                {
+                    Console.WriteLine("Введённое число для меня крутова-то, ведите число поменьше.");
+                }
+            }
         }
     }
 }
