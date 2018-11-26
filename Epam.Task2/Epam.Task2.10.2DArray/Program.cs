@@ -10,19 +10,15 @@ namespace Epam.Task2._10._2DArray
     {
         private static void F2dArray()
         {
-            //Запускаем цикл программы
             while (true)
             {
-                //объявляем объекты и переменные
                 Random RandomNumber = new Random();
                 int Length1ArrayOfNumbers = RandomNumber.Next(2, 10);
                 int Length2ArrayOfNumbers = RandomNumber.Next(2, 10);
                 int Sum = 0;
                 int[,] ArrayOfNumbers = new int[Length1ArrayOfNumbers, Length2ArrayOfNumbers];
 
-                //Задаём значения элементам массива, выводим их в консоль и считаем сумму элементов массива,
-                //стоящих на чётных позициях
-                Console.WriteLine("Введите, что-нибудь для продолжения, или '0' для выхода из программы");
+                Console.WriteLine("Enter something to continue, or ' 0 ' to exit the program");
 
                 for(int i=0;i<Length1ArrayOfNumbers;i++)
                 {
@@ -43,8 +39,8 @@ namespace Epam.Task2._10._2DArray
                     Console.WriteLine();
                 }
 
-                Console.WriteLine("Сумма элементов массива, стоящих на чётных позициях равна " + Sum);
-                Console.WriteLine("Введите, что-нибудь для продолжения или '0' для выхода из программы");
+                Console.WriteLine("The sum of the array elements standing on even positions is equal to " + Sum);
+                Console.WriteLine("Enter anything to continue or ' 0 ' to exit the program");
 
                 try
                 {

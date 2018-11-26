@@ -10,15 +10,12 @@ namespace Epam.Task2._9.Non_NegativeSum
     {
         private static void FNonNegativeSum()
         {
-            //Запускаем цикл программы
             while (true)
             {
-                //объявляем объекты и переменные
                 Random RandomNumber = new Random();
                 int[] ArrayOfNumbers = new int[RandomNumber.Next(1,20)];
                 int Sum = 0;
 
-                //Задаём значения элементам массива, выводим их в консоль и считаем сумму 
                 for (int i = 0; i < ArrayOfNumbers.Length; i++)
                 {
                     ArrayOfNumbers[i] = RandomNumber.Next(-100, 100);
@@ -35,8 +32,8 @@ namespace Epam.Task2._9.Non_NegativeSum
                 }
 
                 Console.WriteLine();
-                Console.WriteLine("Сумма не отрицательных элементов массива равна "+Sum);
-                Console.WriteLine("Введите, что-нибудь для продолжения, или '0' для выхода из программы");
+                Console.WriteLine("The sum of non-negative array elements is equal to " + Sum);
+                Console.WriteLine("Enter something to continue, or ' 0 ' to exit the program");
 
                 try
                 {

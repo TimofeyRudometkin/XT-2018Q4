@@ -14,7 +14,7 @@ namespace Epam.Task2._3.AnotherTriangle
 
             while (true)
             {
-                Console.WriteLine("Введите положительное число N, которое должно быть целым или '0' для выхода из программы");
+                Console.WriteLine("Enter a positive number N, which must be an integer or '0' to exit the program");
 
                 try
                 {
@@ -25,19 +25,18 @@ namespace Epam.Task2._3.AnotherTriangle
                     }
                     else if (N < 0)
                     {
-                        Console.WriteLine("Не могу нарисовать треугольник с отрицательным колиеством строк.");
+                        Console.WriteLine("Can't draw a triangle with a negative number of lines.");
                         continue;
                     }
                 }
                 catch (FormatException)
                 {
-                    Console.WriteLine("Введена строка не являющаяся целым числом, для прорисовки треугольника " +
-                        "введите целое число");
+                    Console.WriteLine("A non-integer string is entered, enter an integer to draw the triangle");
                     continue;
                 }
                 catch (OverflowException)
                 {
-                    Console.WriteLine("Введите число поменьше, это для меня великовато");
+                    Console.WriteLine("The number entered is large for me, enter a number less");
                 }
 
                 for(int i=1;i<=N;i++)

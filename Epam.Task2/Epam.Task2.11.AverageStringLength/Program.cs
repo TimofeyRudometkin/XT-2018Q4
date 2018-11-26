@@ -12,7 +12,6 @@ namespace Epam.Task2._11.AverageStringLength
         {
             while (true)
             {
-                //Объявляем объекты и переменные
                 int FullLengthOfWords = 0;
                 int CountWordsinTheString = 0;
                 string InputString="";
@@ -20,8 +19,8 @@ namespace Epam.Task2._11.AverageStringLength
                 char element =' ';
                 int FirstLetterInWord=-1;
 
-                Console.WriteLine("Введите строку для определения средней длины слов, " +
-                    "входящих в неё, или пустую строку для выхода из программы");
+                Console.WriteLine("Enter a string to determine the average length of the words in it, or an empty " +
+                    "string to exit the program.");
 
                 InputString = Console.ReadLine();
 
@@ -30,7 +29,6 @@ namespace Epam.Task2._11.AverageStringLength
                         break;
                     }
 
-                //Считаем общую длину слов и их количество
                 for (int i=0;i<InputString.Length;i++)
                 {
                     element = InputString[i];
@@ -67,7 +65,7 @@ namespace Epam.Task2._11.AverageStringLength
                         PreviousCharacterALetter = true;
                     }
                 }
-                Console.WriteLine("Средняя длина слов в строке "+ "{0:N2}", (float)FullLengthOfWords / CountWordsinTheString);
+                Console.WriteLine("Average length of words per line " + "{0:N2}", (float)FullLengthOfWords / CountWordsinTheString);
             }
         }
         static void Main(string[] args)

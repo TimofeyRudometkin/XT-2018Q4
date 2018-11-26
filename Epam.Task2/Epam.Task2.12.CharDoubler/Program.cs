@@ -12,18 +12,17 @@ namespace Epam.Task2._12.CharDoubler
         {
             while (true)
             {
-                Console.WriteLine("Введите первую строку или пустую строку для выхода из программы: ");
+                Console.WriteLine("Enter the first line or an empty line to exit the program: ");
                 StringBuilder StringBuilder1 = new StringBuilder(Console.ReadLine());
                 if (StringBuilder1.Length == 0)
                 {
                     break;
                 }
                 Console.WriteLine();
-                Console.Write("Введите вторую строку: ");
+                Console.Write("Enter the second line: ");
                 StringBuilder StringBuilder2 = new StringBuilder(Console.ReadLine());
                 Console.WriteLine();
 
-                //оставим во второй строке только уникальные символы, знаки пунктуации и разделители также удаляем
                 for (int i = 0; i < StringBuilder2.Length; i++)
                 {
                     for (int j = i + 1; j < StringBuilder2.Length; j++)
@@ -41,7 +40,6 @@ namespace Epam.Task2._12.CharDoubler
                     }
                 }
 
-                //Удваиваем символы первой строки входящие во вторую
                 for(int i=0;i<StringBuilder1.Length;i++)
                 {
                     for (int j = 0; j < StringBuilder2.Length; j++)
@@ -53,7 +51,7 @@ namespace Epam.Task2._12.CharDoubler
                         }
                     }
                 }
-                Console.WriteLine("Результирующая строка: "+StringBuilder1);
+                Console.WriteLine("Resulting string: " + StringBuilder1);
             }
         }
         static void Main(string[] args)

@@ -10,20 +10,16 @@ namespace Epam.Task2._8.NoPositive
     {
         private static void FNoPositive()
         {
-            //Запускаем цикл программы
             while (true)
             {
-                //Объявляем объекты, переменные
                 Random RandomNumber = new Random();
                 int Length1ArrayOfNumbers = RandomNumber.Next(1,5);
                 int Length2ArrayOfNumbers = RandomNumber.Next(1, 5);
                 int Length3ArrayOfNumbers = RandomNumber.Next(1, 5);
                 int[,,] ArrayOfNumbers = new int[Length1ArrayOfNumbers, Length2ArrayOfNumbers, Length3ArrayOfNumbers];
 
-                //Показываем в консоль размерность массива
-                Console.WriteLine("Массив[" + Length1ArrayOfNumbers + "," + Length2ArrayOfNumbers + "," + Length3ArrayOfNumbers + "]");
+                Console.WriteLine("Array[" + Length1ArrayOfNumbers + "," + Length2ArrayOfNumbers + "," + Length3ArrayOfNumbers + "]");
 
-                //Заполняем массив значениями
                 for (int i = 0; i < Length1ArrayOfNumbers; i++)
                 {
                     for (int j = 0; j < Length2ArrayOfNumbers; j++)
@@ -45,8 +41,7 @@ namespace Epam.Task2._8.NoPositive
                     Console.WriteLine();
                 }
 
-                //Меняем все положительные значения элементов массива на нули и выводим в консоль
-                Console.WriteLine("Исходный массив, но положительные значения элементов заменены нолями:");
+                Console.WriteLine("The original array, but the positive values of the elements are replaced by zeros:");
 
                 for (int i = 0; i < Length1ArrayOfNumbers; i++)
                 {
@@ -75,7 +70,7 @@ namespace Epam.Task2._8.NoPositive
                     }
                     Console.WriteLine();
                 }
-                Console.WriteLine("Введите, что-нибудь для продолжения, или '0' для выхода из программы");
+                Console.WriteLine("Enter something to continue, or ' 0 ' to exit the program.");
                 try
                 {
                     if(int.Parse(Console.ReadLine())==0)

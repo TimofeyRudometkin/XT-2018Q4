@@ -12,13 +12,13 @@ namespace Epam.Task2._6.FontAdjustment
         private enum enFontAdjustment { Bold, Italic, Underline }
         private static void FontAdjustment()
         {
-            Console.WriteLine("Параметры надписи: None");
+            Console.WriteLine("Label options: None");
 
             int tracing;
 
             while (true)
             { 
-                Console.WriteLine("Введите:"+ System.Environment.NewLine+"        1: bold" + System.Environment.NewLine + 
+                Console.WriteLine("Enter:"+ System.Environment.NewLine+"        1: bold" + System.Environment.NewLine + 
                     "        2: italic" + System.Environment.NewLine + "        3: underline" + 
                     System.Environment.NewLine + "        4: italic, underline"+ System.Environment.NewLine + 
                     "        0: for exit from this program.");
@@ -35,7 +35,7 @@ namespace Epam.Task2._6.FontAdjustment
                 {
                     continue;
                 }
-                Console.WriteLine("Параметры надписи: " + (enFontAdjustment)tracing);
+                Console.WriteLine("Label options: " + (enFontAdjustment)tracing);
             }
         }
         static void Main(string[] args)

@@ -12,18 +12,17 @@ namespace Epam.Task1.Sequence
         {
             Console.Write(1);
 
-            //Формируем строку до значения N-1
             for (int i = 2; i <= N; i++)
             {
                 Console.Write(", " + i);
             }
 
             Console.WriteLine();
-            Console.WriteLine("Введите положительное число, чтобы продолжить, '0' или отрицательное число для выхода из программы.");
+            Console.WriteLine("Enter a positive number to continue, '0' or a negative number to exit the program.");
         }
         static void Main(string[] args)
         {
-            Console.WriteLine("Введите положительное число, чтобы продолжить, '0' или отрицательное число для выхода из программы.");
+            Console.WriteLine("Enter a positive number to continue, '0' or a negative number to exit the program.");
 
             while (true)
             {
@@ -39,11 +38,12 @@ namespace Epam.Task1.Sequence
                 }
                 catch (FormatException)
                 {
-                    Console.WriteLine("Введена строка не являющаяся положительным целым числом, повторите ввод положительного целого числа, '0' или отрицательное число для выхода из программы.");
+                    Console.WriteLine("You have entered a string that is not a positive integer, repeat the input " +
+                        "of a positive integer, '0', or a negative number to exit the program.");
                 }
                 catch (OverflowException)
                 {
-                    Console.WriteLine("Введённое число для меня крутова-то, ведите число поменьше.");
+                    Console.WriteLine("The number entered is large for me, enter a number less.");
                 }
             }
         }

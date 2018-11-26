@@ -17,7 +17,7 @@ namespace Epam.Task2._7.ArrayProcessing
                 int MinValue;
                 int MaxValue;
 
-                Console.WriteLine("Неотсортированный массив");
+                Console.WriteLine("Unsorted array");
 
                 for (int i = 0; i < ArrayOfNumbers.Length; i++)
                 {
@@ -41,7 +41,7 @@ namespace Epam.Task2._7.ArrayProcessing
                         if (ArrayOfNumbers[j - 1] > ArrayOfNumbers[j])
                         {
                             int TemporaryVariable = ArrayOfNumbers[j];
-                            Console.WriteLine($"Поменяем местами элементы массива с индексами {j - 1} = " +
+                            Console.WriteLine($"Swap array elements with indexes {j - 1} = " +
                                 $"'{ArrayOfNumbers[j - 1]}'и {j} = '{ArrayOfNumbers[j]}'");
                             ArrayOfNumbers[j] = ArrayOfNumbers[j - 1];
                             ArrayOfNumbers[j - 1] = TemporaryVariable;
@@ -49,12 +49,10 @@ namespace Epam.Task2._7.ArrayProcessing
                     }
                 }
 
-                //Ищем минимальное и максимальное значения элементов массива, которые можно не искать,
-                //а просто вывести на экран первыйй и последний элементы отсортированного массива. 
                 MinValue = ArrayOfNumbers[0];
                 MaxValue = ArrayOfNumbers[0];
 
-                Console.WriteLine("Отсортированный массив:");
+                Console.WriteLine("Sorted array:");
 
                 foreach (int element in ArrayOfNumbers)
                 {
@@ -64,10 +62,10 @@ namespace Epam.Task2._7.ArrayProcessing
                 }
 
                 Console.WriteLine();
-                Console.WriteLine("Минимальное значение элемента массива '" + MinValue + "';");
-                Console.WriteLine("Максимальное значение элемента массива '" + MaxValue + "';");
+                Console.WriteLine("The minimum value of the array element '" + MinValue + "';");
+                Console.WriteLine("The maximum value of the array element '" + MaxValue + "';");
                 
-                Console.WriteLine("Введите, что-нибудь для продолжения, или '0' для выхода из программы");
+                Console.WriteLine("Enter something to continue, or ' 0 ' to exit the program");
                 try
                 {
                     if (int.Parse(Console.ReadLine()) == 0)

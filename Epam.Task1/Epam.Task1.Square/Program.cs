@@ -12,7 +12,7 @@ namespace Epam.Task1.Square
         {
             if (N % 2 == 0)
             {
-                Console.WriteLine("Введено чётное число, поэтому центр будет смещён вверх и влево.");
+                Console.WriteLine("An even number is entered, the center is shifted up and left.");
             }
 
             for (int TheWidthOfTheSquare = 1; TheWidthOfTheSquare <= N; TheWidthOfTheSquare++)
@@ -31,11 +31,13 @@ namespace Epam.Task1.Square
                 Console.WriteLine();
             }
 
-            Console.WriteLine("Введите положительное нечётное число равное длине стороны квадрата, чтобы продолжить,'0' или отрицательное число для выхода из программы");
+            Console.WriteLine("Enter a positive odd number equal to the length of the side of the square to continue," +
+                "'0' or a negative number to exit the program");
         }
         static void Main(string[] args)
         {
-            Console.WriteLine("Введите положительное нечётное число равное длине стороны квадрата, чтобы продолжить,'0' или отрицательное число для выхода из программы");
+            Console.WriteLine("Enter a positive odd number equal to the length of the side of the square to continue," +
+                "'0' or a negative number to exit the program");
 
             while (true)
             {
@@ -51,11 +53,13 @@ namespace Epam.Task1.Square
                 }
                 catch (FormatException)
                 {
-                    Console.WriteLine("Введена строка не являющаяся положительным нечётным числом, повторите ввод положительного нечётного числа равного длине стороны квадрата, '0' или отрицательное число для выхода из программы.");
+                    Console.WriteLine("Entered a string that is not a positive odd number, repeat the input of a " +
+                        "positive odd number equal to the length of the side of the square, '0' or a negative number" +
+                        " to exit the program.");
                 }
                 catch(OverflowException)
                 {
-                    Console.WriteLine("Введённое число для меня крутова-то, ведите число поменьше.");
+                    Console.WriteLine("The number entered is large for me, enter a number less.");
                 }
             }
         }

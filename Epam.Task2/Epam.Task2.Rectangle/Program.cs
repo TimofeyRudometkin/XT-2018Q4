@@ -13,17 +13,10 @@ namespace Epam.Task2._1.Rectangle
             int sidea;
             int sideb;
 
-            //Цикл повтора всей программы
             while (true)
             {
-                Console.WriteLine("Введите длину стороны 'а' прямоугольника.");
+                Console.WriteLine("Enter the length of the side 'a' of the rectangle.");
 
-                //Прописываем два оператора try-catch для игнорирования
-                //ввода пользователем данных вызывающих исключение,
-                //т.е. при вводе букв в значение второй стороны не
-                //потребуется вновь вводить значения первой стороны
-
-                //Цикл ввода длины стороны 'a'
                 while (true)
                 {
                     try
@@ -36,19 +29,17 @@ namespace Epam.Task2._1.Rectangle
                         }
 
                         Console.WriteLine();
-                        Console.WriteLine("Длины сторон должны быть больше 0. Повторите ввод длины стороны 'a'.");
+                        Console.WriteLine("Side lengths must be greater than 0. Re-enter the length of side 'a'.");
                     }
-                    catch (FormatException) { }//Оператор catch не заполняем, т.к. игнорируем возможность
-                                               //ввода строки вида "абвг" или нецелых чисел.
+                    catch (FormatException) { }
                     catch (OverflowException)
                     {
-                        Console.WriteLine("Введите число поменьше, это для меня великовато");
+                        Console.WriteLine("Enter a smaller number, it's too big for me");
                     }
                 }
 
-                Console.WriteLine("Введите длину стороны 'b' прямоугольника.");
+                Console.WriteLine("Enter the length of the side 'b' of the rectangle.");
 
-                //Цикл ввода длины стороны 'b'
                 while (true)
                 {
                     try
@@ -61,23 +52,19 @@ namespace Epam.Task2._1.Rectangle
                         }
 
                         Console.WriteLine();
-                        Console.WriteLine("Длины сторон должны быть больше 0. Повторите ввод длины стороны 'b'.");
+                        Console.WriteLine("Side lengths must be greater than 0. Re-enter the length of the side 'bc'.");
 
                     }
-                    catch (FormatException) { }//Оператор catch не заполняем, т.к. игнорируем возможность
-                                               //ввода строки вида "абвг" или нецелых чисел.
+                    catch (FormatException) { }
                     catch (OverflowException)
                     {
-                        Console.WriteLine("Введите число поменьше, это для меня великовато");
+                        Console.WriteLine("The number entered is large for me, enter a number less");
                     }
                 }
 
-                //при больших значениях сторон площадь не верна, 
-                //исключения при этом не выпадает, подумать на досуге.
-                Console.WriteLine($"Площадь прямоугольника \"{sidea * sideb}\"");
+                Console.WriteLine($"The area of a rectangle \"{sidea * sideb}\"");
 
-                Console.WriteLine("Введите любые символы для продолжения или пустую " +
-                    "строку для завершения программы");
+                Console.WriteLine("Enter any characters to continue or an empty line to end the program");
 
                 if (Console.ReadLine() == "")
                 {

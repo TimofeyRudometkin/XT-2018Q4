@@ -16,7 +16,7 @@ namespace Epam.Task2._5.SumOfNumbers
                     }
                 }
 
-                Console.WriteLine("Сумма всех чисел кратных 3 или 5 и меньше 1000 = "+Sum);
+                Console.WriteLine("Sum of all multiples of 3 or 5 and less than 1000 = " + Sum);
             }
         static void Main(string[] args)
         {
