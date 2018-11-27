@@ -13,9 +13,10 @@ namespace Epam.Task2._7.ArrayProcessing
             while (true)
             {
                 Random RandomNumber = new Random();
-                int[] ArrayOfNumbers = new int[RandomNumber.Next(30)];
+                int[] ArrayOfNumbers = new int[RandomNumber.Next(1,30)];
                 int MinValue;
                 int MaxValue;
+                bool ControlValue = false;
 
                 Console.WriteLine("Unsorted array");
 
@@ -50,17 +51,26 @@ namespace Epam.Task2._7.ArrayProcessing
                 }
 
                 MinValue = ArrayOfNumbers[0];
-                MaxValue = ArrayOfNumbers[0];
+                MaxValue = ArrayOfNumbers[ArrayOfNumbers.Length-1];
 
                 Console.WriteLine("Sorted array:");
 
                 foreach (int element in ArrayOfNumbers)
                 {
-                    MinValue = MinValue > element ? element : MinValue;
-                    MaxValue = MaxValue < element ? element : MaxValue;
-                    Console.Write(element+", ");
+                    if(ControlValue)
+                    {
+                        Console.Write(", "+element);
+                    }
+                    else
+                    {
+                        Console.Write(element);
+                    }
+                    ControlValue = true;
                 }
 
+                MinValue = ArrayOfNumbers[0];
+                MaxValue = ArrayOfNumbers[ArrayOfNumbers.Length-1];
+                
                 Console.WriteLine();
                 Console.WriteLine("The minimum value of the array element '" + MinValue + "';");
                 Console.WriteLine("The maximum value of the array element '" + MaxValue + "';");
