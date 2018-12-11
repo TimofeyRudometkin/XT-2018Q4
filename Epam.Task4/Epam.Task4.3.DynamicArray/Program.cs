@@ -11,7 +11,10 @@ namespace Epam.Task4._3.DynamicArray
         static void Main(string[] args)
         {
             DynamicArray<string> dynamicArray = new DynamicArray<string>();
-            dynamicArray[2] = "dfdf";
+            dynamicArray[1] = "dfdf";
+            Console.WriteLine(dynamicArray[1]);
+            dynamicArray[1] = "5454";
+            Console.WriteLine(dynamicArray[1]);
         }
     }
 }
