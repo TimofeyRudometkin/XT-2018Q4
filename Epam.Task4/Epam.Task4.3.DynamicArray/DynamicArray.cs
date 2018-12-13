@@ -13,11 +13,16 @@ namespace Epam.Task4._3.DynamicArray
         public int Length
         {
             get => m_length;
-            set
+            protected set
             {
                 if (value > m_capacity)
                 {
-                    IncreaseInTheCapacity(m_length);
+                    m_length = value;
+                    Capacity = value;
+                }
+                else if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException("Length of the array must be greater or equally zero");
                 }
                 else
                 {
@@ -31,17 +36,23 @@ namespace Epam.Task4._3.DynamicArray
             get => m_capacity;
             set
             {
-                if (value > m_capacity)
+                if (value < 0)
                 {
-                    IncreaseInTheCapacity(value);
+                    throw new ArgumentOutOfRangeException("Capacity of the array must be greater or equally zero");
                 }
-                else if (value < m_capacity)
+                else if (value != m_capacity)
                 {
-                    DecreaseInTheCapacity(value);
-                }
-                else
-                {
-                    throw new ArgumentException("Capacity of the array must be greater or equally zero");
+                    m_capacity = value;
+                    T[] array = new T[m_capacity];
+                    for (int i = 0; i < value; i++)
+                    {
+                        array[i] = m_array.ElementAtOrDefault(i);
+                    }
+                    m_array = array;
+                    if(m_length>m_capacity)
+                    {
+                        Length = m_capacity;
+                    }
                 }
             }
         }
@@ -62,7 +73,7 @@ namespace Epam.Task4._3.DynamicArray
                 }
                 else
                 {
-                    throw new ArgumentOutOfRangeException("Array has elements with index less than zero");
+                    throw new ArgumentOutOfRangeException("Array has no elements with index less than zero");
                 }
             }
                 set 
@@ -71,11 +82,16 @@ namespace Epam.Task4._3.DynamicArray
                 {
                     if (index < m_capacity)
                     {
+                        if(index>=m_length)
+                        {
+                            m_length = index + 1;
+                        }
                         m_array[index]=value;
                     }
                     else
                     {
-                        throw new ArgumentOutOfRangeException("The number of array elements cannot be greater than its capacity");
+                        throw new ArgumentOutOfRangeException($"The number of array elements cannot be greater than its capacity({m_capacity}" +
+                            $" elementes)");
                     }
                 }
                 else
@@ -87,15 +103,15 @@ namespace Epam.Task4._3.DynamicArray
 
         public DynamicArray()
         {
-            m_array = new T[7];
+            m_array = new T[8];
             m_capacity = 8;
-            m_length = 8;
+            m_length = 0;
         }
         public DynamicArray(int capacity)
         {
             if (m_capacity < 0)
             {
-                throw new FormatException("You cannot create an array with a negative number of elements");
+                throw new ArgumentOutOfRangeException("You cannot create an array with a negative number of elements");
             }
             else
             {
@@ -116,53 +132,79 @@ namespace Epam.Task4._3.DynamicArray
         }
         public void Add(T element)
         {
-            m_length++;
             if(m_length >= m_capacity)
             {
-                m_capacity *= 2;
+                Capacity *= 2;
             }
-            m_array[m_length] = element;
+            m_length++;
+            m_array[m_length-1] = element;
         }
         public void AddRange(IEnumerable<T> collection)
         {
-            int CountOfCollection=0;
-            collection.GetEnumerator();
-            foreach(IEnumerable<T> elements in collection)
+            if ((collection.Count<T>() + m_length) > m_capacity)
             {
-                CountOfCollection++;
-            }
-            if((CountOfCollection + m_length) > m_capacity)
-            {
-                IncreaseInTheCapacity(CountOfCollection + m_length);
+                Capacity = collection.Count<T>() + m_length;
             }
             foreach(T elements in collection)
             {
                 Add(elements);
             }
         }
-        private void IncreaseInTheCapacity(int NewCapacity)
+        public bool Remove(int index)
         {
-            m_capacity = NewCapacity;
-            T[] array = new T[m_capacity];
-
-            for(int i=0; i<m_length; i++)
+            if(index>=0 && index<m_length)
             {
-                array[i] = m_array[i];
+                m_array[index] = default(T);
+                if((index+1)==m_length)
+                {
+                    m_length--;
+                }
+                return true;
             }
-            m_array = array;
+            return false;
         }
-        private void DecreaseInTheCapacity(int NewCapacity)
+        public bool Insert(int IndexOfAddElement, T ValueOfAddElement)
         {
-            m_capacity = NewCapacity;
-            T[] array = new T[m_capacity];
-
-            for (int i = 0; i < m_length; i++)
+            if(IndexOfAddElement >= 0 && IndexOfAddElement < m_capacity)
             {
-                array[i] = m_array[i];
+                if (m_length == m_capacity)
+                {
+                    m_capacity*=2;
+                    m_length++;
+                }
+                else if((m_length - 1) < IndexOfAddElement)
+                {
+                    m_length = IndexOfAddElement;
+                }
+                else if((m_length - 1)>= IndexOfAddElement)
+                {
+                    m_length++;
+                }
+                T[] array = new T[m_capacity];
+                for (int i = 0; i < m_length;i++)
+                {
+                    if (i < IndexOfAddElement)
+                    {
+                        array[i] = m_array.ElementAtOrDefault(i);
+                    }
+                    else if (i == IndexOfAddElement)
+                    {
+                        array[i] = ValueOfAddElement;
+                    }
+                    else
+                    {
+                        array[i] = m_array.ElementAtOrDefault(i - 1);
+                    }
+                }
+                m_array = array;
+                return true;
             }
-            m_array = array;
+            else
+            {
+                return false;
+                throw new ArgumentOutOfRangeException("The array has no elements with this index.");
+            }
         }
-
         public IEnumerator<T> GetEnumerator()
         {
             return ((IEnumerable<T>)m_array).GetEnumerator();
