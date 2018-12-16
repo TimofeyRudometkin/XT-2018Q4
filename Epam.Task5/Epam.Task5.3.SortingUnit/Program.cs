@@ -1,18 +1,44 @@
 ﻿using System;
+using System.Threading;
+using Epam.Task5;
 
-namespace Epam.Task5._2.CustomSortDemo
+namespace Epam.Task5._3.SortingUnit
 {
     class Program
     {
+        public delegate void SortingFinished();
+        public static event SortingFinished Finished;
+
+        public static Thread thread1 = new Thread(DemoOfCustomSort);
+        public static Thread thread2 = new Thread(NotificationOfThread2);
+
         //when I add a reference to Epam.Task5._1.CustomSort, methods cannot be used, so repeated code
         static void Main(string[] args)
         {
+            Finished += NotificationOfCompletionOfSorting;
+
+            thread1.Start();
+            thread2.Start();
+            
+        }
+        public static void NotificationOfThread2()
+        {
+            while (true)
+            {
+                Console.WriteLine("Thread 2 is working.");
+            }
+        }
+        public static void NotificationOfCompletionOfSorting()
+        {
+            Console.WriteLine(Environment.NewLine + "Sorting finished." + Environment.NewLine);
+            thread2.Abort();
+            Console.WriteLine("Thread 2 has been aborted.");
+        }
+
+        public static void DemoOfCustomSort()
+        {
             string[] arrayofstring = { "Nissan", "Subaru", "Acura", "Vaz", "Mitsubishi", "Jaguar", "Kia", "Hyundai" };
 
-            DemoOfCustomSort(arrayofstring);
-        }
-        public static void DemoOfCustomSort(string[] arrayofstring)
-        {
             Console.WriteLine("Unsorted array:" + Environment.NewLine);
             ScreenOutputElementsOfStringArray(arrayofstring);
             Console.WriteLine();
@@ -21,6 +47,8 @@ namespace Epam.Task5._2.CustomSortDemo
             CustomSort(arrayofstring, 0, arrayofstring.Length - 1, SortOfStringsOfTheArray);
             ScreenOutputElementsOfStringArray(arrayofstring);
             Console.WriteLine();
+
+            Finished();
         }
         public static void CustomSort<T>(T[] array, int left, int right, Func<T, T, string> sorttype)
         {
