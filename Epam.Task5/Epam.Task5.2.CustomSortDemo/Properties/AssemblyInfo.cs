@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("Epam.Task5.1.CustomSort")]
+[assembly: AssemblyTitle("Epam.Task5.2.CustomSortDemo")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Epam.Task5.1.CustomSort")]
+[assembly: AssemblyProduct("Epam.Task5.2.CustomSortDemo")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("a928050f-da0d-41f3-bcb9-acb88db9ecb4")]
+[assembly: Guid("b5d842b4-676b-4e75-8a1b-f4e16d5f45e1")]
 
 // Сведения о версии сборки состоят из следующих четырех значений:
 //

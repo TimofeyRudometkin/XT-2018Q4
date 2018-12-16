@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2050
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Task5.1.Custom.Sort", "Epam.Task5.1.Custom.Sort\Epam.Task5.1.Custom.Sort.csproj", "{96F7A38F-25E8-4A58-9862-77B289CE8439}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Task5.2.CustomSortDemo", "Epam.Task5.2.CustomSortDemo\Epam.Task5.2.CustomSortDemo.csproj", "{B5D842B4-676B-4E75-8A1B-F4E16D5F45E1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{96F7A38F-25E8-4A58-9862-77B289CE8439}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96F7A38F-25E8-4A58-9862-77B289CE8439}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96F7A38F-25E8-4A58-9862-77B289CE8439}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96F7A38F-25E8-4A58-9862-77B289CE8439}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5D842B4-676B-4E75-8A1B-F4E16D5F45E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5D842B4-676B-4E75-8A1B-F4E16D5F45E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5D842B4-676B-4E75-8A1B-F4E16D5F45E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5D842B4-676B-4E75-8A1B-F4E16D5F45E1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1ECA8AA7-4058-46AB-986A-C6DADB0071A8}
+	EndGlobalSection
+EndGlobal

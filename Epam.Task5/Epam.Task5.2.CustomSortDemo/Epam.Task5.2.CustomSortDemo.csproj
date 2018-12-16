@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A928050F-DA0D-41F3-BCB9-ACB88DB9ECB4}</ProjectGuid>
+    <ProjectGuid>{B5D842B4-676B-4E75-8A1B-F4E16D5F45E1}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Epam.Task5._1.CustomSort</RootNamespace>
-    <AssemblyName>Epam.Task5.1.CustomSort</AssemblyName>
+    <RootNamespace>Epam.Task5._2.CustomSortDemo</RootNamespace>
+    <AssemblyName>Epam.Task5.2.CustomSortDemo</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -48,6 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Epam.Task5.1.Custom.Sort\Epam.Task5.1.Custom.Sort.csproj">
+      <Project>{96f7a38f-25e8-4a58-9862-77b289ce8439}</Project>
+      <Name>Epam.Task5.1.Custom.Sort</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
