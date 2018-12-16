@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Epam.Task4._3.DynamicArray
 {
-    class DynamicArray<T>: IEnumerable, IEnumerable<T>
+    public class DynamicArray<T> : IEnumerable, IEnumerable<T>
     {
         private int m_capacity;
         private int m_length;
@@ -31,7 +31,7 @@ namespace Epam.Task4._3.DynamicArray
             }
         }
 
-        public int Capacity
+        public virtual int Capacity
         {
             get => m_capacity;
             set
@@ -49,14 +49,14 @@ namespace Epam.Task4._3.DynamicArray
                         array[i] = m_array.ElementAtOrDefault(i);
                     }
                     m_array = array;
-                    if(m_length>m_capacity)
+                    if (m_length > m_capacity)
                     {
                         Length = m_capacity;
                     }
                 }
             }
         }
-        public T this [int index]
+        public virtual T this[int index]
         {
             get
             {
@@ -76,17 +76,17 @@ namespace Epam.Task4._3.DynamicArray
                     throw new ArgumentOutOfRangeException("Array has no elements with index less than zero");
                 }
             }
-                set 
-                    {
+            set
+            {
                 if (index >= 0)
                 {
                     if (index < m_capacity)
                     {
-                        if(index>=m_length)
+                        if (index >= m_length)
                         {
                             m_length = index + 1;
                         }
-                        m_array[index]=value;
+                        m_array[index] = value;
                     }
                     else
                     {
@@ -100,7 +100,11 @@ namespace Epam.Task4._3.DynamicArray
                 }
             }
         }
-
+        public T[] Array
+            {
+            get { return m_array; }
+            set { m_array = value; }
+            }
         public DynamicArray()
         {
             m_array = new T[8];
@@ -205,7 +209,7 @@ namespace Epam.Task4._3.DynamicArray
                 throw new ArgumentOutOfRangeException("The array has no elements with this index.");
             }
         }
-        public IEnumerator<T> GetEnumerator()
+        public virtual IEnumerator<T> GetEnumerator()
         {
             return ((IEnumerable<T>)m_array).GetEnumerator();
         }
