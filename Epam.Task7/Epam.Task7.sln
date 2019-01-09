@@ -13,9 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Task7.1.Users.BLL", "E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Task7.1.Users.BLL.Interface", "Epam.Task7.1.Users.BLL.Interface\Epam.Task7.1.Users.BLL.Interface.csproj", "{3773538D-3D75-4491-AFD5-8D0BD4965C39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Task.7.1.Users.DAL", "Epam.Task.7.1.Users.DAL\Epam.Task.7.1.Users.DAL.csproj", "{BC36CE0D-9E7F-4C54-B7E6-65926E13BF32}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Task.7.1.Users.DAL.Memory", "Epam.Task.7.1.Users.DAL\Epam.Task.7.1.Users.DAL.Memory.csproj", "{BC36CE0D-9E7F-4C54-B7E6-65926E13BF32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Task7.1.Users.DAL.Interface", "Epam.Task7.1.Users.DAL.Interface\Epam.Task7.1.Users.DAL.Interface.csproj", "{2C145CA8-3044-4751-B7BD-CCF68AF73179}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Task7.1.Users.DAL.Memory.Interface", "Epam.Task7.1.Users.DAL.Interface\Epam.Task7.1.Users.DAL.Memory.Interface.csproj", "{2C145CA8-3044-4751-B7BD-CCF68AF73179}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{A2EBCF8C-955F-4FA4-BB10-0CA06C82512E}"
 EndProject

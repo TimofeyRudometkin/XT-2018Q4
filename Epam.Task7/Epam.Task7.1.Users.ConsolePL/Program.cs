@@ -16,28 +16,39 @@ namespace Epam.Task7._1.Users.ConsolePL
         {
             Random random = new Random();
             var userLogic = DependencyResolver.UserLogic;
-            DateTime dateTime = CreatingNewDate(random.Next(50), random.Next(11), random.Next(31));
-            var user = new User
+            string[] name = new string[10];
+            name[0] = "Alexander";
+            name[1] = "Nina";
+            name[2] = "Evgeny";
+            name[3] = "Tom";
+            name[4] = "Alicia";
+            name[5] = "Vasily";
+            name[6] = "Peter";
+            name[7] = "Alexey";
+            name[8] = "Egor";
+            name[9] = "Athanasius";
+
+            for (int i = 0; i < 20; i++)
             {
-                Name = "Sergey",
+                AddUser(userLogic, name[random.Next(9)], random.Next(50), random.Next(11), random.Next(30));
+            }
+
+            ShowUsers(userLogic);
+        }
+        private static void AddUser(IUserLogic userLogic, string name, int Year, int Month, int Day)
+        {
+            DateTime dateTime = new DateTime();
+            dateTime = DateTime.Now;
+            dateTime = dateTime.AddYears(-Year);
+            dateTime = dateTime.AddMonths(-Month);
+            dateTime = dateTime.AddDays(-Day);
+            var user = new User()
+            {
+                Name = name,
                 DateOfBirthday = dateTime,
                 Age = Age(dateTime),
             };
-
             userLogic.Add(user);
-            for (int i = 0; i < 100; i++)
-            {
-                dateTime = CreatingNewDate(random.Next(50), random.Next(11), random.Next(31));
-                user = new User
-                {
-                    Name = "Sergey",
-                    DateOfBirthday = dateTime,
-                    Age = Age(dateTime),
-                };
-
-                userLogic.Add(user);
-            }
-            ShowUsers(userLogic);
         }
         private static int Age(DateTime _dateOfBirthday)
         {
@@ -53,17 +64,6 @@ namespace Epam.Task7._1.Users.ConsolePL
                     ? DateTime.Now.Year - _dateOfBirthday.Year - 1
                     : DateTime.Now.Year - _dateOfBirthday.Year;
         }
-
-        private static DateTime CreatingNewDate(int Year, int Month, int Day)
-        {
-            DateTime dateTime = new DateTime();
-            dateTime = DateTime.Now;
-            dateTime = dateTime.AddYears(-Year);
-            dateTime = dateTime.AddMonths(-Month);
-            dateTime = dateTime.AddDays(-Day);
-            return dateTime;
-        }
-
         private static void ShowUsers(IUserLogic userLogic)
         {
             Console.WriteLine($"Id Name DateOfBirthday Age");

@@ -18,8 +18,11 @@ namespace Epam.Task7._1.Users.Common
 
         private static IUserLogic _userLogic;
 
-        public static IUserLogic UserLogic => _userLogic ?? (_userLogic = new UserLogic(UserDao));
+        public static IUserLogic UserLogic => _userLogic ?? (_userLogic = new UserLogic(UserDao, CacheLogic));
 
+        private static ICacheLogic _cacheLogic;
+
+        public static ICacheLogic CacheLogic => _cacheLogic ?? (_cacheLogic = new CacheLogic());
 
     }
 }

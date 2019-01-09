@@ -45,9 +45,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Epam.Task.7.1.Users.DAL\Epam.Task.7.1.Users.DAL.csproj">
+    <ProjectReference Include="..\Epam.Task.7.1.Users.DAL\Epam.Task.7.1.Users.DAL.Memory.csproj">
       <Project>{BC36CE0D-9E7F-4C54-B7E6-65926E13BF32}</Project>
-      <Name>Epam.Task.7.1.Users.DAL</Name>
+      <Name>Epam.Task.7.1.Users.DAL.Memory</Name>
     </ProjectReference>
     <ProjectReference Include="..\Epam.Task7.1.Users.BLL.Interface\Epam.Task7.1.Users.BLL.Interface.csproj">
       <Project>{3773538D-3D75-4491-AFD5-8D0BD4965C39}</Project>
@@ -57,9 +57,9 @@
       <Project>{DB6EA504-1EE9-4F68-9367-14E7882D4564}</Project>
       <Name>Epam.Task7.1.Users.BLL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Epam.Task7.1.Users.DAL.Interface\Epam.Task7.1.Users.DAL.Interface.csproj">
+    <ProjectReference Include="..\Epam.Task7.1.Users.DAL.Interface\Epam.Task7.1.Users.DAL.Memory.Interface.csproj">
       <Project>{2C145CA8-3044-4751-B7BD-CCF68AF73179}</Project>
-      <Name>Epam.Task7.1.Users.DAL.Interface</Name>
+      <Name>Epam.Task7.1.Users.DAL.Memory.Interface</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

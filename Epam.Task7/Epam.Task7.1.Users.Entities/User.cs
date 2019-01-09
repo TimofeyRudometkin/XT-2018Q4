@@ -15,7 +15,7 @@ namespace Epam.Task7._1.Users.Entities
 
         public override string ToString()
         {
-            return $"{Id} {Name} {DateOfBirthday} {Age}";
+            return $"{Id} {Name} {DateOfBirthday.ToShortDateString()} {Age}";
         }
     }
 }

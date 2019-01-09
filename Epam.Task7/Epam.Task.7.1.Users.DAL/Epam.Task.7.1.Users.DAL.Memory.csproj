@@ -45,9 +45,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Epam.Task7.1.Users.DAL.Interface\Epam.Task7.1.Users.DAL.Interface.csproj">
+    <ProjectReference Include="..\Epam.Task7.1.Users.DAL.Interface\Epam.Task7.1.Users.DAL.Memory.Interface.csproj">
       <Project>{2c145ca8-3044-4751-b7bd-ccf68af73179}</Project>
-      <Name>Epam.Task7.1.Users.DAL.Interface</Name>
+      <Name>Epam.Task7.1.Users.DAL.Memory.Interface</Name>
     </ProjectReference>
     <ProjectReference Include="..\Epam.Task7.1.Users.Entities\Epam.Task7.1.Users.Entities.csproj">
       <Project>{FBBD04C4-D18F-4788-A36C-2B19F2ED8BC7}</Project>

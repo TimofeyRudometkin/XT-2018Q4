@@ -41,21 +41,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CacheLogic.cs" />
     <Compile Include="UserLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Epam.Task.7.1.Users.DAL\Epam.Task.7.1.Users.DAL.csproj">
+    <ProjectReference Include="..\Epam.Task.7.1.Users.DAL\Epam.Task.7.1.Users.DAL.Memory.csproj">
       <Project>{bc36ce0d-9e7f-4c54-b7e6-65926e13bf32}</Project>
-      <Name>Epam.Task.7.1.Users.DAL</Name>
+      <Name>Epam.Task.7.1.Users.DAL.Memory</Name>
     </ProjectReference>
     <ProjectReference Include="..\Epam.Task7.1.Users.BLL.Interface\Epam.Task7.1.Users.BLL.Interface.csproj">
       <Project>{3773538D-3D75-4491-AFD5-8D0BD4965C39}</Project>
       <Name>Epam.Task7.1.Users.BLL.Interface</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Epam.Task7.1.Users.DAL.Interface\Epam.Task7.1.Users.DAL.Interface.csproj">
+    <ProjectReference Include="..\Epam.Task7.1.Users.DAL.Interface\Epam.Task7.1.Users.DAL.Memory.Interface.csproj">
       <Project>{2C145CA8-3044-4751-B7BD-CCF68AF73179}</Project>
-      <Name>Epam.Task7.1.Users.DAL.Interface</Name>
+      <Name>Epam.Task7.1.Users.DAL.Memory.Interface</Name>
     </ProjectReference>
     <ProjectReference Include="..\Epam.Task7.1.Users.Entities\Epam.Task7.1.Users.Entities.csproj">
       <Project>{FBBD04C4-D18F-4788-A36C-2B19F2ED8BC7}</Project>
