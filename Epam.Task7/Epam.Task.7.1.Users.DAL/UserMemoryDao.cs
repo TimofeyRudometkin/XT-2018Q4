@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using Epam.Task._7._1.Users.DAL.Interface;
+using Epam.Task7._1.Users.Entities.Exception;
 
 namespace Epam.Task._7._1.Users.DAL
 {
-    public class UserFakeDao : IUserDao
+    public class UserMemoryDao : IUserDao
     {
         private static readonly Dictionary<int, User> _repoUsers = new Dictionary<int, User>();
         public void Add(User user)
@@ -16,6 +17,10 @@ namespace Epam.Task._7._1.Users.DAL
 
             user.Id = ++lastId;
 
+            if(user.Id > 300)
+            {
+                throw new CriticalException();
+            }
             _repoUsers.Add(user.Id, user);
         }
         public bool Delete(int Id)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Epam.Task._7._1.Users.DAL.Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,21 +9,25 @@ namespace Epam.Task7._1.Users.BLL.Interface
 {
     public class CacheLogic : ICacheLogic
     {
-        private static Dictionary<string, object> _date;
+        private static Dictionary<string, object> _date = new Dictionary<string, object>();
         public bool Add<T>(string key, T value)
         {
-            if (_date.ContainsKey(key))
-            {
-                return false;
-            }
+                if (_date.ContainsKey(key))
+                {
+                    return false;
+                }
 
-            _date.Add(key, value);
+                _date.Add(key, value);
 
-            return true;
+                return true;
         }
         public T Get<T>(string key)
         {
-            if (!_date.ContainsKey(key))
+            if (_date == null)
+            {
+                return default(T);
+            }
+            else if(!_date.ContainsKey(key))
             {
                 return default(T);
             }
@@ -31,7 +36,11 @@ namespace Epam.Task7._1.Users.BLL.Interface
         }
         public bool Delete(string key)
         {
-            return _date.Remove(key);
+            if (_date != null)
+            {
+                return _date.Remove(key);
+            }
+            return false;
         }
     }
 }

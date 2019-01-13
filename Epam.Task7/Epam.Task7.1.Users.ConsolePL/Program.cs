@@ -1,12 +1,7 @@
-﻿using Epam.Task7._1.Users.BLL;
-using Epam.Task7._1.Users.BLL.Interface;
+﻿using Epam.Task7._1.Users.BLL.Interface;
 using Epam.Task7._1.Users.Common;
 using Epam.Task7._1.Users.Entities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Epam.Task7._1.Users.ConsolePL
 {
@@ -28,9 +23,12 @@ namespace Epam.Task7._1.Users.ConsolePL
             name[8] = "Egor";
             name[9] = "Athanasius";
 
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 3; i++)
             {
                 AddUser(userLogic, name[random.Next(9)], random.Next(50), random.Next(11), random.Next(30));
+                userLogic.GetAll();
+                userLogic.GetAll();
+                userLogic.GetAll();
             }
 
             ShowUsers(userLogic);

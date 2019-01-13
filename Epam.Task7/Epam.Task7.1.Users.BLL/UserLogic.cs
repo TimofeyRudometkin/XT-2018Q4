@@ -8,7 +8,7 @@ namespace Epam.Task7._1.Users.BLL
 {
     public class UserLogic: IUserLogic
     {
-        private const string ALL_STUDENTS_CACHE_KEY = "GetAllUsers";
+        private const string ALL_USERS_CACHE_KEY = "GetAllUsers";
         private readonly IUserDao _userDAO;
         private readonly ICacheLogic _cacheLogic;
 
@@ -25,12 +25,16 @@ namespace Epam.Task7._1.Users.BLL
                 {
                     throw new System.Exception("User is null.");
                 }
-                _cacheLogic.Delete(ALL_STUDENTS_CACHE_KEY);
+                else if ((user.Name == "") || (user.DateOfBirthday==null))
+                {
+                    throw new System.Exception("Some fields of User are blank.");
+                }
+                _cacheLogic.Delete(ALL_USERS_CACHE_KEY);
                 _userDAO.Add(user);
             }
             catch
             {
-                //throw;
+                
             }
         }
         public void Delete(int Id)
@@ -39,7 +43,18 @@ namespace Epam.Task7._1.Users.BLL
         }
         public void Update(User user)
         {
-            _userDAO.Update(user);
+            try
+            {
+                if ((user.Name == "") || (user.DateOfBirthday == null))
+                {
+                    throw new System.Exception("Some fields of User are blank.");
+                }
+                _userDAO.Update(user);
+            }
+            catch
+            {
+
+            }
         }
         public User GetById(int Id)
         {
@@ -47,17 +62,14 @@ namespace Epam.Task7._1.Users.BLL
         }
         public IEnumerable<User> GetAll()
         {
-            var cacheResult = _cacheLogic.Get<IEnumerable<User>>(ALL_STUDENTS_CACHE_KEY);
+            var cacheResult = _cacheLogic.Get<IEnumerable<User>>(ALL_USERS_CACHE_KEY);
 
             if (cacheResult == null)
             {
                 var result = _userDAO.GetAll();
-                _cacheLogic.Add(ALL_STUDENTS_CACHE_KEY, _userDAO.GetAll());
-
-                System.Console.WriteLine("From dao.");
+                _cacheLogic.Add(ALL_USERS_CACHE_KEY, result);
                 return result;
             }
-            System.Console.WriteLine("From cache.");
             return cacheResult;
         }
     }
