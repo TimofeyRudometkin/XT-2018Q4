@@ -19,75 +19,97 @@ namespace Epam.Task7.Users.DAL.TextFiles
             try
             {
                 int _maxIndex = 0;
-                if(!File.Exists(Path.Combine(_pathOfTextFiles.ToString(), _nameOfTextFileWithUsers.ToString())))
+                if (!File.Exists(Path.Combine(_pathOfTextFiles.ToString(), _nameOfTextFileWithUsers.ToString())))
                 {
-                    if(!Directory.Exists(_pathOfTextFiles.ToString()))
+                    if (!Directory.Exists(_pathOfTextFiles.ToString()))
                     {
                         Directory.CreateDirectory(_pathOfTextFiles.ToString());
                     }
-                    File.CreateText(Path.Combine(_pathOfTextFiles.ToString(), _nameOfTextFileWithUsers.ToString()));
+                    using (StreamWriter streamWriterTextFiles = new StreamWriter(Path.Combine(_pathOfTextFiles.ToString(), _nameOfTextFileWithUsers.ToString()), true))
+                    {
+                        ;
+                    }
                 }
                 using (StreamReader streamReaderTextFiles = new StreamReader(Path.Combine(_pathOfTextFiles.ToString(), _nameOfTextFileWithUsers.ToString())))
                 {
                     _contentOfFile1 = streamReaderTextFiles.ReadToEnd();
-                    if (_contentOfFile1 != null)
+                    if (_contentOfFile1 != "")
                     {
                         _contentOfFile = _contentOfFile1.Split();
                         for (int i = 0; i < _contentOfFile.Length; i += 4)
                         {
-                            _maxIndex = int.Parse(_contentOfFile[i]) > int.Parse(_contentOfFile[_maxIndex])
-                                      ? i
+                            _maxIndex = int.Parse(_contentOfFile[i]) > _maxIndex
+                                      ? int.Parse(_contentOfFile[i])
                                       : _maxIndex;
                         }
+                        _maxIndex++;
                     }
-                        using (StreamWriter streamWriterTextFiles = new StreamWriter(Path.Combine(_pathOfTextFiles.ToString(), _nameOfTextFileWithUsers.ToString()),true))
-                        {
-                            streamWriterTextFiles.WriteLine($"{_maxIndex} {user.Name} {user.DateOfBirthday} {user.Age}");
-                        }
+                }
+                using (StreamWriter streamWriterTextFiles = new StreamWriter(Path.Combine(_pathOfTextFiles.ToString(), _nameOfTextFileWithUsers.ToString()), true))
+                {
+                    if (_maxIndex != 0)
+                    {
+                        streamWriterTextFiles.Write($" {_maxIndex} {user.Name} {user.DateOfBirthday.ToShortDateString()} {user.Age}");
                     }
+                    else
+                    {
+                        streamWriterTextFiles.Write($"{_maxIndex} {user.Name} {user.DateOfBirthday.ToShortDateString()} {user.Age}");
+                    }
+                }
             }
-            catch
+            catch (Exception e)
             {
-                throw new Exception("Can't add user to text file.");
+                Console.WriteLine(e.Message + Environment.NewLine + e.Source + Environment.NewLine + e.TargetSite + Environment.NewLine + e.StackTrace);
+                //throw new Exception("Can't add user to text file.");
             }
         }
         public bool Delete(int Id)
         {
             try
             {
+                bool fileIsNotEmpty = false;
                 int _indexOfTheDeletedUser = Id;
                 using (StreamReader streamReaderTextFiles = new StreamReader(Path.Combine(_pathOfTextFiles.ToString(), _nameOfTextFileWithUsers.ToString())))
                 {
                     _contentOfFile1 = streamReaderTextFiles.ReadToEnd();
-                    if (_contentOfFile1 != null)
+                }
+                if (_contentOfFile1 != "")
+                {
+                    _contentOfFile = _contentOfFile1.Split();
+                    for (int i = 0; i < _contentOfFile.Length; i += 4)
                     {
-                        _contentOfFile = _contentOfFile1.Split();
-                        for (int i = 0; i < _contentOfFile.Length; i += 4)
+                        if(int.Parse(_contentOfFile[i]) == _indexOfTheDeletedUser)
                         {
-                            if(int.Parse(_contentOfFile[i]) == _indexOfTheDeletedUser)
-                            {
-                                _contentOfFile[i] = "";
-                                _contentOfFile[i+1] = "";
-                                _contentOfFile[i+2] = "";
-                                _contentOfFile[i+3] = "";
+                            _contentOfFile[i] = "";
+                            _contentOfFile[i+1] = "";
+                            _contentOfFile[i+2] = "";
+                            _contentOfFile[i+3] = "";
 
-                                using (StreamWriter streamWriterTextFiles = new StreamWriter(Path.Combine(_pathOfTextFiles.ToString(), _nameOfTextFileWithUsers.ToString()), false))
+                            using (StreamWriter streamWriterTextFiles = new StreamWriter(Path.Combine(_pathOfTextFiles.ToString(), _nameOfTextFileWithUsers.ToString()), false))
+                            {
+                                for (int j = 0; j < _contentOfFile.Length; j += 4)
                                 {
-                                    for (int j = 0; i < _contentOfFile.Length; j += 4)
+                                    if (fileIsNotEmpty && _contentOfFile[j] != "" && _contentOfFile[j + 1] != "" && _contentOfFile[j + 2] != "" && _contentOfFile[j + 3] != "")
                                     {
-                                        streamWriterTextFiles.WriteLine($"{_contentOfFile[j]} {_contentOfFile[j + 1]} {_contentOfFile[j = 2]} {_contentOfFile[j + 3]}");
+                                        streamWriterTextFiles.Write($" {_contentOfFile[j]} {_contentOfFile[j + 1]} {_contentOfFile[j + 2]} {_contentOfFile[j + 3]}");
+                                    }
+                                    else if (_contentOfFile[j] != "" && _contentOfFile[j + 1] != "" && _contentOfFile[j + 2] != "" && _contentOfFile[j + 3] != "")
+                                    {
+                                        streamWriterTextFiles.Write($"{_contentOfFile[j]} {_contentOfFile[j + 1]} {_contentOfFile[j + 2]} {_contentOfFile[j + 3]}");
+                                        fileIsNotEmpty = true;
                                     }
                                 }
-
-                                return true;
                             }
+
+                            return true;
                         }
                     }
-                    return false;
                 }
+                return false;
             }
-            catch
+            catch (Exception e)
             {
+                Console.WriteLine(e.Message + Environment.NewLine + e.Source + Environment.NewLine + e.TargetSite + Environment.NewLine + e.StackTrace);
                 throw new Exception("Can't delete user from text file.");
             }
         }
@@ -95,38 +117,46 @@ namespace Epam.Task7.Users.DAL.TextFiles
         {
             try
             {
-                int _indexOfTheUpdatedUser = user.Id;
+                bool fileIsNotEmpty = false;
                 using (StreamReader streamReaderTextFiles = new StreamReader(Path.Combine(_pathOfTextFiles.ToString(), _nameOfTextFileWithUsers.ToString())))
                 {
                     _contentOfFile1 = streamReaderTextFiles.ReadToEnd();
-                    if (_contentOfFile1 != null)
+                }
+                if (_contentOfFile1 != "")
+                {
+                    _contentOfFile = _contentOfFile1.Split();
+                    for (int i = 0; i < _contentOfFile.Length; i += 4)
                     {
-                        _contentOfFile = _contentOfFile1.Split();
-                        for (int i = 0; i < _contentOfFile.Length; i += 4)
+                        if (int.Parse(_contentOfFile[i]) == user.Id)
                         {
-                            if (int.Parse(_contentOfFile[i]) == _indexOfTheUpdatedUser)
-                            {
-                                _contentOfFile[i] = user.Id.ToString();
-                                _contentOfFile[i + 1] = user.Name.ToString();
-                                _contentOfFile[i + 2] = user.DateOfBirthday.ToString();
-                                _contentOfFile[i + 3] = user.Age.ToString();
+                            _contentOfFile[i + 1] = user.Name.ToString();
+                            _contentOfFile[i + 2] = user.DateOfBirthday.ToShortDateString();
+                            _contentOfFile[i + 3] = user.Age.ToString();
 
-                                using (StreamWriter streamWriterTextFiles = new StreamWriter(Path.Combine(_pathOfTextFiles.ToString(), _nameOfTextFileWithUsers.ToString()), false))
+                            using (StreamWriter streamWriterTextFiles = new StreamWriter(Path.Combine(_pathOfTextFiles.ToString(), _nameOfTextFileWithUsers.ToString()), false))
+                            {
+                                for (int j = 0; j < _contentOfFile.Length; j += 4)
                                 {
-                                    for (int j = 0; i < _contentOfFile.Length; j += 4)
+                                    if(fileIsNotEmpty && _contentOfFile[j] != "" && _contentOfFile[j + 1] != "" && _contentOfFile[j + 2] != "" && _contentOfFile[j + 3] != "")
                                     {
-                                        streamWriterTextFiles.WriteLine($"{_contentOfFile[j]} {_contentOfFile[j + 1]} {_contentOfFile[j = 2]} {_contentOfFile[j + 3]}");
+                                        streamWriterTextFiles.Write($" {_contentOfFile[j]} {_contentOfFile[j + 1]} {_contentOfFile[j + 2]} {_contentOfFile[j + 3]}");
+                                    }
+                                    else if(_contentOfFile[j] != "" && _contentOfFile[j + 1] != "" && _contentOfFile[j + 2] != "" && _contentOfFile[j + 3] != "")
+                                    {
+                                        streamWriterTextFiles.Write($"{_contentOfFile[j]} {_contentOfFile[j + 1]} {_contentOfFile[j + 2]} {_contentOfFile[j + 3]}");
+                                        fileIsNotEmpty = true;
                                     }
                                 }
-                                return true;
                             }
+                            return true;
                         }
                     }
-                    return false;
                 }
+                return false;
             }
-            catch
+            catch (Exception e)
             {
+                Console.WriteLine(e.Message + Environment.NewLine + e.Source + Environment.NewLine + e.TargetSite + Environment.NewLine + e.StackTrace);
                 throw new Exception("Can't update user from text file.");
             }
 
@@ -135,16 +165,15 @@ namespace Epam.Task7.Users.DAL.TextFiles
         {
             try
             {
-                int _indexOfTheGottenUser = Id;
                 using (StreamReader streamReaderTextFiles = new StreamReader(Path.Combine(_pathOfTextFiles.ToString(), _nameOfTextFileWithUsers.ToString())))
                 {
                     _contentOfFile1 = streamReaderTextFiles.ReadToEnd();
-                    if (_contentOfFile1 != null)
+                    if (_contentOfFile1 != "")
                     {
                         _contentOfFile = _contentOfFile1.Split();
                         for (int i = 0; i < _contentOfFile.Length; i += 4)
                         {
-                            if (int.Parse(_contentOfFile[i]) == _indexOfTheGottenUser)
+                            if (int.Parse(_contentOfFile[i]) == Id)
                             {
                                 User user = new User();
                                 user.Id = int.Parse(_contentOfFile[i]);
@@ -158,8 +187,9 @@ namespace Epam.Task7.Users.DAL.TextFiles
                     return null;
                 }
             }
-            catch
+            catch (Exception e)
             {
+                Console.WriteLine(e.Message + Environment.NewLine + e.Source + Environment.NewLine + e.TargetSite + Environment.NewLine + e.StackTrace);
                 throw new Exception("Can't get user from text file.");
             }
         }
@@ -171,7 +201,7 @@ namespace Epam.Task7.Users.DAL.TextFiles
                 using (StreamReader streamReaderTextFiles = new StreamReader(Path.Combine(_pathOfTextFiles.ToString(), _nameOfTextFileWithUsers.ToString())))
                 {
                     _contentOfFile1 = streamReaderTextFiles.ReadToEnd();
-                    if (_contentOfFile1 != null)
+                    if (_contentOfFile1 != "")
                     {
                         _contentOfFile = _contentOfFile1.Split();
                         for (int i = 0; i<_contentOfFile.Length; i += 4)
@@ -188,9 +218,10 @@ namespace Epam.Task7.Users.DAL.TextFiles
                     return null;
                 }
             }
-            catch
+            catch(Exception e)
             {
-                throw new Exception("Can't delete user from text file.");
+                Console.WriteLine(e.Message + Environment.NewLine + e.Source + Environment.NewLine + e.TargetSite + Environment.NewLine + e.StackTrace);
+                throw new Exception("Can't get all users from text file.");
             }
         }
     }

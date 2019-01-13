@@ -1,7 +1,7 @@
-﻿using Epam.Task._7._1.Users.DAL;
-using Epam.Task._7._1.Users.DAL.Interface;
+﻿using Epam.Task._7._1.Users.DAL.Interface;
 using Epam.Task7._1.Users.BLL.Interface;
 using Epam.Task7._1.Users.Entities;
+using System;
 using System.Collections.Generic;
 
 namespace Epam.Task7._1.Users.BLL
@@ -32,14 +32,19 @@ namespace Epam.Task7._1.Users.BLL
                 _cacheLogic.Delete(ALL_USERS_CACHE_KEY);
                 _userDAO.Add(user);
             }
-            catch
+            catch (Exception e)
             {
-                
+                Console.WriteLine(e.Message + Environment.NewLine + e.Source + Environment.NewLine + e.TargetSite + Environment.NewLine + e.StackTrace);
+                throw new Exception("Can't delete user from text file.");
             }
         }
         public void Delete(int Id)
         {
-            _userDAO.Delete(Id);
+            if(_userDAO.Delete(Id))
+            {
+                _cacheLogic.Delete(ALL_USERS_CACHE_KEY);
+                Console.WriteLine($"User with Id = {Id} is deleted.");
+            }
         }
         public void Update(User user)
         {
@@ -49,11 +54,16 @@ namespace Epam.Task7._1.Users.BLL
                 {
                     throw new System.Exception("Some fields of User are blank.");
                 }
-                _userDAO.Update(user);
+                if(_userDAO.Update(user))
+                {
+                    _cacheLogic.Delete(ALL_USERS_CACHE_KEY);
+                    Console.WriteLine($"User with Id = {user.Id} is updated.");
+                }
             }
-            catch
+            catch(Exception e)
             {
-
+                Console.WriteLine(e.Message + Environment.NewLine + e.Source + Environment.NewLine + e.TargetSite + Environment.NewLine + e.StackTrace);
+                throw new Exception("Can't delete user from text file.");
             }
         }
         public User GetById(int Id)
