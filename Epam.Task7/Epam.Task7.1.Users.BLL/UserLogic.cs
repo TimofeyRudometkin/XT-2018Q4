@@ -35,7 +35,7 @@ namespace Epam.Task7._1.Users.BLL
             catch (Exception e)
             {
                 Console.WriteLine(e.Message + Environment.NewLine + e.Source + Environment.NewLine + e.TargetSite + Environment.NewLine + e.StackTrace);
-                throw new Exception("Can't delete user from text file.");
+                throw new Exception("Can't add user to text file.");
             }
         }
         public void Delete(int Id)
@@ -63,7 +63,7 @@ namespace Epam.Task7._1.Users.BLL
             catch(Exception e)
             {
                 Console.WriteLine(e.Message + Environment.NewLine + e.Source + Environment.NewLine + e.TargetSite + Environment.NewLine + e.StackTrace);
-                throw new Exception("Can't delete user from text file.");
+                throw new Exception("Can't update user at text file.");
             }
         }
         public User GetById(int Id)

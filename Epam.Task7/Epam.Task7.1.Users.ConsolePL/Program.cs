@@ -11,27 +11,39 @@ namespace Epam.Task7._1.Users.ConsolePL
         {
             Random random = new Random();
             var userLogic = DependencyResolver.UserLogic;
-            string[] name = new string[10];
-            name[0] = "Alexander";
-            name[1] = "Nina";
-            name[2] = "Evgeny";
-            name[3] = "Tom";
-            name[4] = "Alicia";
-            name[5] = "Vasily";
-            name[6] = "Peter";
-            name[7] = "Alexey";
-            name[8] = "Egor";
-            name[9] = "Athanasius";
+            string[] _name = new string[10];
+            _name[0] = "Alexander";
+            _name[1] = "Nina";
+            _name[2] = "Evgeny";
+            _name[3] = "Tom";
+            _name[4] = "Alicia";
+            _name[5] = "Vasily";
+            _name[6] = "Peter";
+            _name[7] = "Alexey";
+            _name[8] = "Egor";
+            _name[9] = "Athanasius";
+
+            string[] _award = new string[10];
+            _award[0] = "Golden gramophone";
+            _award[1] = "For valor";
+            _award[2] = "The best grower";
+            _award[3] = "The winner of the championship of dominoes";
+            _award[4] = "The fastest";
+            _award[5] = "The slowest";
+            _award[6] = "Cleverest";
+            _award[7] = "Most powerful";
+            _award[8] = "Rescue a man";
+            _award[9] = "The loudest";
 
             for (int i = 0; i < 3; i++)
             {
-                AddUser(userLogic, name[random.Next(9)], random.Next(50), random.Next(11), random.Next(30));
+                AddUser(userLogic, _name[random.Next(9)], random.Next(50), random.Next(11), random.Next(30));
             }
             ShowUsers(userLogic);
             DeleteUsers(userLogic, 3);
             DeleteUsers(userLogic, 2);
             ShowUsers(userLogic);
-            UpdateUser(userLogic, name[random.Next(9)], random.Next(50), random.Next(11), random.Next(30), 1);
+            UpdateUser(userLogic, _name[random.Next(9)], random.Next(50), random.Next(11), random.Next(30), 1);
             ShowUsers(userLogic);
         }
         private static void AddUser(IUserLogic userLogic, string name, int Year, int Month, int Day)
@@ -90,6 +102,10 @@ namespace Epam.Task7._1.Users.ConsolePL
             {
                 Console.WriteLine(user);
             }
+        }
+        private static void  CreateListOfAwards(IUserLogic userLogic)
+        {
+
         }
     }
 }
