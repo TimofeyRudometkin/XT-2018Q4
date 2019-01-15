@@ -10,6 +10,8 @@ namespace Epam.Task._7._1.Users.DAL.Interface
         bool Delete(int Id);
         
         bool Update(User user);
+
+        bool ToAward(int userId, int awardId);
         
         User GetById(int Id);
         

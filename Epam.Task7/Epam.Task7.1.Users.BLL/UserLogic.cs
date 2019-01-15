@@ -66,6 +66,13 @@ namespace Epam.Task7._1.Users.BLL
                 throw new Exception("Can't update user at text file.");
             }
         }
+        public void ToAward(int userId, int awardId)
+        {
+            if (_userDAO.ToAward(userId, awardId))
+            {
+                Console.WriteLine($"User with Id = {userId} rewarded.");
+            }
+        }
         public User GetById(int Id)
         {
             return _userDAO.GetById(Id);

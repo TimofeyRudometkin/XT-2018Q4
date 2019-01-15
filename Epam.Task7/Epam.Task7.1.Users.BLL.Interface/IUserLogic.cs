@@ -11,6 +11,8 @@ namespace Epam.Task7._1.Users.BLL.Interface
 
         void Update(User user);
 
+        void ToAward(int userId, int awardId);
+
         User GetById(int Id);
 
         IEnumerable<User> GetAll();

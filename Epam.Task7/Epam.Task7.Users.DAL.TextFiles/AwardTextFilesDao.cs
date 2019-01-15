@@ -3,18 +3,17 @@ using Epam.Task7._1.Users.Entities;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Epam.Task7.Users.DAL.TextFiles
 {
-    class AwardTextFilesDao : IAwardDao
+    public class AwardTextFilesDao : IAwardDao
     {
-        private static StringBuilder _pathOfTextFiles = new StringBuilder(@"C:\DirectoryWithTextFiles(Task7)");
-        private static StringBuilder _nameOfTextFileWithAwards = new StringBuilder("DateOfAwards.txt");
-        string _contentOfFile1;
-        string[] _contentOfFile;
+        private StringBuilder _pathOfTextFiles = new StringBuilder(@"C:\DirectoryWithTextFiles(Task7)");
+        private StringBuilder _nameOfTextFileWithAwards = new StringBuilder("DateOfAwards.txt");
+        private string _contentOfFile1;
+        private string[] _contentOfFile;
+        private string[] SEPARATORS = { " <*> " };
         public void Add(Award award)
         {
             try
@@ -36,7 +35,7 @@ namespace Epam.Task7.Users.DAL.TextFiles
                     _contentOfFile1 = streamReaderTextFiles.ReadToEnd();
                     if (_contentOfFile1 != "")
                     {
-                        _contentOfFile = _contentOfFile1.Split();
+                        _contentOfFile = _contentOfFile1.Split(SEPARATORS,StringSplitOptions.RemoveEmptyEntries);
                         for (int i = 0; i < _contentOfFile.Length; i += 2)
                         {
                             _maxIndex = int.Parse(_contentOfFile[i]) > _maxIndex
@@ -48,14 +47,7 @@ namespace Epam.Task7.Users.DAL.TextFiles
                 }
                 using (StreamWriter streamWriterTextFiles = new StreamWriter(Path.Combine(_pathOfTextFiles.ToString(), _nameOfTextFileWithAwards.ToString()), true))
                 {
-                    if (_maxIndex != 0)
-                    {
-                        streamWriterTextFiles.Write($" {_maxIndex} {award.Title}");
-                    }
-                    else
-                    {
-                        streamWriterTextFiles.Write($"{_maxIndex} {award.Title}");
-                    }
+                    streamWriterTextFiles.Write($"{_maxIndex}{SEPARATORS[0]}{award.Title}{SEPARATORS[0]}");
                 }
             }
             catch (Exception e)
@@ -68,7 +60,6 @@ namespace Epam.Task7.Users.DAL.TextFiles
         {
             try
             {
-                bool fileIsNotEmpty = false;
                 int _indexOfTheDeletedUser = Id;
                 using (StreamReader streamReaderTextFiles = new StreamReader(Path.Combine(_pathOfTextFiles.ToString(), _nameOfTextFileWithAwards.ToString())))
                 {
@@ -76,7 +67,7 @@ namespace Epam.Task7.Users.DAL.TextFiles
                 }
                 if (_contentOfFile1 != "")
                 {
-                    _contentOfFile = _contentOfFile1.Split();
+                    _contentOfFile = _contentOfFile1.Split(SEPARATORS,StringSplitOptions.RemoveEmptyEntries);
                     for (int i = 0; i < _contentOfFile.Length; i += 2)
                     {
                         if (int.Parse(_contentOfFile[i]) == _indexOfTheDeletedUser)
@@ -88,15 +79,7 @@ namespace Epam.Task7.Users.DAL.TextFiles
                             {
                                 for (int j = 0; j < _contentOfFile.Length; j += 2)
                                 {
-                                    if (fileIsNotEmpty && _contentOfFile[j] != "" && _contentOfFile[j + 1] != "")
-                                    {
-                                        streamWriterTextFiles.Write($" {_contentOfFile[j]} {_contentOfFile[j + 1]}");
-                                    }
-                                    else if (_contentOfFile[j] != "" && _contentOfFile[j + 1] != "")
-                                    {
-                                        streamWriterTextFiles.Write($"{_contentOfFile[j]} {_contentOfFile[j + 1]}");
-                                        fileIsNotEmpty = true;
-                                    }
+                                    streamWriterTextFiles.Write($"{_contentOfFile[j]}{SEPARATORS[0]}{_contentOfFile[j + 1]}{SEPARATORS[0]}");
                                 }
                             }
 
@@ -116,14 +99,13 @@ namespace Epam.Task7.Users.DAL.TextFiles
         {
             try
             {
-                bool fileIsNotEmpty = false;
                 using (StreamReader streamReaderTextFiles = new StreamReader(Path.Combine(_pathOfTextFiles.ToString(), _nameOfTextFileWithAwards.ToString())))
                 {
                     _contentOfFile1 = streamReaderTextFiles.ReadToEnd();
                 }
                 if (_contentOfFile1 != "")
                 {
-                    _contentOfFile = _contentOfFile1.Split();
+                    _contentOfFile = _contentOfFile1.Split(SEPARATORS, StringSplitOptions.RemoveEmptyEntries);
                     for (int i = 0; i < _contentOfFile.Length; i += 2)
                     {
                         if (int.Parse(_contentOfFile[i]) == award.Id)
@@ -134,15 +116,7 @@ namespace Epam.Task7.Users.DAL.TextFiles
                             {
                                 for (int j = 0; j < _contentOfFile.Length; j += 2)
                                 {
-                                    if (fileIsNotEmpty && _contentOfFile[j] != "" && _contentOfFile[j + 1] != "")
-                                    {
-                                        streamWriterTextFiles.Write($" {_contentOfFile[j]} {_contentOfFile[j + 1]}");
-                                    }
-                                    else if (_contentOfFile[j] != "" && _contentOfFile[j + 1] != "")
-                                    {
-                                        streamWriterTextFiles.Write($"{_contentOfFile[j]} {_contentOfFile[j + 1]}");
-                                        fileIsNotEmpty = true;
-                                    }
+                                    streamWriterTextFiles.Write($"{_contentOfFile[j]}{SEPARATORS[0]}{_contentOfFile[j + 1]}{SEPARATORS[0]}");
                                 }
                             }
                             return true;
@@ -167,7 +141,7 @@ namespace Epam.Task7.Users.DAL.TextFiles
                     _contentOfFile1 = streamReaderTextFiles.ReadToEnd();
                     if (_contentOfFile1 != "")
                     {
-                        _contentOfFile = _contentOfFile1.Split();
+                        _contentOfFile = _contentOfFile1.Split(SEPARATORS, StringSplitOptions.RemoveEmptyEntries);
                         for (int i = 0; i < _contentOfFile.Length; i += 2)
                         {
                             if (int.Parse(_contentOfFile[i]) == Id)
@@ -198,7 +172,7 @@ namespace Epam.Task7.Users.DAL.TextFiles
                     _contentOfFile1 = streamReaderTextFiles.ReadToEnd();
                     if (_contentOfFile1 != "")
                     {
-                        _contentOfFile = _contentOfFile1.Split();
+                        _contentOfFile = _contentOfFile1.Split(SEPARATORS, StringSplitOptions.RemoveEmptyEntries);
                         for (int i = 0; i < _contentOfFile.Length; i += 2)
                         {
                             Award award = new Award();

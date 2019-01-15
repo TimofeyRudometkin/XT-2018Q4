@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Epam.Task7._1.Users.BLL
 {
-    class AwardLogic : IAwardLogic
+    public class AwardLogic : IAwardLogic
     {
         private const string ALL_AWARDS_CASHE_KEY = "GetAllAwards";
         private readonly IAwardDao _awardDAO;

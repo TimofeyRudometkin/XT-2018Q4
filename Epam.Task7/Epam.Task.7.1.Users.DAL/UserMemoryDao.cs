@@ -37,6 +37,15 @@ namespace Epam.Task._7._1.Users.DAL
             _repoUsers[user.Id] = user;
             return true;
         }
+        public bool ToAward(int userId, int awardId)
+        {
+            if (!_repoUsers.ContainsKey(userId))
+            {
+                return false;
+            }
+
+            return true;
+        }
         public User GetById(int Id)
         {
             return _repoUsers.TryGetValue(Id, out var user) 

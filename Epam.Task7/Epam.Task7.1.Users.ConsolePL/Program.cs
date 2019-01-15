@@ -10,7 +10,8 @@ namespace Epam.Task7._1.Users.ConsolePL
         static void Main(string[] args)
         {
             Random random = new Random();
-            var userLogic = DependencyResolver.UserLogic;
+            var _userLogic = DependencyResolver.UserLogic;
+            var _awardLogic = DependencyResolver.AwardLogic;
             string[] _name = new string[10];
             _name[0] = "Alexander";
             _name[1] = "Nina";
@@ -37,14 +38,23 @@ namespace Epam.Task7._1.Users.ConsolePL
 
             for (int i = 0; i < 3; i++)
             {
-                AddUser(userLogic, _name[random.Next(9)], random.Next(50), random.Next(11), random.Next(30));
+                AddUser(_userLogic, _name[random.Next(9)], random.Next(50), random.Next(11), random.Next(30));
             }
-            ShowUsers(userLogic);
-            DeleteUsers(userLogic, 3);
-            DeleteUsers(userLogic, 2);
-            ShowUsers(userLogic);
-            UpdateUser(userLogic, _name[random.Next(9)], random.Next(50), random.Next(11), random.Next(30), 1);
-            ShowUsers(userLogic);
+            for (int i = 0; i<10; i++)
+            {
+                AddAward(_awardLogic, _award[i]);
+            }
+            ShowUsers(_userLogic);
+            ShowAwards(_awardLogic);
+            DeleteUser(_userLogic, 3);
+            DeleteUser(_userLogic, 2);
+            DeleteAward(_awardLogic, 9);
+            ShowUsers(_userLogic);
+            ShowAwards(_awardLogic);
+            UpdateUser(_userLogic, _name[random.Next(9)], random.Next(50), random.Next(11), random.Next(30), 1);
+            UpdateAward(_awardLogic, "GO HOME!", 4);
+            ShowUsers(_userLogic);
+            ShowAwards(_awardLogic);
         }
         private static void AddUser(IUserLogic userLogic, string name, int Year, int Month, int Day)
         {
@@ -75,7 +85,7 @@ namespace Epam.Task7._1.Users.ConsolePL
                     ? DateTime.Now.Year - _dateOfBirthday.Year - 1
                     : DateTime.Now.Year - _dateOfBirthday.Year;
         }
-        private static void DeleteUsers(IUserLogic userLogic, int Id)
+        private static void DeleteUser(IUserLogic userLogic, int Id)
         {
             userLogic.Delete(Id);
         }
@@ -103,9 +113,34 @@ namespace Epam.Task7._1.Users.ConsolePL
                 Console.WriteLine(user);
             }
         }
-        private static void  CreateListOfAwards(IUserLogic userLogic)
+        private static void  AddAward(IAwardLogic _awardLogic, string TitleOfAward)
         {
-
+            Award award = new Award()
+            {
+                Title = TitleOfAward,
+            };
+            _awardLogic.Add(award);
+        }
+        private static void DeleteAward(IAwardLogic awardLogic, int Id)
+        {
+            awardLogic.DeleteAward(Id);
+        }
+        private static void UpdateAward(IAwardLogic awardLogic, string Title, int Id)
+        {
+            Award award = new Award()
+            {
+                Id = Id,
+                Title = Title,
+            };
+            awardLogic.UpdateAward(award);
+        }
+        private static void ShowAwards(IAwardLogic awardLogic)
+        {
+            Console.WriteLine("Id Title");
+            foreach (Award award in awardLogic.GetAllAwards())
+            {
+                Console.WriteLine(award);
+            }
         }
     }
 }
