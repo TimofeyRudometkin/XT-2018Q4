@@ -14,5 +14,7 @@ namespace Epam.Task7._1.Users.DAL.Interface
         Award GetAwardById(int Id);
 
         IEnumerable<Award> GetAllAwards();
+
+        Dictionary<int, Award> GetDictionaryOfAwards();
     }
 }

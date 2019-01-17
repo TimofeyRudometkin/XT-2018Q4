@@ -191,5 +191,10 @@ namespace Epam.Task7.Users.DAL.TextFiles
                 throw new Exception("Can't get all awards from text file.");
             }
         }
+
+        public Dictionary<int, Award> GetDictionaryOfAwards()
+        {
+            return null;
+        }
     }
 }

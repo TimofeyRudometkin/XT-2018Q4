@@ -8,20 +8,18 @@ namespace Epam.Task._7._1.Users.DAL
 {
     public class AwardMemoryDao : IAwardDao
     {
-        private static readonly Dictionary<int, Award> _repoAwards = new Dictionary<int, Award>();
+        public static readonly Dictionary<int, Award> _repoAwards = new Dictionary<int, Award>();
         public void Add(Award award)
         {
-            var lastId = _repoAwards.Keys.Any()
-                ? _repoAwards.Keys.Max()
-                : 0;
-
-            award.Id = ++lastId;
-
-            if (award.Id > 300)
+            if (_repoAwards.Keys.Any())
             {
-                throw new CriticalException();
+                award.Id = _repoAwards.Keys.Max() + 1;
+                _repoAwards.Add(award.Id, award);
             }
-            _repoAwards.Add(award.Id, award);
+            else
+            {
+                _repoAwards.Add(0, award);
+            }
         }
         public bool DeleteAward(int Id)
         {
@@ -46,6 +44,10 @@ namespace Epam.Task._7._1.Users.DAL
         public IEnumerable<Award> GetAllAwards()
         {
             return _repoAwards.Values;
+        }
+        public Dictionary<int,Award> GetDictionaryOfAwards()
+        {
+            return _repoAwards;
         }
     }
 }

@@ -86,5 +86,10 @@ namespace Epam.Task7._1.Users.BLL
             }
             return cacheResult;
         }
+
+        public Dictionary<int, Award> GetDictionaryOfAwards()
+        {
+            return _awardDAO.GetDictionaryOfAwards();
+        }
     }
 }

@@ -207,6 +207,10 @@ namespace Epam.Task7.Users.DAL.TextFiles
                 throw new Exception("Can't get user from text file.");
             }
         }
+        public int[] GetAwardsIdByUserId(int userId)
+        {
+                return null;
+        }
         public IEnumerable<User> GetAll()
         {
             try
@@ -237,6 +241,11 @@ namespace Epam.Task7.Users.DAL.TextFiles
                 Console.WriteLine(e.Message + Environment.NewLine + e.Source + Environment.NewLine + e.TargetSite + Environment.NewLine + e.StackTrace);
                 throw new Exception("Can't get all users from text file.");
             }
+        }
+
+        public int[] GetAllAwardsIdFromUser(int userId)
+        {
+            return null;
         }
     }
 }

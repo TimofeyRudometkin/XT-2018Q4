@@ -44,16 +44,19 @@ namespace Epam.Task7._1.Users.ConsolePL
             {
                 AddAward(_awardLogic, _award[i]);
             }
-            ShowUsers(_userLogic);
+            Console.WriteLine(GetAwardById(_awardLogic, 0));
+            ToAwardUser(_userLogic, 0, 0);
+            ToAwardUser(_userLogic, 1, 1);
+            ShowUsers(_userLogic, _awardLogic);
             ShowAwards(_awardLogic);
             DeleteUser(_userLogic, 3);
             DeleteUser(_userLogic, 2);
             DeleteAward(_awardLogic, 9);
-            ShowUsers(_userLogic);
+            ShowUsers(_userLogic, _awardLogic);
             ShowAwards(_awardLogic);
             UpdateUser(_userLogic, _name[random.Next(9)], random.Next(50), random.Next(11), random.Next(30), 1);
             UpdateAward(_awardLogic, "GO HOME!", 4);
-            ShowUsers(_userLogic);
+            ShowUsers(_userLogic, _awardLogic);
             ShowAwards(_awardLogic);
         }
         private static void AddUser(IUserLogic userLogic, string name, int Year, int Month, int Day)
@@ -105,12 +108,23 @@ namespace Epam.Task7._1.Users.ConsolePL
             };
             userLogic.Update(user);
         }
-        private static void ShowUsers(IUserLogic userLogic)
+        private static void ShowUsers(IUserLogic userLogic, IAwardLogic awardLogic)
         {
             Console.WriteLine($"Id Name DateOfBirthday Age");
             foreach (var user in userLogic.GetAll())
             {
-                Console.WriteLine(user);
+                Console.Write(user);
+                int[] listOfAwards = GetAwardsIdByUserId(userLogic, user.Id);
+                if (!(listOfAwards == null))
+                {
+                    foreach (int awardId in listOfAwards)
+                    {
+                        Award award = new Award();
+                        award = GetAwardById(awardLogic, awardId);
+                        Console.Write($" award '{award.Title}' with id {award.Id}");
+                    }
+                }
+                Console.WriteLine();
             }
         }
         private static void  AddAward(IAwardLogic _awardLogic, string TitleOfAward)
@@ -142,5 +156,18 @@ namespace Epam.Task7._1.Users.ConsolePL
                 Console.WriteLine(award);
             }
         }
+        private static Award GetAwardById(IAwardLogic awardLogic, int Id)
+        {
+            return awardLogic.GetAwardById(Id);
+        }
+        private static int[] GetAwardsIdByUserId(IUserLogic userLogic, int userId)
+        {
+            return userLogic.GetAwardsIdByUserId(userId);
+        }
+        private static void ToAwardUser(IUserLogic userLogic, int userId, int awardId)
+        {
+            userLogic.ToAward(userId, awardId);
+        }
+
     }
 }

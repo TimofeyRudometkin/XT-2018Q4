@@ -77,6 +77,10 @@ namespace Epam.Task7._1.Users.BLL
         {
             return _userDAO.GetById(Id);
         }
+        public int[] GetAwardsIdByUserId(int userId)
+        {
+            return _userDAO.GetAwardsIdByUserId(userId);
+        }
         public IEnumerable<User> GetAll()
         {
             var cacheResult = _cacheLogic.Get<IEnumerable<User>>(ALL_USERS_CACHE_KEY);
@@ -88,6 +92,11 @@ namespace Epam.Task7._1.Users.BLL
                 return result;
             }
             return cacheResult;
+        }
+
+        public int[] GetAllAwardsIdFromUser(int userId)
+        {
+            return _userDAO.GetAllAwardsIdFromUser(userId);
         }
     }
 }
