@@ -89,16 +89,5 @@ namespace Epam.Task._7._1.Users.DAL
         {
             return _repoUsers.Values;
         }
-        public int[] GetAllAwardsIdFromUser(int userId)
-        {
-            if (_repoUsersAwards.ContainsKey(userId))
-            {
-                return _repoUsersAwards[userId];
-            }
-            else
-            {
-                return null;
-            }
-        }
     }
 }

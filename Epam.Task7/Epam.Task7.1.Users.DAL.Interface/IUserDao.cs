@@ -18,7 +18,5 @@ namespace Epam.Task._7._1.Users.DAL.Interface
         int[] GetAwardsIdByUserId(int userId);
             
         IEnumerable<User> GetAll();
-
-        int[] GetAllAwardsIdFromUser(int userId);
     }
 }

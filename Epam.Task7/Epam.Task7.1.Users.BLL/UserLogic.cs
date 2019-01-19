@@ -93,10 +93,5 @@ namespace Epam.Task7._1.Users.BLL
             }
             return cacheResult;
         }
-
-        public int[] GetAllAwardsIdFromUser(int userId)
-        {
-            return _userDAO.GetAllAwardsIdFromUser(userId);
-        }
     }
 }

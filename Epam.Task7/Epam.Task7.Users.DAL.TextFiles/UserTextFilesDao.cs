@@ -14,7 +14,9 @@ namespace Epam.Task7.Users.DAL.TextFiles
         private StringBuilder _nameOfTextFileWithUsersAndAwards = new StringBuilder("DateOfUsersAndAwards.txt");
         private string _contentOfFile1;
         private string[] _contentOfFile;
-        private string[] SEPARATORS = { " <*> " };
+        private string[] SEPARATORS = { " <'> " };
+        private string[] SEPARATORSLISTOFAWARDS = { " >'< " };
+
         public void Add(User user)
         {
             try
@@ -141,31 +143,49 @@ namespace Epam.Task7.Users.DAL.TextFiles
         {
             try
             {
-                using (StreamReader streamReaderTextFiles = new StreamReader(Path.Combine(_pathOfTextFiles.ToString(), _nameOfTextFileWithUsers.ToString())))
+                if (!File.Exists(Path.Combine(_pathOfTextFiles.ToString(), _nameOfTextFileWithUsersAndAwards.ToString())))
+                {
+                    if (!Directory.Exists(_pathOfTextFiles.ToString()))
+                    {
+                        Directory.CreateDirectory(_pathOfTextFiles.ToString());
+                    }
+                    using (StreamWriter streamWriterTextFiles = new StreamWriter(Path.Combine(_pathOfTextFiles.ToString(), _nameOfTextFileWithUsersAndAwards.ToString()), true))
+                    {
+                        ;
+                    }
+                }
+                using (StreamReader streamReaderTextFiles = new StreamReader(Path.Combine(_pathOfTextFiles.ToString(), _nameOfTextFileWithUsersAndAwards.ToString())))
                 {
                     _contentOfFile1 = streamReaderTextFiles.ReadToEnd();
                 }
                 if (_contentOfFile1 != "")
                 {
                     _contentOfFile = _contentOfFile1.Split(SEPARATORS, StringSplitOptions.RemoveEmptyEntries);
-                    for (int i = 0; i < _contentOfFile.Length; i += 4)
+                    for (int i = 0; i < _contentOfFile.Length; i += 2)
                     {
                         if (int.Parse(_contentOfFile[i]) == userId)
                         {
-                            using (StreamReader streamReaderTextFiles = new StreamReader(Path.Combine(_pathOfTextFiles.ToString(), _nameOfTextFileWithUsersAndAwards.ToString())))
-                            {
-
-                            }
+                            _contentOfFile[i + 1] += _contentOfFile[i + 1] != ""
+                                                   ? $"{SEPARATORSLISTOFAWARDS[0]}{awardId}"
+                                                   : $"{awardId}";
                             using (StreamWriter streamWriterTextFiles = new StreamWriter(Path.Combine(_pathOfTextFiles.ToString(), _nameOfTextFileWithUsersAndAwards.ToString()), false))
                             {
-                                for (int j = 0; j < _contentOfFile.Length; j += 4)
+                                for (int j = 0; j < _contentOfFile.Length; j += 2)
                                 {
-                                    streamWriterTextFiles.Write($"{_contentOfFile[j]}{SEPARATORS[0]}{_contentOfFile[j + 1]}{SEPARATORS[0]}{_contentOfFile[j + 2]}{SEPARATORS[0]}{_contentOfFile[j + 3]}{SEPARATORS[0]}");
+                                    streamWriterTextFiles.Write($"{_contentOfFile[j]}{SEPARATORS[0]}{_contentOfFile[j + 1]}{SEPARATORS[0]}");
                                 }
                             }
                             return true;
                         }
                     }
+                }
+                else
+                {
+                    using (StreamWriter streamWriterTextFiles = new StreamWriter(Path.Combine(_pathOfTextFiles.ToString(), _nameOfTextFileWithUsersAndAwards.ToString()), false))
+                    {
+                        streamWriterTextFiles.Write($"{userId}{SEPARATORS[0]}{awardId}{SEPARATORS[0]}");
+                    }
+                    return true;
                 }
                 return false;
             }
@@ -209,7 +229,37 @@ namespace Epam.Task7.Users.DAL.TextFiles
         }
         public int[] GetAwardsIdByUserId(int userId)
         {
+            try
+            {
+                using (StreamReader streamReaderTextFiles = new StreamReader(Path.Combine(_pathOfTextFiles.ToString(), _nameOfTextFileWithUsersAndAwards.ToString())))
+                {
+                    _contentOfFile1 = streamReaderTextFiles.ReadToEnd();
+                }
+                if (_contentOfFile1 != "")
+                {
+                    _contentOfFile = _contentOfFile1.Split(SEPARATORS, StringSplitOptions.RemoveEmptyEntries);
+                    for (int i = 0; i < _contentOfFile.Length; i += 2)
+                    {
+                        if (int.Parse(_contentOfFile[i]) == userId)
+                        {
+                            string[] ListOfAwards;
+                            ListOfAwards = _contentOfFile[i + 1].Split(SEPARATORSLISTOFAWARDS, StringSplitOptions.RemoveEmptyEntries);
+                            int[] intListOfAwards = new int[ListOfAwards.Length];
+                            for (int j=0; j< ListOfAwards.Length;j++)
+                            {
+                                intListOfAwards[j] = int.Parse(ListOfAwards[j]);
+                            }
+                            return intListOfAwards;
+                        }
+                    }
+                }
                 return null;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message + Environment.NewLine + e.Source + Environment.NewLine + e.TargetSite + Environment.NewLine + e.StackTrace);
+                throw new Exception("Can't awarded user from text file.");
+            }
         }
         public IEnumerable<User> GetAll()
         {
@@ -241,11 +291,6 @@ namespace Epam.Task7.Users.DAL.TextFiles
                 Console.WriteLine(e.Message + Environment.NewLine + e.Source + Environment.NewLine + e.TargetSite + Environment.NewLine + e.StackTrace);
                 throw new Exception("Can't get all users from text file.");
             }
-        }
-
-        public int[] GetAllAwardsIdFromUser(int userId)
-        {
-            return null;
         }
     }
 }
