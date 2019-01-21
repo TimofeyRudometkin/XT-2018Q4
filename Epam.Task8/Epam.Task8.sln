@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Task8.2.HTML_Replacer"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Task8.3.EmailFinder", "Epam.Task8.3.EmailFinder\Epam.Task8.3.EmailFinder.csproj", "{6A3E49DF-BCC8-4A24-AA41-DA51A2F86227}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Task8.4.NumberValidator", "Epam.Task8.4.NumberValidator\Epam.Task8.4.NumberValidator.csproj", "{39B814F9-CD85-43AB-8341-377898636DBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Task8.5.TimeCounter", "Epam.Task8.5.TimeCounter\Epam.Task8.5.TimeCounter.csproj", "{99869E45-67D7-4F10-AF12-4540AE42F420}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{6A3E49DF-BCC8-4A24-AA41-DA51A2F86227}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A3E49DF-BCC8-4A24-AA41-DA51A2F86227}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A3E49DF-BCC8-4A24-AA41-DA51A2F86227}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39B814F9-CD85-43AB-8341-377898636DBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39B814F9-CD85-43AB-8341-377898636DBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39B814F9-CD85-43AB-8341-377898636DBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39B814F9-CD85-43AB-8341-377898636DBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99869E45-67D7-4F10-AF12-4540AE42F420}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99869E45-67D7-4F10-AF12-4540AE42F420}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99869E45-67D7-4F10-AF12-4540AE42F420}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99869E45-67D7-4F10-AF12-4540AE42F420}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
