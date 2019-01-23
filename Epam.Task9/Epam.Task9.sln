@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2050
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Task9.1.ListMenu", "Epam.Task9.1.ListMenu\Epam.Task9.1.ListMenu.csproj", "{3091954E-0692-4560-82F9-1F56C8AF3095}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Task9.2.RegistrationForm", "Epam.Task9.2.RegistrationForm\Epam.Task9.2.RegistrationForm.csproj", "{D79131A1-232F-4609-902D-B35846BBF171}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3091954E-0692-4560-82F9-1F56C8AF3095}.Debug|x86.ActiveCfg = Debug|x86
+		{3091954E-0692-4560-82F9-1F56C8AF3095}.Debug|x86.Build.0 = Debug|x86
+		{D79131A1-232F-4609-902D-B35846BBF171}.Debug|x86.ActiveCfg = Debug|x86
+		{D79131A1-232F-4609-902D-B35846BBF171}.Debug|x86.Build.0 = Debug|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {216F7964-A47D-4607-B75F-FCCE4378032C}
+	EndGlobalSection
+EndGlobal

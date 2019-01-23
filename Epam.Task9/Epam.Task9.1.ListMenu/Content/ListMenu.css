@@ -1,0 +1,17 @@
+﻿ul{
+  list-style:none;
+  color:#ad4129;
+  background-color:#fae497;
+  padding:10px;
+  border:1px solid #9c9a94;
+  border-radius:10px;
+  width:200px;
+  font-weight:bolder;
+  font-size:15px;
+  padding-top:6px;
+  padding-bottom:6px;
+  box-shadow:6px 6px #8c0000;
+}
+li{
+  padding-top:10px;
+}
