@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0">
+  <PropertyGroup>
+    <RootNamespace>Epam.Task9._3.DropDownMenu</RootNamespace>
+    <ProjectGuid>{EC91B1B0-052C-470A-A774-E415FD82B3AF}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="Content\DropDownMenu.css" />
+    <Content Include="DropDownMenu.html" />
+  </ItemGroup>
+</Project>
