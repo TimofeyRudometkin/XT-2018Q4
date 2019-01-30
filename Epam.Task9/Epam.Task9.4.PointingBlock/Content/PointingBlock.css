@@ -1,0 +1,39 @@
+﻿.arrow {
+	height: 100px;
+	background: #83A7C9;
+	top:100px;
+	left:15px;
+	right:15px;
+	position:absolute;
+	border:solid 5px #c3e2f4;
+	text-align: center;
+	color:white;
+	font-size:26px;
+	line-height: 95px;
+}
+.arrow:before {
+	content: '';
+    position: absolute;
+    top: -78px;
+	left:50%;
+	margin-left:-78px;
+	width: 0;
+    height: 0;
+    border-left: 78px solid transparent;
+    border-right: 78px solid transparent;
+    border-bottom: 78px solid #c3e2f4;
+    display: inline-block;
+    vertical-align: middle;
+}
+.arrow:after {
+	content: '';
+    position: absolute;
+    top: -70px;
+	left:50%;
+	margin-left:-70px;
+	width: 0;
+    height: 0;
+    border-left: 70px solid transparent;
+    border-right: 70px solid transparent;
+    border-bottom: 70px solid #83A7C9;
+}

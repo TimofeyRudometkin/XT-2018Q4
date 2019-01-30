@@ -56,10 +56,5 @@
 	background-color: #37abff;
 }
 .menu-inner > li:hover > a{
-	text-decoration: none;
-}
-.menu-inner > li:hover > a{
 	color: white;
-	padding: 2px;
-	text-decoration: none;
 }

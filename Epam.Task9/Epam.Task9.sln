@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Task9.2.RegistrationFo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Task9.3.DropDownMenu", "Epam.Task9.3.DropDownMenu\Epam.Task9.3.DropDownMenu.csproj", "{EC91B1B0-052C-470A-A774-E415FD82B3AF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Task9.4.PointingBlock", "Epam.Task9.4.PointingBlock\Epam.Task9.4.PointingBlock.csproj", "{45F79280-1146-429F-BC67-21A7E690216E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -20,6 +22,8 @@ Global
 		{D79131A1-232F-4609-902D-B35846BBF171}.Debug|x86.Build.0 = Debug|x86
 		{EC91B1B0-052C-470A-A774-E415FD82B3AF}.Debug|x86.ActiveCfg = Debug|x86
 		{EC91B1B0-052C-470A-A774-E415FD82B3AF}.Debug|x86.Build.0 = Debug|x86
+		{45F79280-1146-429F-BC67-21A7E690216E}.Debug|x86.ActiveCfg = Debug|x86
+		{45F79280-1146-429F-BC67-21A7E690216E}.Debug|x86.Build.0 = Debug|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
