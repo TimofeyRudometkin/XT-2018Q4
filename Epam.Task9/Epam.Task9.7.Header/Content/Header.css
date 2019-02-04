@@ -1,0 +1,27 @@
+﻿.header{
+	position: relative;
+	float: left;
+	width:100%;
+	background: #008b65;
+	color: white;
+}
+.text{
+	position: relative;
+	float: left;
+	top: -6px;
+	left: 28px;
+	right: 10px;
+	background: #dfe7e1;
+	margin: 0px 28px 0px 0px;
+}
+.header h2{
+	padding:10px;
+	margin:0;
+	font: normal 110% "Georgia";
+}
+.text p{
+	padding:9px;
+	margin:0;
+	font: normal 95% "Georgia";
+	line-height: 1.3;
+}

@@ -1,0 +1,39 @@
+﻿body{
+	background: black;
+}
+article{
+	position: relative;
+	background: linear-gradient(to top, #dcdedc, #ffffff);
+	border-left: 2px solid #ffffff;
+	border-right: 2px solid #ffffff;
+	border-bottom: 3px solid #ffffff;
+	border-radius: 0px 0px 7px 7px;
+	font: normal 95% "Arial";
+	width: 389px;
+	margin: 0;
+	padding: 50px 10px 10px 10px;
+	left: 47px;
+	top: -1px;
+}
+article:after{
+	content: '';
+	position: absolute;
+	left: -2px;
+	top: 0px;
+	border-left: 102px solid black;
+	border-top: 40px solid black;
+	border-right: 22px solid transparent;
+}
+article::before{
+	content: 'ЭКГ-5';
+	position: absolute;
+	left: -2px;
+	top: -8px;
+	font-size: 29px;
+	font-weight: bold;
+	color: #ffb263;
+	width: 393px;
+	margin:10px;
+	padding: 0px;
+	z-index: 1;
+}

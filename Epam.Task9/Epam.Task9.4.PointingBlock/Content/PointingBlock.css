@@ -1,4 +1,7 @@
-﻿.arrow {
+﻿body{
+	background:#343334;
+}
+.arrow {
 	height: 100px;
 	background: #83A7C9;
 	top:100px;

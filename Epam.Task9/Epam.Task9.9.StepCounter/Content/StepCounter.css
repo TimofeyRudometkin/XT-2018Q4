@@ -1,0 +1,82 @@
+﻿.conteiner{
+	width: auto;
+	height: 28px;
+	display: inline-flex;
+}
+.noseOfArrow{
+	min-width: 5px;
+	min-height: 28px;
+	background-image: linear-gradient(to top, #dedfde 0%, #c0c1c0 50%, #dedfde 100%);
+}
+.conteiner1, .conteiner2, .conteiner3, .conteiner4{
+	display: inline-flex;
+	width: auto;
+
+}
+.bodyOfArrow{
+	position:relative;
+	display: inline-flex;
+	min-width: 94px;
+	min-height: 28px;
+	background-image: linear-gradient(to top, #dedfde 0%, #c0c1c0 50%, #dedfde 100%);
+	font-family: "Arial";
+	align-items: center;
+	justify-content: center;
+	margin: 0px;
+	padding: 0px;
+}
+.tailOfArrow{
+	min-width: 5px;
+	min-height: 28px;
+	background-image: linear-gradient(to top, #dedfde 0%, #c0c1c0 50%, #dedfde 100%);
+}
+.conteiner1 .bodyOfArrow:after, .conteiner2 .bodyOfArrow:after, .conteiner3 .bodyOfArrow:after{
+	content: '';
+	position: absolute;
+	left: 94px;
+	border-top: 14px solid white;
+	border-bottom: 14px solid white;
+	border-left: 5px solid transparent;
+}
+.conteiner1 .bodyOfArrow:before, .conteiner2 .bodyOfArrow:before, .conteiner3 .bodyOfArrow:before{
+	content: '';
+	position: absolute;
+	left: 99px;
+	border-top: 14px solid transparent;
+	border-bottom: 14px solid transparent;
+	border-left: 5px solid white;
+}
+.conteiner1:hover .noseOfArrow{
+	background-image: linear-gradient(to top, #ade38c 0%, #63c721 50%, #ade38c 100%);
+	}
+.conteiner1:hover .bodyOfArrow{
+	color: white;
+	background-image: linear-gradient(to top, #ade38c 0%, #63c721 50%, #ade38c 100%);
+	}
+.conteiner2:hover .noseOfArrow{
+	background-image: linear-gradient(to top, #ade38c 0%, #63c721 50%, #ade38c 100%);
+	}
+.conteiner2:hover .bodyOfArrow{
+	color: white;
+	background-image: linear-gradient(to top, #ade38c 0%, #63c721 50%, #ade38c 100%);
+	}
+.conteiner2:hover .tailOfArrow{
+	background-image: linear-gradient(to top, #ade38c 0%, #63c721 50%, #ade38c 100%);
+	}
+.conteiner3:hover .noseOfArrow{
+	background-image: linear-gradient(to top, #ade38c 0%, #63c721 50%, #ade38c 100%);
+	}
+.conteiner3:hover .bodyOfArrow{
+	color: white;
+	background-image: linear-gradient(to top, #ade38c 0%, #63c721 50%, #ade38c 100%);
+	}
+.conteiner3:hover .tailOfArrow{
+	background-image: linear-gradient(to top, #ade38c 0%, #63c721 50%, #ade38c 100%);
+	}
+.conteiner4:hover .bodyOfArrow{
+	color: white;
+	background-image: linear-gradient(to top, #ade38c 0%, #63c721 50%, #ade38c 100%);
+	}
+.conteiner4:hover .tailOfArrow{
+	background-image: linear-gradient(to top, #ade38c 0%, #63c721 50%, #ade38c 100%);
+	}

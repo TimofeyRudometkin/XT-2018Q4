@@ -1,0 +1,81 @@
+﻿body{
+	background: #4f6479;
+}
+div{
+	display:inline-block;
+	margin:0;
+	padding:0;
+	text-align:center;
+}
+button{
+	width:90px;
+	height:22px;
+	background:#f46431;
+	border:0px;
+	color:white;
+	font-size:70%;
+	font-family: 'Helvetica';
+}
+.container{
+	width:548px;
+	height:142px;
+	background:white;
+	border-radius:5px;
+	box-shadow: 0 0px 100px;
+	margin-left:15px;
+	margin-top:0;
+}
+.left{
+	width:182px;
+	height:100%;
+	margin:0;
+	padding:0;
+}
+.horizontalCenter{
+	width:182px;
+	height:100%;
+	border-left:solid 1px #d6dbd6;
+	border-right:solid 1px #d6dbd6;
+	margin:0;
+	padding:0;
+}
+.right{
+	width:182px;
+	height:100%;
+	margin:0;
+	padding:0;
+}
+.image{
+	width:100%;
+	height:41px;
+	background-image: url("../Media/ThreeColumnBlock.png");
+	background-repeat:no-repeat;
+	margin-top:9px;
+}
+.name{
+	width:100%;
+	height:25px;
+	font-size: 83%;
+	font-weight: 700;
+	font-family: Arial;
+	color:#f46431;
+	margin-top:6px;
+}
+.price{
+	width:100%;
+	height:23px;
+	font-size:75%;
+}
+.button{
+	width:100%;
+	height:30px;
+}
+#VirtualHosting{
+    background-position: top;
+}
+#CloudHosting{
+    background-position: center;
+}
+#DedicatedServer{
+    background-position: bottom;
+}

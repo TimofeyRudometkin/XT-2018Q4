@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0">
+  <PropertyGroup>
+    <RootNamespace>Epam.Task9._7.Header</RootNamespace>
+    <ProjectGuid>{10FE7646-6E48-4B6E-AD81-4F03B87642A3}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="Content\Header.css" />
+    <Content Include="Header.html" />
+  </ItemGroup>
+</Project>
