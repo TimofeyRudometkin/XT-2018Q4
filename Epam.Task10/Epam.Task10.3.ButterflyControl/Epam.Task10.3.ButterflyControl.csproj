@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0">
+  <PropertyGroup>
+    <RootNamespace>Epam.Task10._3.ButterflyControl</RootNamespace>
+    <ProjectGuid>{FE53F792-4EAC-47CC-8CF7-88292CDFFE84}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="Content\ButterflyControl.css" />
+    <Content Include="Scripts\ButterflyControl.js" />
+    <Content Include="ButterflyControl.html" />
+  </ItemGroup>
+</Project>

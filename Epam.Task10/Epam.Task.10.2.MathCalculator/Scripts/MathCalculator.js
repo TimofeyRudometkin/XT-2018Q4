@@ -31,5 +31,7 @@ function MathCalculator(expression)
 				break;
 		}
 	}
+	console.log(Math.round(number*100)/100)
+	document.getElementById("ResultOfCalculation").innerHTML="<p>"+Math.round(number*100)/100+"</p>";
 	alert(Math.round(number*100)/100);
 }
