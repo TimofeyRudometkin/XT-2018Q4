@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0">
+  <PropertyGroup>
+    <RootNamespace>Epam.Task9._10.Vk</RootNamespace>
+    <ProjectGuid>{F5C684A0-3659-4706-8075-5C60FE0A1514}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="Content\Vk.css" />
+    <Content Include="Vk.html" />
+  </ItemGroup>
+</Project>

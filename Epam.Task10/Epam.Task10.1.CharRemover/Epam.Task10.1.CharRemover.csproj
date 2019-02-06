@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0">
+  <PropertyGroup>
+    <RootNamespace>Epam.Task10._1.CharRemover</RootNamespace>
+    <ProjectGuid>{F3DCFA15-EC7B-4648-8A96-A75A9580006D}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="Content\CharRemover.css" />
+    <Content Include="Scripts\CharRemover.js" />
+    <Content Include="CharRemover.html" />
+  </ItemGroup>
+</Project>

@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Task9.8.Article", "Epa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Task9.9.StepCounter", "Epam.Task9.9.StepCounter\Epam.Task9.9.StepCounter.csproj", "{A7E5FEEB-2CA5-4D8F-B998-549E37AAF5D4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Task9.10.Vk", "Epam.Task9.10.Vk\Epam.Task9.10.Vk.csproj", "{F5C684A0-3659-4706-8075-5C60FE0A1514}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -44,6 +46,8 @@ Global
 		{B227B3B0-56F2-4033-BC5B-C0D49BE8AE5E}.Debug|x86.Build.0 = Debug|x86
 		{A7E5FEEB-2CA5-4D8F-B998-549E37AAF5D4}.Debug|x86.ActiveCfg = Debug|x86
 		{A7E5FEEB-2CA5-4D8F-B998-549E37AAF5D4}.Debug|x86.Build.0 = Debug|x86
+		{F5C684A0-3659-4706-8075-5C60FE0A1514}.Debug|x86.ActiveCfg = Debug|x86
+		{F5C684A0-3659-4706-8075-5C60FE0A1514}.Debug|x86.Build.0 = Debug|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
