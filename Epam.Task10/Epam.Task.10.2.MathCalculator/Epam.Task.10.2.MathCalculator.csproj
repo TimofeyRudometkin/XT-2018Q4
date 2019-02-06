@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0">
+  <PropertyGroup>
+    <RootNamespace>Epam.Task._10._2.MathCalculator</RootNamespace>
+    <ProjectGuid>{1A3030E4-5658-4D96-9512-DF9BB36173C5}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="Content\MathCalculator.css" />
+    <Content Include="Scripts\MathCalculator.js" />
+    <Content Include="MathCalculator.html" />
+  </ItemGroup>
+</Project>

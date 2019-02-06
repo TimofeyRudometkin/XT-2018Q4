@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28010.2050
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Task10.1.CharRemover", "Epam.Task10.1.CharRemover\Epam.Task10.1.CharRemover.csproj", "{F3DCFA15-EC7B-4648-8A96-A75A9580006D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.10.2.MathCalculator", "Epam.10.2.MathCalculator\Epam.10.2.MathCalculator.csproj", "{04168585-C399-47DD-9EFC-E39027112041}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Task.10.2.MathCalculator", "Epam.Task.10.2.MathCalculator\Epam.Task.10.2.MathCalculator.csproj", "{1A3030E4-5658-4D96-9512-DF9BB36173C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,8 +14,8 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{F3DCFA15-EC7B-4648-8A96-A75A9580006D}.Debug|x86.ActiveCfg = Debug|x86
 		{F3DCFA15-EC7B-4648-8A96-A75A9580006D}.Debug|x86.Build.0 = Debug|x86
-		{04168585-C399-47DD-9EFC-E39027112041}.Debug|x86.ActiveCfg = Debug|x86
-		{04168585-C399-47DD-9EFC-E39027112041}.Debug|x86.Build.0 = Debug|x86
+		{1A3030E4-5658-4D96-9512-DF9BB36173C5}.Debug|x86.ActiveCfg = Debug|x86
+		{1A3030E4-5658-4D96-9512-DF9BB36173C5}.Debug|x86.Build.0 = Debug|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
