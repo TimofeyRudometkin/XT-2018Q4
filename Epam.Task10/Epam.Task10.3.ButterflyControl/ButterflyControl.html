@@ -6,10 +6,91 @@
 		<link rel="stylesheet" type="text/css" href="Content/ButterflyControl.css"
     </head>
     <body> 
-		<form>
-			<p><input value="Input text." id=textArea></p>
-			<p><input type="submit" onclick="MathCalculator()" value="calculate"></p>
-			<p id="textWithoutRepeatingLetters"></p>
+		<form id="form1">
+			<div class="leftMain">
+				<div class="header">Available</div>
+				<div class="optionConteiner">
+					<div class="optionL" onclick="selectedItem(this)">Option 1</div>
+					<div class="optionL" onclick="selectedItem(this)">Option 2</div>
+					<div class="optionL" onclick="selectedItem(this)">Option 3</div>
+					<div class="optionL" onclick="selectedItem(this)">Option 4</div>
+					<div class="optionL" onclick="selectedItem(this)">Option 5</div>
+				</div>
+			</div>
+			<div class="center">
+				<input onclick="moveItemsFromLeftToRight(this)" value=">>">
+				<input onclick="moveSelectedItemsFromLeftToRight(this)" value=">">
+				<input onclick="moveSelectedItemsFromRightToLeft(this)" value="<">
+				<input onclick="moveItemsFromRightToLeft(this)" value="<<">
+			</div>
+			<div class="rightMain">
+				<div class="header">Selected</div>
+				<div class="optionConteiner">
+					<div class="optionR" onclick="selectedItem(this)"></div>
+					<div class="optionR" onclick="selectedItem(this)"></div>
+					<div class="optionR" onclick="selectedItem(this)"></div>
+					<div class="optionR" onclick="selectedItem(this)"></div>
+					<div class="optionR" onclick="selectedItem(this)"></div>
+				</div>
+			</div>
+		</form>
+		
+		<form id="form2">
+			<div class="leftMain">
+				<div class="header">Available</div>
+				<div class="optionConteiner">
+					<div class="optionL" onclick="selectedItem(this)">Option 1</div>
+					<div class="optionL" onclick="selectedItem(this)">Option 2</div>
+					<div class="optionL" onclick="selectedItem(this)">Option 3</div>
+					<div class="optionL" onclick="selectedItem(this)">Option 4</div>
+					<div class="optionL" onclick="selectedItem(this)">Option 5</div>
+					<div class="optionL" onclick="selectedItem(this)">Option 6</div>
+					<div class="optionL" onclick="selectedItem(this)">Option 7</div>
+				</div>
+			</div>
+			<div class="center">
+				<input onclick="moveItemsFromLeftToRight(this)" value=">>">
+				<input onclick="moveSelectedItemsFromLeftToRight(this)" value=">">
+				<input onclick="moveSelectedItemsFromRightToLeft(this)" value="<">
+				<input onclick="moveItemsFromRightToLeft(this)" value="<<">
+			</div>
+			<div class="rightMain">
+				<div class="header">Selected</div>
+				<div class="optionConteiner">
+					<div class="optionR" onclick="selectedItem(this)"></div>
+					<div class="optionR" onclick="selectedItem(this)"></div>
+					<div class="optionR" onclick="selectedItem(this)"></div>
+					<div class="optionR" onclick="selectedItem(this)"></div>
+					<div class="optionR" onclick="selectedItem(this)"></div>
+					<div class="optionR" onclick="selectedItem(this)"></div>
+					<div class="optionR" onclick="selectedItem(this)"></div>
+				</div>
+			</div>
+		</form>
+		
+		<form id="form3">
+			<div class="leftMain">
+				<div class="header">Available</div>
+				<div class="optionConteiner">
+					<div class="optionL" onclick="selectedItem(this)">Option 1</div>
+					<div class="optionL" onclick="selectedItem(this)">Option 2</div>
+					<div class="optionL" onclick="selectedItem(this)">Option 3</div>
+				</div>
+			</div>
+			<div class="center">
+				<input onclick="moveItemsFromLeftToRight(this)" value=">>">
+				<input onclick="moveSelectedItemsFromLeftToRight(this)" value=">">
+				<input onclick="moveSelectedItemsFromRightToLeft(this)" value="<">
+				<input onclick="moveItemsFromRightToLeft(this)" value="<<">
+			</div>
+			<div class="rightMain">
+				<div class="header">Selected</div>
+				<div class="optionConteiner">
+					<div class="optionR" onclick="selectedItem(this)"></div>
+					<div class="optionR" onclick="selectedItem(this)"></div>
+					<div class="optionR" onclick="selectedItem(this)"></div>
+				</div>
+			</div>
 		</form>
 		<script src="Scripts/ButterflyControl.js"></script>
     </body>

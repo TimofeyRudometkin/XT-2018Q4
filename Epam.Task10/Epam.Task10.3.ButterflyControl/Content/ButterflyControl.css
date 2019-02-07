@@ -1,1 +1,42 @@
-﻿
+﻿form{
+	display: flex;
+	flex-direction: row;
+	margin: 100px;
+}
+.leftMaiin{
+	width: auto;
+	height: auto;
+	background: green;
+}
+.rightMaiin{
+	width: auto;
+	height: auto;
+}
+.header{
+	text-align: center;
+	font-weight: bold;
+}
+.optionConteiner{
+	width: auto;
+	height: auto;
+	border: inset 1px #eceae7;
+}
+.center{
+	display: flex;
+	flex-direction: column;
+	min-width: 30px;
+	margin: 0px 5px;
+}
+input{
+	height: 20px;
+	border: outset 2px #eceae7;
+	background: rgb(212,208,200);
+	text-align: center;
+}
+div{
+	min-width: 100px;
+	min-height: 20px;
+}
+.optionL, .optionR{
+	text-align: left;
+}
