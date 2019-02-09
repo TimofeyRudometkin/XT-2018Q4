@@ -1,3 +1,39 @@
+var elementsOption = document.getElementsByClassName("<<");
+for (var i=0; i<elementsOption.length; i++)
+{
+	elementsOption[i].onclick = function(){
+		selectedItem(this);
+	}
+}
+var elements1 = document.getElementsByClassName(">>");
+for (var i=0; i<elements1.length; i++)
+{
+	elements1[i].onclick = function(){
+		moveItemsFromLeftToRight(this);
+	}
+}
+var elements2 = document.getElementsByClassName(">");
+for (var i=0; i<elements2.length; i++)
+{
+	elements2[i].onclick = function(){
+		moveSelectedItemsFromLeftToRight(this);
+	}
+}
+var elements3 = document.getElementsByClassName("<");
+for (var i=0; i<elements3.length; i++)
+{
+	elements3[i].onclick = function(){
+		moveSelectedItemsFromRightToLeft(this);
+	}
+}
+var elements4 = document.getElementsByClassName("<<");
+for (var i=0; i<elements4.length; i++)
+{
+	elements4[i].onclick = function(){
+		moveItemsFromRightToLeft(this);
+	}
+}
+
 function selectedItem(element){
 	
 	if(element.style.background&&element.innerText)

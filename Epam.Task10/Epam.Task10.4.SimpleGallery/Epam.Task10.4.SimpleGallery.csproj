@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0">
+  <PropertyGroup>
+    <RootNamespace>Epam.Task10._4.SimpleGallery</RootNamespace>
+    <ProjectGuid>{10714D83-5650-4E2F-9CF5-A3D8ABD50326}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="Content\SimpleGallery.css" />
+    <Content Include="Scripts\index.js" />
+    <Content Include="Scripts\SimpleGallery.js" />
+    <Content Include="index.html" />
+    <Content Include="SimpleGallery2.html" />
+    <Content Include="SimpleGallery3.html" />
+    <Content Include="SimpleGallery1.html" />
+  </ItemGroup>
+</Project>

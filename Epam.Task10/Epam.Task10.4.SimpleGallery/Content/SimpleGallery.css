@@ -1,0 +1,26 @@
+﻿div{
+	margin: 100px;
+	width: 400px;
+	height: 150px;
+	text-align: center;
+	padding: 20px;
+}
+input{
+	margin: 5px;
+	text-align: center;
+}
+p{
+	font-size: 30px;
+}
+.firstPage{
+	background: green;
+}
+.secondPage{
+	background: yellow;
+}
+.thirdPage{
+	background: red;
+}
+#timer{
+	color: blue;
+}

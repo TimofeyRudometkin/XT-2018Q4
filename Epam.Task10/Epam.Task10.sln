@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Task.10.2.MathCalculat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Task10.3.ButterflyControl", "Epam.Task10.3.ButterflyControl\Epam.Task10.3.ButterflyControl.csproj", "{FE53F792-4EAC-47CC-8CF7-88292CDFFE84}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Task10.4.SimpleGallery", "Epam.Task10.4.SimpleGallery\Epam.Task10.4.SimpleGallery.csproj", "{10714D83-5650-4E2F-9CF5-A3D8ABD50326}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -20,6 +22,8 @@ Global
 		{1A3030E4-5658-4D96-9512-DF9BB36173C5}.Debug|x86.Build.0 = Debug|x86
 		{FE53F792-4EAC-47CC-8CF7-88292CDFFE84}.Debug|x86.ActiveCfg = Debug|x86
 		{FE53F792-4EAC-47CC-8CF7-88292CDFFE84}.Debug|x86.Build.0 = Debug|x86
+		{10714D83-5650-4E2F-9CF5-A3D8ABD50326}.Debug|x86.ActiveCfg = Debug|x86
+		{10714D83-5650-4E2F-9CF5-A3D8ABD50326}.Debug|x86.Build.0 = Debug|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
