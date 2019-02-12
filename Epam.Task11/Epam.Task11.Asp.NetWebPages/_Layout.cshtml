@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@Page.Title</title>
+    <link rel="stylesheet" type="text/css" href="Content/UsersAndAwards.css" />
+</head>
+<body>
+    <div id="authenticated">
+        @if (User.Identity.IsAuthenticated)
+        {
+            if (User.IsInRole("Admins"))
+            {
+                <p>Admin</p>
+            }
+            if (User.IsInRole("User"))
+            {
+                <p>User</p>
+            }
+            <p>User name : @User.Identity.Name</p>
+            <a href="~/Logout">Logout</a>
+        }
+        else
+        {
+            <a href="~/LogIn">LogIn</a>
+        }
+        @RenderBody()
+    </div>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,15 @@
+﻿body {
+    background: grey;
+}
+
+label {
+    text-align: left;
+}
+
+.ElementOfSubMenu input {
+    width: 150px;
+}
+
+.elementOfMenu {
+    margin: 30px;
+}

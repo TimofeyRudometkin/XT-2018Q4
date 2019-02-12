@@ -1,0 +1,111 @@
+﻿@using Epam.Task11.UsersAndAwards.Common;
+@using Epam.Task11.UsersAndAwards.ConsolePL;
+@using Epam.Task11.UsersAndAwards.Entities;
+@using Epam.Task11.UsersAndAwards.BLL.Interface;
+
+@if (IsAjax)
+{
+    var _userLogic = DependencyResolver.UserLogic;
+    var _awardLogic = DependencyResolver.AwardLogic;
+    var _userId = Request.Params["userId"];
+    var _nameUser = Request.Params["userName"];
+    string _dateString = Request.Params["userDateOfBirth"];
+    var _awardId = Request.Params["awardId"];
+    var _awardTitle = Request.Params["awardTitle"];
+    var actionPlan = Request.Params["actionPlan"];
+
+    switch (actionPlan)
+    {
+        case "addUserForm":
+            var _date = _dateString.Split('-');
+            Program.AddUser(_userLogic, _nameUser, int.Parse(_date[2]), int.Parse(_date[1]), int.Parse(_date[0]));
+            <p>@($"User { _nameUser} with data of birth { int.Parse(_date[2])} { int.Parse(_date[1])} { int.Parse(_date[0])} added.")</p>
+            break;
+        case "deleteUserForm":
+            Program.DeleteUser(_userLogic, int.Parse(_userId));
+            <p>@(($"User with id - { int.Parse(_userId)} was deleated."))</p>
+            break;
+        case "updateUserForm":
+            var _date2 = _dateString.Split('-');
+            Program.UpdateUser(_userLogic, _nameUser, int.Parse(_date2[2]), int.Parse(_date2[1]), int.Parse(_date2[0]), int.Parse(_userId));
+            <p>@(($"User data with id - { int.Parse(_userId)} was updated."))</p>
+            break;
+        case "showUsersForm":
+            Console.WriteLine($"Id Name DateOfBirthday Age");
+            foreach (var user in _userLogic.GetAll())
+            {
+                <p>@($"User '{user.Name} with id '{user.Id}' date of birth '{user.DateOfBirthday}' {user.Age} years old.")</p>
+                int[] listOfAwards = Program.GetAwardsIdByUserId(_userLogic, user.Id);
+                if (!(listOfAwards == null))
+                {
+                    <p>@("     Has the following awards:")</p>
+                    bool checkNew1 = true;
+                    string _listOfAwards1 = "";
+                    foreach (int awardId in listOfAwards)
+                    {
+                        if (checkNew1)
+                        {
+                            checkNew1 = false;
+                        }
+                        else
+                        {
+                            _listOfAwards1 += ", ";
+                        }
+                        Award award = new Award();
+                        award = Program.GetAwardById(_awardLogic, awardId);
+                        _listOfAwards1 += $"award '{award.Title}' with id {award.Id}";
+                    }
+                    <p>@(_listOfAwards1).</p>
+                }
+            }
+            break;
+        case "addAwardForm":
+            Program.AddAward(_awardLogic, _awardTitle);
+            <p>@($"Award { _awardTitle} added.")</p>
+            break;
+        case "deleteAwardForm":
+            Program.DeleteAward(_awardLogic, int.Parse(_awardId));
+            <p>@($"Award with id - '{ _awardId}' deleted.")</p>
+            break;
+        case "updateAwardForm":
+            Program.UpdateAward(_awardLogic, _awardTitle, int.Parse(_awardId));
+            <p>@($"Award with id - '{ _awardTitle}' renamed.")</p>
+            break;
+        case "showAwardsForm":
+            foreach (Award award in _awardLogic.GetAllAwards())
+            {
+                <p>@($"Award '{award.Title}' with id '{award.Id}'{Environment.NewLine}")</p>
+            }
+            break;
+        case "getAwardByIdForm":
+            var _award = Program.GetAwardById(_awardLogic, int.Parse(_awardId));
+            <p>@($"Under id - {_award.Id} - reward  '{_award.Title}'.")</p>
+            break;
+        case "getAwardsIdByUsersIdForm":
+            var _arrayOfAwards = Program.GetAwardsIdByUserId(_userLogic, int.Parse(_userId));
+            bool checkNew2 = true;
+            string _listOfAwards2 = "";
+            foreach (int element in _arrayOfAwards)
+            {
+                if(checkNew2)
+                {
+                    checkNew2 = false;
+                }
+                else
+                {
+                    _listOfAwards2 += ", ";
+                }
+                _listOfAwards2 += element;
+            }
+            <p>@($"User with id - '{_userId}' has a reward with id :'{_listOfAwards2}'.")</p>
+            break;
+        case "toAwardUserForm":
+            Program.ToAwardUser(_userLogic, int.Parse(_userId), int.Parse(_awardId));
+            <p>@($"The user with id - '{_userId}' is awarded the award with id - '{_awardId}'")</p>
+            break;
+        default:
+            break;
+    }
+
+    return;
+}

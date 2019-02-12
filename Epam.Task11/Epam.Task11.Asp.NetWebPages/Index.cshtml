@@ -1,0 +1,109 @@
+﻿@{
+    Layout = "~/_Layout.cshtml";
+    Page.Title = "Index";
+}
+
+@section Scripts
+{
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/UsersAndAwards.js"></script>
+} 
+
+<div class="menuOfCommand">
+    <form action="~/Index.cshtml" method="post" class="elementOfMenu" id="addUserForm">
+        <div class="ElementOfSubMenu">
+            <input type="text" id="addUserName" class="userName" />
+            <label for="addUserName">Enter the user name.</label>
+        </div>
+        <div class="ElementOfSubMenu">
+            <input type="date" id="addUserDateOfBirth" class="userDateOfBirth" />
+            <label for="addUserDateOfBirth">Enter the user's date of birth.</label>
+        </div>
+        <button type="submit">Add user</button>
+    </form>
+    <form action="~/Index.cshtml" method="post" class="elementOfMenu" id="deleteUserForm">
+        <div class="ElementOfSubMenu">
+            <input type="number" id="deleteUserById" class="userId" />
+            <label for="deleteUserById">Enter the id of the user to be removed.</label>
+        </div>
+        <button type="submit">Delete user</button>
+    </form>
+    <form action="~/Index.cshtml" method="post" class="elementOfMenu" id="updateUserForm">
+        <div class="ElementOfSubMenu">
+            <input type="text" id="updateUserNameById" class="userName" />
+            <label for="updateUserNameById">Enter a new user name.</label>
+        </div>
+        <div class="ElementOfSubMenu">
+            <input type="date" id="updateUserDateOfBirthById" class="userDateOfBirth" />
+            <label for="updateUserDateOfBirthById">Enter a new user's date of birth.</label>
+        </div>
+        <div class="ElementOfSubMenu">
+            <input type="number" id="userIdForUpdate" class="userId" />
+            <label for="userIdForUpdate">Enter the user's id.</label>
+        </div>
+        <button type="submit">Update user</button>
+    </form>
+    <form action="~/Index.cshtml" method="post" class="elementOfMenu" id="showUsersForm">
+        <button type="submit" id="showUsers">Show users</button>
+        <label for="showUsers">Show all users.</label>
+    </form>
+    <form action="~/Index.cshtml" method="post" class="elementOfMenu" id="addAwardForm">
+        <div class="ElementOfSubMenu">
+            <input type="text" id="addAwardByTitle" class="awardTitle" />
+            <label for="addAwardByTitle">Enter the title of the reward you want to add.</label>
+        </div>
+        <button type="submit">Add award</button>
+    </form>
+    <form action="~/Index.cshtml" method="post" class="elementOfMenu" id="deleteAwardForm">
+        <div class="ElementOfSubMenu">
+            <input type="number" id="deleteAwardById" class="awardId" />
+            <label for="deleteAwardById">Enter the id of the reward you want to delete.</label>
+        </div>
+        <button type="submit">Delete award</button>
+    </form>
+    <form action="~/Index.cshtml" method="post" class="elementOfMenu" id="updateAwardForm">
+        <div class="ElementOfSubMenu">
+            <input type="text" id="titleOfUpdateAward" class="awardTitle" />
+            <label for="titleOfUpdateAward">Enter the title of the reward you want to update.</label>
+        </div>
+        <div class="ElementOfSubMenu">
+            <input type="number" id="idOfUpdateAward" class="awardId" />
+            <label for="idOfUpdateAward">Enter the id of the reward you want to update.</label>
+        </div>
+        <button type="submit">Update award</button>
+    </form>
+    <form action="~/Index.cshtml" method="post" class="elementOfMenu" id="showAwardsForm">
+        <button type="submit" id="showAwards">Show awards</button>
+        <label for="showAwards">Show all awards.</label>
+    </form>
+    <form action="~/Index.cshtml" method="post" class="elementOfMenu" id="getAwardByIdForm">
+        <div class="ElementOfSubMenu">
+            <input type="number" id="getAwardById" class="awardId" />
+            <label for="getAwardById">Enter the id of the reward you want to see.</label>
+        </div>
+        <button type="submit">Get award</button>
+    </form>
+    <form action="~/Index.cshtml" method="post" class="elementOfMenu" id="getAwardsIdByUsersIdForm">
+        <div class="ElementOfSubMenu">
+            <input type="number" id="getAwardsIdByUsersId" class="userId" />
+            <label for="getAwardsIdByUsersId">Enter a user id to receive a list of their rewards.</label>
+        </div>
+        <button type="submit">Get awards</button>
+    </form>
+    <form action="~/Index.cshtml" method="post" class="elementOfMenu" id="toAwardUserForm">
+        <div class="ElementOfSubMenu">
+            <input type="number" id="awardedUserId" class="userId " />
+            <label for="awardedUserId">Enter the id of the user who will be awarded.</label>
+        </div>
+        <div class="ElementOfSubMenu">
+            <input type="number" id="awardId" class="awardId" />
+            <label for="awardId">Enter reward id.</label>
+        </div>
+        <button type="submit">To award user</button>
+    </form>
+</div>
+
+<div>
+    <h2>Result</h2>
+    <span id="result"></span>
+</div>

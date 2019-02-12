@@ -1,11 +1,11 @@
-﻿using Epam.Task7._1.Users.BLL.Interface;
-using Epam.Task7._1.Users.Common;
-using Epam.Task7._1.Users.Entities;
+﻿using Epam.Task11.UsersAndAwards.BLL.Interface;
+using Epam.Task11.UsersAndAwards.Common;
+using Epam.Task11.UsersAndAwards.Entities;
 using System;
 
-namespace Epam.Task7._1.Users.ConsolePL
+namespace Epam.Task11.UsersAndAwards.ConsolePL
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -40,7 +40,7 @@ namespace Epam.Task7._1.Users.ConsolePL
             {
                 AddUser(_userLogic, _name[random.Next(9)], random.Next(50), random.Next(11), random.Next(30));
             }
-            for (int i = 0; i<10; i++)
+            for (int i = 0; i < 10; i++)
             {
                 AddAward(_awardLogic, _award[i]);
             }
@@ -48,7 +48,6 @@ namespace Epam.Task7._1.Users.ConsolePL
             ToAwardUser(_userLogic, 0, 0);
             ToAwardUser(_userLogic, 1, 1);
             ShowUsers(_userLogic, _awardLogic);
-            ToAwardUser(_userLogic, 1, 1);
             ShowAwards(_awardLogic);
             DeleteUser(_userLogic, 3);
             DeleteUser(_userLogic, 2);
@@ -60,7 +59,7 @@ namespace Epam.Task7._1.Users.ConsolePL
             ShowUsers(_userLogic, _awardLogic);
             ShowAwards(_awardLogic);
         }
-        private static void AddUser(IUserLogic userLogic, string name, int Year, int Month, int Day)
+        public static void AddUser(IUserLogic userLogic, string name, int Year, int Month, int Day)
         {
             DateTime dateTime = new DateTime();
             dateTime = DateTime.Now;
@@ -77,7 +76,7 @@ namespace Epam.Task7._1.Users.ConsolePL
         }
         private static int Age(DateTime _dateOfBirthday)
         {
-            if(_dateOfBirthday.Month > DateTime.Now.Month)
+            if (_dateOfBirthday.Month > DateTime.Now.Month)
             {
                 return DateTime.Now.Year - _dateOfBirthday.Year - 1;
             }
@@ -85,15 +84,15 @@ namespace Epam.Task7._1.Users.ConsolePL
             {
                 return DateTime.Now.Year - _dateOfBirthday.Year;
             }
-                return _dateOfBirthday.Day > DateTime.Now.Day
-                    ? DateTime.Now.Year - _dateOfBirthday.Year - 1
-                    : DateTime.Now.Year - _dateOfBirthday.Year;
+            return _dateOfBirthday.Day > DateTime.Now.Day
+                ? DateTime.Now.Year - _dateOfBirthday.Year - 1
+                : DateTime.Now.Year - _dateOfBirthday.Year;
         }
-        private static void DeleteUser(IUserLogic userLogic, int Id)
+        public static void DeleteUser(IUserLogic userLogic, int Id)
         {
             userLogic.Delete(Id);
         }
-        private static void UpdateUser(IUserLogic userLogic, string name, int Year, int Month, int Day, int Id)
+        public static void UpdateUser(IUserLogic userLogic, string name, int Year, int Month, int Day, int Id)
         {
             DateTime dateTime = new DateTime();
             dateTime = DateTime.Now;
@@ -109,7 +108,7 @@ namespace Epam.Task7._1.Users.ConsolePL
             };
             userLogic.Update(user);
         }
-        private static void ShowUsers(IUserLogic userLogic, IAwardLogic awardLogic)
+        public static void ShowUsers(IUserLogic userLogic, IAwardLogic awardLogic)
         {
             Console.WriteLine($"Id Name DateOfBirthday Age");
             foreach (var user in userLogic.GetAll())
@@ -128,7 +127,7 @@ namespace Epam.Task7._1.Users.ConsolePL
                 Console.WriteLine();
             }
         }
-        private static void  AddAward(IAwardLogic _awardLogic, string TitleOfAward)
+        public static void AddAward(IAwardLogic _awardLogic, string TitleOfAward)
         {
             Award award = new Award()
             {
@@ -136,11 +135,11 @@ namespace Epam.Task7._1.Users.ConsolePL
             };
             _awardLogic.Add(award);
         }
-        private static void DeleteAward(IAwardLogic awardLogic, int Id)
+        public static void DeleteAward(IAwardLogic awardLogic, int Id)
         {
             awardLogic.DeleteAward(Id);
         }
-        private static void UpdateAward(IAwardLogic awardLogic, string Title, int Id)
+        public static void UpdateAward(IAwardLogic awardLogic, string Title, int Id)
         {
             Award award = new Award()
             {
@@ -149,7 +148,7 @@ namespace Epam.Task7._1.Users.ConsolePL
             };
             awardLogic.UpdateAward(award);
         }
-        private static void ShowAwards(IAwardLogic awardLogic)
+        public static void ShowAwards(IAwardLogic awardLogic)
         {
             Console.WriteLine("Id Title");
             foreach (Award award in awardLogic.GetAllAwards())
@@ -157,15 +156,15 @@ namespace Epam.Task7._1.Users.ConsolePL
                 Console.WriteLine(award);
             }
         }
-        private static Award GetAwardById(IAwardLogic awardLogic, int Id)
+        public static Award GetAwardById(IAwardLogic awardLogic, int Id)
         {
             return awardLogic.GetAwardById(Id);
         }
-        private static int[] GetAwardsIdByUserId(IUserLogic userLogic, int userId)
+        public static int[] GetAwardsIdByUserId(IUserLogic userLogic, int userId)
         {
             return userLogic.GetAwardsIdByUserId(userId);
         }
-        private static void ToAwardUser(IUserLogic userLogic, int userId, int awardId)
+        public static void ToAwardUser(IUserLogic userLogic, int userId, int awardId)
         {
             userLogic.ToAward(userId, awardId);
         }
