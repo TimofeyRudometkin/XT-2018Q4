@@ -76,6 +76,10 @@ namespace Epam.Task11.UsersAndAwards.BLL
                 Console.WriteLine($"User with Id = {userId} rewarded.");
             }
         }
+        public bool ToRemoveUserReward(int userId, int awardId)
+        {
+            return _userDAO.ToRemoveUserReward(userId, awardId);
+        }
         public User GetById(int Id)
         {
             return _userDAO.GetById(Id);

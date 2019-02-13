@@ -209,6 +209,61 @@ namespace Epam.Task11.UsersAndAwards.DAL.TextFiles
                 throw new Exception("Can't awarded user from text file.");
             }
         }
+        public bool ToRemoveUserReward(int userId, int awardId)
+        {
+            try
+            {
+                if (!File.Exists(Path.Combine(_pathOfTextFiles.ToString(), _nameOfTextFileWithUsersAndAwards.ToString())))
+                {
+                    if (!Directory.Exists(_pathOfTextFiles.ToString()))
+                    {
+                        Directory.CreateDirectory(_pathOfTextFiles.ToString());
+                    }
+                    using (StreamWriter streamWriterTextFiles = new StreamWriter(Path.Combine(_pathOfTextFiles.ToString(), _nameOfTextFileWithUsersAndAwards.ToString()), true))
+                    {
+                        ;
+                    }
+                }
+                using (StreamReader streamReaderTextFiles = new StreamReader(Path.Combine(_pathOfTextFiles.ToString(), _nameOfTextFileWithUsersAndAwards.ToString())))
+                {
+                    _contentOfFile1 = streamReaderTextFiles.ReadToEnd();
+                }
+                if (_contentOfFile1 != "")
+                {
+                    _contentOfFile = _contentOfFile1.Split(SEPARATORS, StringSplitOptions.RemoveEmptyEntries);
+                    for (int i = 0; i < _contentOfFile.Length; i += 2)
+                    {
+                        if (int.Parse(_contentOfFile[i]) == userId)
+                        {
+                            _contentOfFile1 = "";
+                            string[] _contentOfFile2 = _contentOfFile[i + 1].Split(SEPARATORSLISTOFAWARDS, StringSplitOptions.RemoveEmptyEntries);
+                            for(int j=0; j< _contentOfFile2.Length; j++)
+                            {
+                                if(_contentOfFile2[j]!=awardId.ToString())
+                                {
+                                    _contentOfFile1 += SEPARATORSLISTOFAWARDS[0] + _contentOfFile2[j];
+                                }
+                            }
+                            _contentOfFile[i + 1] = _contentOfFile1;
+                            using (StreamWriter streamWriterTextFiles = new StreamWriter(Path.Combine(_pathOfTextFiles.ToString(), _nameOfTextFileWithUsersAndAwards.ToString()), false))
+                            {
+                                for (int j = 0; j < _contentOfFile.Length; j += 2)
+                                {
+                                    streamWriterTextFiles.Write($"{_contentOfFile[j]}{SEPARATORS[0]}{_contentOfFile[j + 1]}{SEPARATORS[0]}");
+                                }
+                            }
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message + Environment.NewLine + e.Source + Environment.NewLine + e.TargetSite + Environment.NewLine + e.StackTrace);
+                throw new Exception("Can't awarded user from text file.");
+            }
+        }
         public User GetById(int Id)
         {
             try

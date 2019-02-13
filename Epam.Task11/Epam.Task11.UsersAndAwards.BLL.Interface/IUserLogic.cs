@@ -17,6 +17,8 @@ namespace Epam.Task11.UsersAndAwards.BLL.Interface
 
         void ToAward(int userId, int awardId);
 
+        bool ToRemoveUserReward(int userId, int awardId);
+
         User GetById(int Id);
 
         int[] GetAwardsIdByUserId(int userId);

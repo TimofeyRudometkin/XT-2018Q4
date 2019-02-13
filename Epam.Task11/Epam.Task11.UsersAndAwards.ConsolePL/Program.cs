@@ -168,6 +168,10 @@ namespace Epam.Task11.UsersAndAwards.ConsolePL
         {
             userLogic.ToAward(userId, awardId);
         }
+        public static bool ToRemoveUserReward(IUserLogic userLogic, int userId, int awardId)
+        {
+            return userLogic.ToRemoveUserReward(userId, awardId);
+        }
 
     }
 }

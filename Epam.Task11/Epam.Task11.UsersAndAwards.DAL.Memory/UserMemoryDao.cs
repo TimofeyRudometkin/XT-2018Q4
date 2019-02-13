@@ -61,6 +61,43 @@ namespace Epam.Task11.UsersAndAwards.DAL.Memory
 
             return true;
         }
+        public bool ToRemoveUserReward(int userId, int awardId)
+        {
+            if (_repoUsersAwards.ContainsKey(userId))
+            {
+                int[] arrayOfAwards = _repoUsersAwards[userId];
+                int[] arrayOfAwards1 = new int[arrayOfAwards.Length];
+                int count = 0;
+                for(int i=0; i<arrayOfAwards.Length; i++)
+                {
+                    if(arrayOfAwards[i] == awardId)
+                    {
+                        arrayOfAwards1[i] = -1;
+                        count++;
+                    }
+                }
+                if(count == arrayOfAwards.Length)
+                {
+                    _repoUsersAwards.Remove(userId);
+                }
+                else
+                {
+                    int[] arrayOfAwards2 = new int[arrayOfAwards1.Length-count];
+                    count = 0;
+                    for (int i=0; i<arrayOfAwards1.Length; i++)
+                    {
+                        if(arrayOfAwards1[i]!=(-1))
+                        {
+                            arrayOfAwards2[i - count] = arrayOfAwards1[i];
+                            count++;
+                        }
+                    }
+                    _repoUsersAwards[userId] = arrayOfAwards2;
+                }
+                return true;
+            }
+            return false;
+        }
         public User GetById(int Id)
         {
             return _repoUsers.TryGetValue(Id, out var user)

@@ -12,9 +12,11 @@
     string _dateString = Request.Params["userDateOfBirth"];
     var _awardId = Request.Params["awardId"];
     var _awardTitle = Request.Params["awardTitle"];
-    var actionPlan = Request.Params["actionPlan"];
+    var _actionPlan = Request.Params["actionPlan"];
+    var _arrayIndexOfUsers = Request.Params["listIndexOfUsers"].Split(' ');
+    var _confirmationForRemoval = Request.Params["confirmationForRemoval"];
 
-    switch (actionPlan)
+    switch (_actionPlan)
     {
         case "addUserForm":
             var _date = _dateString.Split('-');
@@ -31,12 +33,11 @@
             <p>@(($"User data with id - { int.Parse(_userId)} was updated."))</p>
             break;
         case "showUsersForm":
-            Console.WriteLine($"Id Name DateOfBirthday Age");
             foreach (var user in _userLogic.GetAll())
             {
                 <p>@($"User '{user.Name} with id '{user.Id}' date of birth '{user.DateOfBirthday}' {user.Age} years old.")</p>
                 int[] listOfAwards = Program.GetAwardsIdByUserId(_userLogic, user.Id);
-                if (!(listOfAwards == null))
+                if (listOfAwards != null)
                 {
                     <p>@("     Has the following awards:")</p>
                     bool checkNew1 = true;
@@ -64,8 +65,39 @@
             <p>@($"Award { _awardTitle} added.")</p>
             break;
         case "deleteAwardForm":
-            Program.DeleteAward(_awardLogic, int.Parse(_awardId));
-            <p>@($"Award with id - '{ _awardId}' deleted.")</p>
+
+            if (_confirmationForRemoval == "true")
+            {
+                foreach (var usersId in _arrayIndexOfUsers)
+                {
+                    if(Program.ToRemoveUserReward(_userLogic, int.Parse(usersId), int.Parse(_awardId)))
+                    {
+                        <p>@($"Award with id - '{ _awardId}' deleted from list of user with id '{usersId}'.")</p>
+                    }
+                }
+                Program.DeleteAward(_awardLogic, int.Parse(_awardId));
+                <p>@($"Award with id - '{ _awardId}' deleted.")</p>
+            }
+            else
+            {
+                string _listOfUsersId1 = "";
+                foreach (var user in _userLogic.GetAll())
+                {
+                    int[] listOfAwards = Program.GetAwardsIdByUserId(_userLogic, user.Id);
+                    if (listOfAwards != null)
+                    {
+                        for(int i=0; i<listOfAwards.Length; i++)
+                        {
+                            if(listOfAwards[i].ToString()==_awardId)
+                            {
+                                _listOfUsersId1 += $" {user.Id}";
+                                break;
+                            }
+                        }
+                    }
+                }
+                <p>To remove the award from the award list and custom lists? @_awardId@(_listOfUsersId1)</p>
+            }
             break;
         case "updateAwardForm":
             Program.UpdateAward(_awardLogic, _awardTitle, int.Parse(_awardId));
@@ -87,7 +119,7 @@
             string _listOfAwards2 = "";
             foreach (int element in _arrayOfAwards)
             {
-                if(checkNew2)
+                if (checkNew2)
                 {
                     checkNew2 = false;
                 }
