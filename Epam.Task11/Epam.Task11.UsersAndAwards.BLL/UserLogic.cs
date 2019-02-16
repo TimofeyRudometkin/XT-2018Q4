@@ -100,5 +100,9 @@ namespace Epam.Task11.UsersAndAwards.BLL
             }
             return cacheResult;
         }
+        public bool AddImage(int userId, string pathOfTheAddedImage)
+        {
+            return _userDAO.AddImage(userId, pathOfTheAddedImage);
+        }
     }
 }

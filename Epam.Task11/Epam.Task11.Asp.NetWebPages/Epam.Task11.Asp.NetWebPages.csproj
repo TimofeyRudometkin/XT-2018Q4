@@ -89,11 +89,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\UsersAndAwards.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\UsersAndAwards.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\UsersAndAwardsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -104,8 +106,12 @@
     <Content Include="Index.cshtml" />
     <Content Include="Logout.cshtml" />
     <Content Include="Login.cshtml" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="packages.config" />
     <Content Include="UsersAndAwardsAjax.cshtml" />
+    <Content Include="Registration.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -113,6 +119,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <Content Include="_Layout.cshtml" />
+    <Content Include="_Registration.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -127,6 +134,10 @@
     <ProjectReference Include="..\Epam.Task11.UsersAndAwards.ConsolePL\Epam.Task11.UsersAndAwards.ConsolePL.csproj">
       <Project>{3169e929-b940-45bf-a6d3-ba5a4030fde6}</Project>
       <Name>Epam.Task11.UsersAndAwards.ConsolePL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Epam.Task11.UsersAndAwards.Entities\Epam.Task11.UsersAndAwards.Entities.csproj">
+      <Project>{fae3b4d1-472c-42a7-adfe-a040632fb242}</Project>
+      <Name>Epam.Task11.UsersAndAwards.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

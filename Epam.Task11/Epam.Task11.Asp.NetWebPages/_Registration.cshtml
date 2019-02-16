@@ -1,0 +1,40 @@
+﻿@using Epam.Task11.UsersAndAwards.Common;
+@using Epam.Task11.UsersAndAwards.ConsolePL;
+
+@{
+    if (IsPost)
+    {
+        //if (!User.Identity.IsAuthenticated)
+        //{
+
+
+
+            var user = Request["User"];
+            var password = Request["Password"];
+            var _siteUser = DependencyResolver.SiteUserLogic;
+
+            if (string.IsNullOrEmpty(user) || string.IsNullOrEmpty(password))
+            {
+                return;
+            }
+            if (Program.AddSiteUsers(_siteUser, user, password))
+            {
+                <span>User added.</span>
+                Response.Redirect("~/Index");
+            }
+            else
+            {
+                <p>You are not registered, perhaps a user with the same name already exists..</p>
+                Response.Redirect("~/Login");
+            }
+        //}
+    }
+}
+    <form action="~/Register.cshtml" method="post">
+        <label for="User">Login:</label>
+        <input type="text" id="User" name="User" />
+        <label for="Password">Password:</label>
+        <input type="password" id="Password" name="Password" />
+        <button>Register</button>
+    </form>
+

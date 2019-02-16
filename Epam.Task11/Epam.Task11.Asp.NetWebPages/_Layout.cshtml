@@ -8,23 +8,164 @@
 </head>
 <body>
     <div id="authenticated">
+        <a href="~/Registration">Registration</a>
         @if (User.Identity.IsAuthenticated)
         {
             if (User.IsInRole("Admins"))
             {
-                <p>Admin</p>
+                <p>You are authorized as an Admin</p>
+                <p>User name : @User.Identity.Name</p>
+                <a href="~/Logout">Logout</a>
+                <div class="conteiner">
+                    <div class="conteinerRegistration">
+                        <partial name="~/_Registration" />
+                    </div>
+                    <form action="~/Index.cshtml" method="post" class="elementOfMenu" id="addUserForm">
+                        <div class="ElementOfSubMenu">
+                            <input type="text" id="addUserName" class="userName" />
+                            <label for="addUserName">Enter the user name.</label>
+                        </div>
+                        <div class="ElementOfSubMenu">
+                            <input type="date" id="addUserDateOfBirth" class="userDateOfBirth" />
+                            <label for="addUserDateOfBirth">Enter the user's date of birth.</label>
+                        </div>
+                        <button type="submit">Add user</button>
+                    </form>
+                    <form action="~/Index.cshtml" method="post" class="elementOfMenu" id="deleteUserForm">
+                        <div class="ElementOfSubMenu">
+                            <input type="number" id="deleteUserById" class="userId" />
+                            <label for="deleteUserById">Enter the id of the user to be removed.</label>
+                        </div>
+                        <button type="submit">Delete user</button>
+                    </form>
+                    <form action="~/Index.cshtml" method="post" class="elementOfMenu" id="updateUserForm">
+                        <div class="ElementOfSubMenu">
+                            <input type="text" id="updateUserNameById" class="userName" />
+                            <label for="updateUserNameById">Enter a new user name.</label>
+                        </div>
+                        <div class="ElementOfSubMenu">
+                            <input type="date" id="updateUserDateOfBirthById" class="userDateOfBirth" />
+                            <label for="updateUserDateOfBirthById">Enter a new user's date of birth.</label>
+                        </div>
+                        <div class="ElementOfSubMenu">
+                            <input type="number" id="userIdForUpdate" class="userId" />
+                            <label for="userIdForUpdate">Enter the user's id.</label>
+                        </div>
+                        <button type="submit">Update user</button>
+                    </form>
+                    <form action="~/Index.cshtml" method="post" class="elementOfMenu" id="showAllUsersForm">
+                        <button type="submit" id="showAllUsers">Show users</button>
+                        <label for="showAllUsers">Show all users.</label>
+                    </form>
+                    <form action="~/Index.cshtml" method="post" class="elementOfMenu" id="addAwardForm">
+                        <div class="ElementOfSubMenu">
+                            <input type="text" id="addAwardByTitle" class="awardTitle" />
+                            <label for="addAwardByTitle">Enter the title of the reward you want to add.</label>
+                        </div>
+                        <button type="submit">Add award</button>
+                    </form>
+                    <form action="~/Index.cshtml" method="post" class="elementOfMenu" id="deleteAwardForm">
+                        <div class="ElementOfSubMenu">
+                            <input type="number" id="deleteAwardById" class="awardId" />
+                            <label for="deleteAwardById">Enter the id of the reward you want to delete.</label>
+                        </div>
+                        <button type="submit">Delete award</button>
+                    </form>
+                    <form action="~/Index.cshtml" method="post" class="elementOfMenu" id="updateAwardForm">
+                        <div class="ElementOfSubMenu">
+                            <input type="text" id="titleOfUpdateAward" class="awardTitle" />
+                            <label for="titleOfUpdateAward">Enter the title of the reward you want to update.</label>
+                        </div>
+                        <div class="ElementOfSubMenu">
+                            <input type="number" id="idOfUpdateAward" class="awardId" />
+                            <label for="idOfUpdateAward">Enter the id of the reward you want to update.</label>
+                        </div>
+                        <button type="submit">Update award</button>
+                    </form>
+                    <form action="~/Index.cshtml" method="post" class="elementOfMenu" id="showAwardsForm">
+                        <button type="submit" id="showAwards">Show awards</button>
+                        <label for="showAwards">Show all awards.</label>
+                    </form>
+                    <form action="~/Index.cshtml" method="post" class="elementOfMenu" id="getAwardByIdForm">
+                        <div class="ElementOfSubMenu">
+                            <input type="number" id="getAwardById" class="awardId" />
+                            <label for="getAwardById">Enter the id of the reward you want to see.</label>
+                        </div>
+                        <button type="submit">Get award</button>
+                    </form>
+                    <form action="~/Index.cshtml" method="post" class="elementOfMenu" id="getAwardsIdByUsersIdForm">
+                        <div class="ElementOfSubMenu">
+                            <input type="number" id="getAwardsIdByUsersId" class="userId" />
+                            <label for="getAwardsIdByUsersId">Enter a user id to receive a list of their rewards id.</label>
+                        </div>
+                        <button type="submit">Get awards</button>
+                    </form>
+                    <form action="~/Index.cshtml" method="post" class="elementOfMenu" id="toAwardUserForm">
+                        <div class="ElementOfSubMenu">
+                            <input type="number" id="awardedUserId" class="userId " />
+                            <label for="awardedUserId">Enter the id of the user who will be awarded.</label>
+                        </div>
+                        <div class="ElementOfSubMenu">
+                            <input type="number" id="awardedId" class="awardId" />
+                            <label for="awardedId">Enter reward id.</label>
+                        </div>
+                        <button type="submit">To award user</button>
+                    </form>
+                    <form action="~/Index.cshtml" method="post" class="elementOfMenu" id="addImageToUserByIdForm">
+                        <div class="ElementOfSubMenu">
+                            <input type="number" id="userIdAddImageToUserById" class="userId" />
+                            <label for="userIdAddImageToUserById">Enter the id of the user to which the picture will be added.</label>
+                        </div>
+                        <div class="ElementOfSubMenu">
+                            <input type="file" id="imageAddImageToUserById" class="image" />
+                            <label for="imageAddImageToUserById">Enter the path to the image(format-'.jpg').</label>
+                        </div>
+                        <button type="submit">Add image</button>
+                    </form>
+                    <div class="result">
+                        <h2>Result</h2>
+                        <span id="result"></span>
+                    </div>
+                </div>
             }
             if (User.IsInRole("User"))
             {
-                <p>User</p>
+                <p>You are authorized as a 'User'.</p>
+                <p>User name : @User.Identity.Name</p>
+                <a href="~/Logout">Logout</a>
+                <div class="conteiner">
+                    <div class="conteinerRegistration">
+                        <partial name="~/_Registration" />
+                    </div>
+                    <form action="~/Index.cshtml" method="post" class="elementOfMenu" id="showAllUsersForm">
+                        <button type="submit" id="showAllUsers">Show users</button>
+                        <label for="showAllUsers">Show all users.</label>
+                    </form>
+                    <div class="result">
+                        <h2>Result</h2>
+                        <span id="result"></span>
+                    </div>
+                </div>
             }
-            <p>User name : @User.Identity.Name</p>
-            <a href="~/Logout">Logout</a>
         }
         else
         {
             <a href="~/LogIn">LogIn</a>
+            <div class="conteiner">
+                <div class="conteinerRegistration">
+                    <partial name="~/_Registration" />
+                </div>
+                <form action="~/Index.cshtml" method="post" class="elementOfMenu" id="showUsersForm">
+                    <button type="submit" id="showUsers">Show users</button>
+                    <label for="showUsers">Show all users.</label>
+                </form>
+                <div class="result">
+                    <h2>Result</h2>
+                    <span id="result"></span>
+                </div>
+            </div>
         }
+        <partial name="~_Registration.cshtml" />
         @RenderBody()
     </div>
 

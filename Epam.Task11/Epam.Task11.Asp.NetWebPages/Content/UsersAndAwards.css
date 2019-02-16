@@ -1,15 +1,28 @@
 ﻿body {
     background: grey;
 }
-
+form {
+    width: 500px;
+    border:dotted 3px white;
+}
 label {
     text-align: left;
 }
-
+.conteinerRegistration{
+    margin: 50px;
+}
 .ElementOfSubMenu input {
     width: 150px;
 }
 
 .elementOfMenu {
     margin: 30px;
+    padding: 20px;
+}
+.result {
+    margin: 30px;
+    padding: 20px;
+    background: #fff9e5;
+    width: 600px;
+    border: dotted 3px black;
 }

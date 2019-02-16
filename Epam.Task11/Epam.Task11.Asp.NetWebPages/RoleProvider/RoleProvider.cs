@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
+using Epam.Task11.UsersAndAwards.Common;
+using Epam.Task11.UsersAndAwards.ConsolePL;
 
 namespace Epam.Task11.Asp.NetWebPages.RoleProvider
 {
@@ -10,11 +12,8 @@ namespace Epam.Task11.Asp.NetWebPages.RoleProvider
     {
         public override bool IsUserInRole(string username, string roleName)
         {
-            if (username == "!Timofey")
-            {
-                return true;
-            }
-            if (roleName == "User")
+            var _siteUserLogic = DependencyResolver.SiteUserLogic;
+            if (Program.GetBySiteUserName(_siteUserLogic, username)!=null)
             {
                 return true;
             }
@@ -23,9 +22,11 @@ namespace Epam.Task11.Asp.NetWebPages.RoleProvider
 
         public override string[] GetRolesForUser(string username)
         {
-            switch (username)
+            var _siteUserLogic = DependencyResolver.SiteUserLogic;
+            var siteUser = Program.GetBySiteUserName(_siteUserLogic, username);
+            switch (siteUser.AccessPermission)
             {
-                case "!Timofey":
+                case "true":
                     return new[] { "Admins", "User" };
                 default:
                     return new[] { "User" };

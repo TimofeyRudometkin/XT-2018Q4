@@ -75,6 +75,35 @@ namespace Epam.Task11.UsersAndAwards.Common
             }
         }
 
+        private static ISiteUserDao _siteUserDao;
+
+        public static ISiteUserDao SiteUserDao
+        {
+            get
+            {
+                var key = ConfigurationManager.AppSettings["DaoUserKey"];
+
+                if (_siteUserDao == null)
+                {
+                    switch (key.ToLower())
+                    {
+                        case "memory":
+                            {
+                                _siteUserDao = new SiteUserMemoryDao();
+                                break;
+                            }
+                        case "textfiles":
+                            {
+                                _siteUserDao = new SiteUserTextFilesDao();
+                                break;
+                            }
+                        default:
+                            break;
+                    }
+                }
+                return _siteUserDao;
+            }
+        }
         private static IUserLogic _userLogic;
 
         public static IUserLogic UserLogic => _userLogic ?? (_userLogic = new UserLogic(UserDao, CacheLogic));
@@ -87,5 +116,8 @@ namespace Epam.Task11.UsersAndAwards.Common
 
         public static ICacheLogic CacheLogic => _cacheLogic ?? (_cacheLogic = new CacheLogic());
 
+        private static ISiteUserLogic _siteUserLogic;
+
+        public static ISiteUserLogic SiteUserLogic => _siteUserLogic ?? (_siteUserLogic = new SiteUserLogic(SiteUserDao));
     }
 }

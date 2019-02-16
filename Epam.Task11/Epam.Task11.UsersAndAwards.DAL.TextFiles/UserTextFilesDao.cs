@@ -230,8 +230,8 @@ namespace Epam.Task11.UsersAndAwards.DAL.TextFiles
                 }
                 if (_contentOfFile1 != "")
                 {
-                    _contentOfFile = _contentOfFile1.Split(SEPARATORS, StringSplitOptions.RemoveEmptyEntries);
-                    for (int i = 0; i < _contentOfFile.Length; i += 2)
+                    _contentOfFile = _contentOfFile1.Split(SEPARATORS, StringSplitOptions.None);
+                    for (int i = 0; i < _contentOfFile.Length-1; i += 2)
                     {
                         if (int.Parse(_contentOfFile[i]) == userId)
                         {
@@ -247,7 +247,7 @@ namespace Epam.Task11.UsersAndAwards.DAL.TextFiles
                             _contentOfFile[i + 1] = _contentOfFile1;
                             using (StreamWriter streamWriterTextFiles = new StreamWriter(Path.Combine(_pathOfTextFiles.ToString(), _nameOfTextFileWithUsersAndAwards.ToString()), false))
                             {
-                                for (int j = 0; j < _contentOfFile.Length; j += 2)
+                                for (int j = 0; j < _contentOfFile.Length-1; j += 2)
                                 {
                                     streamWriterTextFiles.Write($"{_contentOfFile[j]}{SEPARATORS[0]}{_contentOfFile[j + 1]}{SEPARATORS[0]}");
                                 }
@@ -308,19 +308,22 @@ namespace Epam.Task11.UsersAndAwards.DAL.TextFiles
                 }
                 if (_contentOfFile1 != "")
                 {
-                    _contentOfFile = _contentOfFile1.Split(SEPARATORS, StringSplitOptions.RemoveEmptyEntries);
-                    for (int i = 0; i < _contentOfFile.Length; i += 2)
+                    _contentOfFile = _contentOfFile1.Split(SEPARATORS, StringSplitOptions.None);
+                    for (int i = 0; i < _contentOfFile.Length-1; i += 2)
                     {
                         if (int.Parse(_contentOfFile[i]) == userId)
                         {
-                            string[] ListOfAwards;
-                            ListOfAwards = _contentOfFile[i + 1].Split(SEPARATORSLISTOFAWARDS, StringSplitOptions.RemoveEmptyEntries);
-                            int[] intListOfAwards = new int[ListOfAwards.Length];
-                            for (int j = 0; j < ListOfAwards.Length; j++)
+                            if(_contentOfFile[i + 1]!="")
                             {
-                                intListOfAwards[j] = int.Parse(ListOfAwards[j]);
+                                string[] ListOfAwards;
+                                ListOfAwards = _contentOfFile[i + 1].Split(SEPARATORSLISTOFAWARDS, StringSplitOptions.RemoveEmptyEntries);
+                                int[] intListOfAwards = new int[ListOfAwards.Length];
+                                for (int j = 0; j < ListOfAwards.Length; j++)
+                                {
+                                    intListOfAwards[j] = int.Parse(ListOfAwards[j]);
+                                }
+                                return intListOfAwards;
                             }
-                            return intListOfAwards;
                         }
                     }
                 }
@@ -364,6 +367,21 @@ namespace Epam.Task11.UsersAndAwards.DAL.TextFiles
                 Console.WriteLine(e.Message + Environment.NewLine + e.Source + Environment.NewLine + e.TargetSite + Environment.NewLine + e.StackTrace);
                 throw new Exception("Can't get all users from text file.");
             }
+        }
+        public bool AddImage(int userId, string pathOfTheAddedImage)
+        {
+            string _pathOfServerFolder = $@"{AppDomain.CurrentDomain.BaseDirectory}Content\";
+            string _pathOfTheServerImage = $@"{_pathOfServerFolder} id - {userId}.jpg";
+            if(File.Exists(_pathOfTheServerImage))
+            {
+                File.Delete(_pathOfTheServerImage);
+                File.Copy(pathOfTheAddedImage, _pathOfTheServerImage);
+            }
+            else
+            {
+                File.Copy(pathOfTheAddedImage, _pathOfTheServerImage);
+            }
+            return true;
         }
     }
 }

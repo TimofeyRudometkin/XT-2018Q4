@@ -12,6 +12,7 @@ namespace Epam.Task11.UsersAndAwards.ConsolePL
             Random random = new Random();
             var _userLogic = DependencyResolver.UserLogic;
             var _awardLogic = DependencyResolver.AwardLogic;
+            var _siteUserLogic = DependencyResolver.SiteUserLogic;
             string[] _name = new string[10];
             _name[0] = "Alexander";
             _name[1] = "Nina";
@@ -172,6 +173,63 @@ namespace Epam.Task11.UsersAndAwards.ConsolePL
         {
             return userLogic.ToRemoveUserReward(userId, awardId);
         }
+        public static bool AddImage(IUserLogic userLogic, int userId, string pathOfTheAddedImage)
+        {
 
+            return userLogic.AddImage(userId, pathOfTheAddedImage);
+        }
+        public static bool AddSiteUser(ISiteUserLogic siteUserLogic, string siteUserName, string siteUserPassword)
+        {
+            return siteUserLogic.Add(siteUserName, siteUserPassword);
+        }
+        public static bool DeleteSiteUser(ISiteUserLogic siteUserLogic, string siteUserName)
+        {
+            return siteUserLogic.Delete(siteUserName);
+        }
+        public static bool ToAwardSiteUser(ISiteUserLogic siteUserLogic, string siteUserName, int awardId)
+        {
+            return siteUserLogic.ToAwardSiteUser(siteUserName, awardId);
+        }
+        public static bool ToRemoveSiteUserReward(ISiteUserLogic siteUserLogic, string siteUserName, int awardId)
+        {
+            return siteUserLogic.ToRemoveSiteUserReward(siteUserName, awardId);
+        }
+        public static SiteUser GetBySiteUserName(ISiteUserLogic siteUserLogic, string siteUserName)
+        {
+            return siteUserLogic.GetBySiteUserName(siteUserName);
+        }
+        public static int[] GetAwardsIdBySiteUsername(ISiteUserLogic siteUserLogic, string siteUserName)
+        {
+            return siteUserLogic.GetAwardsIdBySiteUsername(siteUserName);
+        }
+        public static void ShowSiteUsers(ISiteUserLogic siteUserLogic, IAwardLogic awardLogic)
+        {
+            Console.WriteLine($"Name AwardId");
+            foreach (var siteUser in siteUserLogic.GetAll())
+            {
+                Console.Write(siteUser);
+                int[] listOfAwards = GetAwardsIdBySiteUsername(siteUserLogic, siteUser.Name);
+                if (!(listOfAwards == null))
+                {
+                    foreach (int awardId in listOfAwards)
+                    {
+                        Award award = new Award();
+                        award = GetAwardById(awardLogic, awardId);
+                        Console.Write($" award '{award.Title}' with id {award.Id}");
+                    }
+                }
+                Console.WriteLine();
+            }
+        }
+
+        public static bool AddImageToSiteUser(ISiteUserLogic siteUserLogic, string siteUserName, string pathOfTheAddedImage)
+        {
+            return siteUserLogic.AddImage(siteUserName, pathOfTheAddedImage);
+        }
+
+        public static bool CorrectionOfAccessPermission(ISiteUserLogic siteUserLogic, string siteUserName, bool admin)
+        {
+            return siteUserLogic.CorrectionOfAccessPermission(siteUserName, admin);
+        }
     }
 }

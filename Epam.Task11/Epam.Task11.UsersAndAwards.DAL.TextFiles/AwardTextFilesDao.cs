@@ -84,7 +84,7 @@ namespace Epam.Task11.UsersAndAwards.DAL.TextFiles
 
                             using (StreamWriter streamWriterTextFiles = new StreamWriter(Path.Combine(_pathOfTextFiles.ToString(), _nameOfTextFileWithAwards.ToString()), false))
                             {
-                                for (int j = 0; j < _contentOfFile.Length; j += 2)
+                                for (int j = 0; j < _contentOfFile.Length-2; j += 2)
                                 {
                                     streamWriterTextFiles.Write($"{_contentOfFile[j]}{SEPARATORS[0]}{_contentOfFile[j + 1]}{SEPARATORS[0]}");
                                 }

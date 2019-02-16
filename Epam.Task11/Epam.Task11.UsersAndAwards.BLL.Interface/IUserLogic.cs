@@ -24,5 +24,7 @@ namespace Epam.Task11.UsersAndAwards.BLL.Interface
         int[] GetAwardsIdByUserId(int userId);
 
         IEnumerable<User> GetAll();
+
+        bool AddImage(int userId, string pathOfTheAddedImage);
     }
 }

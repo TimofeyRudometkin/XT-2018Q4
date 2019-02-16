@@ -7,6 +7,7 @@
 {
     var _userLogic = DependencyResolver.UserLogic;
     var _awardLogic = DependencyResolver.AwardLogic;
+    var _siteUserLogic = DependencyResolver.SiteUserLogic;
     var _userId = Request.Params["userId"];
     var _nameUser = Request.Params["userName"];
     string _dateString = Request.Params["userDateOfBirth"];
@@ -15,6 +16,7 @@
     var _actionPlan = Request.Params["actionPlan"];
     var _arrayIndexOfUsers = Request.Params["listIndexOfUsers"].Split(' ');
     var _confirmationForRemoval = Request.Params["confirmationForRemoval"];
+    var _file = Request.Params["file"];
 
     switch (_actionPlan)
     {
@@ -36,9 +38,66 @@
             foreach (var user in _userLogic.GetAll())
             {
                 <p>@($"User '{user.Name} with id '{user.Id}' date of birth '{user.DateOfBirthday}' {user.Age} years old.")</p>
+
+                if (File.Exists($"{AppDomain.CurrentDomain.BaseDirectory}\\Content\\User {user.Id}.jpg"))
+                {
+                    <img src="@($"~/Content/User {user.Id}.jpg")" width="100" height="100" alt="image of user">
+                }
+                else
+                {
+                    <img src="@("~/Content/User.jpg")" width="100" height="100" alt="image of user">
+                }
+            }
+            break;
+        case "showAllUsersForm":
+            foreach (var user in _userLogic.GetAll())
+            {
+                <p>@($"User '{user.Name} with id '{user.Id}' date of birth '{user.DateOfBirthday}' {user.Age} years old.")</p>
+                if (File.Exists($"{AppDomain.CurrentDomain.BaseDirectory}\\Content\\User {user.Id}.jpg"))
+                {
+                    <img src="@($"~/Content/User {user.Id}.jpg")" width="100" height="100" alt="image of user">
+                }
+                else
+                {
+                    <img src="@("~/Content/User.jpg")" width="100" height="100" alt="image of user">
+                }
                 int[] listOfAwards = Program.GetAwardsIdByUserId(_userLogic, user.Id);
                 if (listOfAwards != null)
                 {
+                    <p>@("     Has the following awards:")</p>
+                    bool checkNew1 = true;
+                    string _listOfAwards1 = "";
+                    foreach (int awardId in listOfAwards)
+                    {
+                        if (checkNew1)
+                        {
+                            checkNew1 = false;
+                        }
+                        else
+                        {
+                            _listOfAwards1 += ", ";
+                        }
+                        Award award = new Award();
+                        award = Program.GetAwardById(_awardLogic, awardId);
+                        _listOfAwards1 += $"award '{award.Title}' with id {award.Id}";
+                    }
+                    <p>@(_listOfAwards1).</p>
+                }
+            }
+            foreach (var siteUsers in _siteUserLogic.GetAll())
+            {
+                <p>@($"Site User '{siteUsers.Name}' years old.")</p>
+                if (File.Exists($"{AppDomain.CurrentDomain.BaseDirectory}\\Content\\User {siteUsers.Name}.jpg"))
+                {
+                    <img src="@($"~/Content/SiteUser {siteUsers.Name}.jpg")" width="100" height="100" alt="image of user">
+                }
+                else
+                {
+                    <img src="@("~/Content/SiteUser.jpg")" width="100" height="100" alt="image of user">
+                }
+                if (siteUsers.AwardId!=null)
+                {
+                    int[] listOfAwards = siteUsers.AwardId;
                     <p>@("     Has the following awards:")</p>
                     bool checkNew1 = true;
                     string _listOfAwards1 = "";
@@ -70,7 +129,7 @@
             {
                 foreach (var usersId in _arrayIndexOfUsers)
                 {
-                    if(Program.ToRemoveUserReward(_userLogic, int.Parse(usersId), int.Parse(_awardId)))
+                    if (Program.ToRemoveUserReward(_userLogic, int.Parse(usersId), int.Parse(_awardId)))
                     {
                         <p>@($"Award with id - '{ _awardId}' deleted from list of user with id '{usersId}'.")</p>
                     }
@@ -86,9 +145,9 @@
                     int[] listOfAwards = Program.GetAwardsIdByUserId(_userLogic, user.Id);
                     if (listOfAwards != null)
                     {
-                        for(int i=0; i<listOfAwards.Length; i++)
+                        for (int i = 0; i < listOfAwards.Length; i++)
                         {
-                            if(listOfAwards[i].ToString()==_awardId)
+                            if (listOfAwards[i].ToString() == _awardId)
                             {
                                 _listOfUsersId1 += $" {user.Id}";
                                 break;
@@ -96,7 +155,15 @@
                         }
                     }
                 }
-                <p>To remove the award from the award list and custom lists? @_awardId@(_listOfUsersId1)</p>
+                if (_listOfUsersId1 == "")
+                {
+                    Program.DeleteAward(_awardLogic, int.Parse(_awardId));
+                    <p>@($"Award with id - '{ _awardId}' deleted.")</p>
+                }
+                else
+                {
+                    <p>To remove the award from the award list and custom lists? @_awardId@(_listOfUsersId1)</p>
+                }
             }
             break;
         case "updateAwardForm":
@@ -133,7 +200,17 @@
             break;
         case "toAwardUserForm":
             Program.ToAwardUser(_userLogic, int.Parse(_userId), int.Parse(_awardId));
-            <p>@($"The user with id - '{_userId}' is awarded the award with id - '{_awardId}'")</p>
+            <p>@($"The user with id - '{_userId}' is awarded the award with id - '{_awardId}'.")</p>
+            break;
+        case "addImageToUserByIdForm":
+            if (Program.AddImage(_userLogic, int.Parse(_userId), _file))
+            {
+                <p>@($"The image added to the user with id - '{_userId}'.")</p>
+            }
+            else
+            {
+                <p>@($"The image is not added to the user with id - '{_userId}'.")</p>
+            }
             break;
         default:
             break;

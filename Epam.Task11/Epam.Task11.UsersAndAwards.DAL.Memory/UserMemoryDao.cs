@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -116,6 +117,21 @@ namespace Epam.Task11.UsersAndAwards.DAL.Memory
         public IEnumerable<User> GetAll()
         {
             return _repoUsers.Values;
+        }
+        public bool AddImage(int userId, string pathOfTheAddedImage)
+        {
+            string _pathOfServerFolder = $@"{AppDomain.CurrentDomain.BaseDirectory}/Content";
+            string _pathOfTheServerImage = $@"{_pathOfServerFolder} id - {userId}.jpg";
+            if (File.Exists(_pathOfTheServerImage))
+            {
+                File.Delete(_pathOfTheServerImage);
+                File.Copy(pathOfTheAddedImage, _pathOfServerFolder);
+            }
+            else
+            {
+                File.Copy(pathOfTheAddedImage, _pathOfServerFolder);
+            }
+            return true;
         }
     }
 }

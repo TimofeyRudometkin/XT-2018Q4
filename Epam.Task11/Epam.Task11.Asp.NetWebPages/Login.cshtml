@@ -1,15 +1,27 @@
-﻿@if (IsPost)
+﻿@using Epam.Task11.UsersAndAwards.Common;
+@using Epam.Task11.UsersAndAwards.ConsolePL;
+
+@if (IsPost)
 {
     var user = Request["UserName"];
     var password = Request["Password"];
 
-    if (user.StartsWith("!") && password.StartsWith("1"))
+    if (user == "Admin" && password == "123")
     {
         FormsAuthentication.SetAuthCookie(user, createPersistentCookie: true);
     }
     else
     {
+        var _siteUser = DependencyResolver.SiteUserLogic;
+        var siteUser = Program.GetBySiteUserName(_siteUser, user);
+        if(siteUser!=null && siteUser.Name == user && siteUser.Password == password)
+        {
+            FormsAuthentication.SetAuthCookie(user, createPersistentCookie: true);
+            Response.Redirect("~");
+            return;
+        }
         //    PageData["Errors"] = "User name or password is wrong.";
+
         Response.Redirect("~/Login");
         return;
     }
