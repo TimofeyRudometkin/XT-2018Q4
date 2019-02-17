@@ -29,6 +29,10 @@
             Program.DeleteUser(_userLogic, int.Parse(_userId));
             <p>@(($"User with id - { int.Parse(_userId)} was deleated."))</p>
             break;
+        case "deleteSiteUserByNameForm":
+            Program.DeleteSiteUser(_siteUserLogic, _nameUser);
+            <p>@(($"User '{_nameUser}' was deleated."))</p>
+            break;
         case "updateUserForm":
             var _date2 = _dateString.Split('-');
             Program.UpdateUser(_userLogic, _nameUser, int.Parse(_date2[2]), int.Parse(_date2[1]), int.Parse(_date2[0]), int.Parse(_userId));
@@ -81,7 +85,10 @@
                         award = Program.GetAwardById(_awardLogic, awardId);
                         _listOfAwards1 += $"award '{award.Title}' with id {award.Id}";
                     }
-                    <p>@(_listOfAwards1).</p>
+                    if (_listOfAwards1 != "")
+                    {
+                        <p>@(_listOfAwards1).</p>
+                    }
                 }
             }
             foreach (var siteUsers in _siteUserLogic.GetAll())
@@ -95,7 +102,80 @@
                 {
                     <img src="@("~/Content/SiteUser.jpg")" width="100" height="100" alt="image of user">
                 }
-                if (siteUsers.AwardId!=null)
+                if (siteUsers.AwardId != null)
+                {
+                    int[] listOfAwards = siteUsers.AwardId;
+                    bool checkNew1 = true;
+                    string _listOfAwards1 = "";
+                    foreach (int awardId in listOfAwards)
+                    {
+                        if (checkNew1)
+                        {
+                            checkNew1 = false;
+                            <p>@("     Has the following awards:")</p>
+                        }
+                        else
+                        {
+                            _listOfAwards1 += ", ";
+                        }
+                        Award award = new Award();
+                        award = Program.GetAwardById(_awardLogic, awardId);
+                        _listOfAwards1 += $"award '{award.Title}' with id {award.Id}";
+                    }
+                    if (_listOfAwards1 != "")
+                    {
+                        <p>@(_listOfAwards1).</p>
+                    }
+                }
+            }
+            break;
+        case "showAllUsersAdminForm":
+            foreach (var user in _userLogic.GetAll())
+            {
+                <p>@($"User '{user.Name} with id '{user.Id}' date of birth '{user.DateOfBirthday}' {user.Age} years old.")</p>
+                if (File.Exists($"{AppDomain.CurrentDomain.BaseDirectory}\\Content\\User {user.Id}.jpg"))
+                {
+                    <img src="@($"~/Content/User {user.Id}.jpg")" width="100" height="100" alt="image of user">
+                }
+                else
+                {
+                    <img src="@("~/Content/User.jpg")" width="100" height="100" alt="image of user">
+                }
+                int[] listOfAwards = Program.GetAwardsIdByUserId(_userLogic, user.Id);
+                if (listOfAwards != null)
+                {
+                    <p>@("     Has the following awards:")</p>
+                    bool checkNew1 = true;
+                    string _listOfAwards1 = "";
+                    foreach (int awardId in listOfAwards)
+                    {
+                        if (checkNew1)
+                        {
+                            checkNew1 = false;
+                        }
+                        else
+                        {
+                            _listOfAwards1 += ", ";
+                        }
+                        Award award = new Award();
+                        award = Program.GetAwardById(_awardLogic, awardId);
+                        _listOfAwards1 += $"award '{award.Title}' with id {award.Id}";
+                    }
+                    <p>@(_listOfAwards1).</p>
+                }
+            }
+            foreach (var siteUsers in _siteUserLogic.GetAll())
+            {
+                <p>@(siteUsers.ToStringAdmin())</p>
+                if (File.Exists($"{AppDomain.CurrentDomain.BaseDirectory}\\Content\\User {siteUsers.Name}.jpg"))
+                {
+                    <img src="@($"~/Content/SiteUser {siteUsers.Name}.jpg")" width="100" height="100" alt="image of user">
+                }
+                else
+                {
+                    <img src="@("~/Content/SiteUser.jpg")" width="100" height="100" alt="image of user">
+                }
+                if (siteUsers.AwardId != null)
                 {
                     int[] listOfAwards = siteUsers.AwardId;
                     <p>@("     Has the following awards:")</p>
@@ -115,7 +195,10 @@
                         award = Program.GetAwardById(_awardLogic, awardId);
                         _listOfAwards1 += $"award '{award.Title}' with id {award.Id}";
                     }
-                    <p>@(_listOfAwards1).</p>
+                    if (_listOfAwards1 != "")
+                    {
+                        <p>@(_listOfAwards1).</p>
+                    }
                 }
             }
             break;
@@ -202,6 +285,18 @@
             Program.ToAwardUser(_userLogic, int.Parse(_userId), int.Parse(_awardId));
             <p>@($"The user with id - '{_userId}' is awarded the award with id - '{_awardId}'.")</p>
             break;
+        case "toAwardSiteUserForm":
+            Program.ToAwardSiteUser(_siteUserLogic, _nameUser, int.Parse(_awardId));
+            <p>@($"The user '{_nameUser}' is awarded the award with id - '{_awardId}'.")</p>
+            break;
+        case "toRemoveUserRewardForm":
+            Program.ToRemoveUserReward(_userLogic, int.Parse(_userId), int.Parse(_awardId));
+            <p>@($"The user with id '{_userId}' was taken the award with id '{_awardId}'.")</p>
+            break;
+        case "toRemoveSiteUserRewardForm":
+            Program.ToRemoveSiteUserReward(_siteUserLogic, _nameUser, int.Parse(_awardId));
+            <p>@($"The site user '{_nameUser}' was taken the award with id '{_awardId}'.")</p>
+            break;
         case "addImageToUserByIdForm":
             if (Program.AddImage(_userLogic, int.Parse(_userId), _file))
             {
@@ -210,6 +305,23 @@
             else
             {
                 <p>@($"The image is not added to the user with id - '{_userId}'.")</p>
+            }
+            break;
+        case "addImageToSiteUserByNameForm":
+            if (Program.AddImageToSiteUser(_siteUserLogic, _nameUser, _file))
+            {
+                <p>@($"The image added to the site user with id - '{_nameUser}'.")</p>
+            }
+            else
+            {
+                <p>@($"The image is not added to the site user with id - '{_nameUser}'.")</p>
+            }
+            break;
+        case "correctionOfAccessPermissionForm":
+            bool changeAccessPermission = Program.CorrectionOfAccessPermission(_siteUserLogic, _nameUser, bool.Parse(_awardTitle));
+            if (changeAccessPermission)
+            {
+                <p>@($"The site user '{_nameUser}' now is '{(_awardTitle == "true" ? "Admin" : "User")}'.")</p>
             }
             break;
         default:

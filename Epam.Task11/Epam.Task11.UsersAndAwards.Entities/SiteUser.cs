@@ -20,5 +20,11 @@ namespace Epam.Task11.UsersAndAwards.Entities
         {
             return $"{Name} {AwardId.ToString()}";
         }
+
+        public string ToStringAdmin()
+        {
+            return $"Site user '{Name}'{(AwardId.Length>0?(" with awars with id '"+AwardId.ToString()+"'") :"")} access permission '{(AccessPermission=="true"?"Admin":"user")}'.";
+        }
+
     }
 }

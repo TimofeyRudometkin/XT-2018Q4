@@ -53,9 +53,9 @@
                         </div>
                         <button type="submit">Update user</button>
                     </form>
-                    <form action="~/Index.cshtml" method="post" class="elementOfMenu" id="showAllUsersForm">
-                        <button type="submit" id="showAllUsers">Show users</button>
-                        <label for="showAllUsers">Show all users.</label>
+                    <form action="~/Index.cshtml" method="post" class="elementOfMenu" id="showAllUsersAdminForm">
+                        <button type="submit" id="showAllUsersAdminForm">Show all users in admin form.</button>
+                        <label for="showAllUsersAdminForm">Show all users in admin form.</label>
                     </form>
                     <form action="~/Index.cshtml" method="post" class="elementOfMenu" id="addAwardForm">
                         <div class="ElementOfSubMenu">
@@ -121,6 +121,68 @@
                             <label for="imageAddImageToUserById">Enter the path to the image(format-'.jpg').</label>
                         </div>
                         <button type="submit">Add image</button>
+                    </form>
+                    <form action="~/Index.cshtml" method="post" class="elementOfMenu" id="addImageToSiteUserByNameForm">
+                        <div class="ElementOfSubMenu">
+                            <input type="text" id="nameAddImageToSiteUserByNameForm" class="userName" />
+                            <label for="nameAddImageToSiteUserByNameForm">Enter the id of the user to which the picture will be added.</label>
+                        </div>
+                        <div class="ElementOfSubMenu">
+                            <input type="file" id="imageAddImageToSiteUserByNameForm" class="image" />
+                            <label for="imageAddImageToSiteUserByNameForm">Enter the path to the image(format-'.jpg').</label>
+                        </div>
+                        <button type="submit">Add image</button>
+                    </form>
+                    <form action="~/Index.cshtml" method="post" class="elementOfMenu" id="deleteSiteUserByNameForm">
+                        <div class="ElementOfSubMenu">
+                            <input type="text" id="nameDeleteSiteUserByName" class="userName" />
+                            <label for="nameDeleteSiteUserByName">Enter the name of the site user you want to delete.</label>
+                        </div>
+                        <button type="submit">Add image</button>
+                    </form>
+                    <form action="~/Index.cshtml" method="post" class="elementOfMenu" id="toAwardSiteUserForm">
+                        <div class="ElementOfSubMenu">
+                            <input type="text" id="nameToAwardSiteUser" class="userName " />
+                            <label for="nameToAwardSiteUser">Enter the name of the site user who will be awarded.</label>
+                        </div>
+                        <div class="ElementOfSubMenu">
+                            <input type="number" id="awardIdToAwardSiteUser" class="awardId" />
+                            <label for="awardIdToAwardSiteUser">Enter reward id.</label>
+                        </div>
+                        <button type="submit">To award site user</button>
+                    </form>
+                    <form action="~/Index.cshtml" method="post" class="elementOfMenu" id="toRemoveUserRewardForm">
+                        <div class="ElementOfSubMenu">
+                            <input type="number" id="nameToRemoveUserRewardForm" class="userId" />
+                            <label for="nameToRemoveSiteUserRewardForm">Enter the id of the user whose reward we will take away.</label>
+                        </div>
+                        <div class="ElementOfSubMenu">
+                            <input type="number" id="awardIdToRemoveUserRewardForm" class="awardId" />
+                            <label for="awardIdToRemoveSiteUserRewardForm">Enter reward id which we will take away.</label>
+                        </div>
+                        <button type="submit">Delete award</button>
+                    </form>
+                    <form action="~/Index.cshtml" method="post" class="elementOfMenu" id="toRemoveSiteUserRewardForm">
+                        <div class="ElementOfSubMenu">
+                            <input type="text" id="nameToRemoveSiteUserRewardForm" class="userName" />
+                            <label for="nameToRemoveSiteUserRewardForm">Enter the name of the site user whose reward we will take away.</label>
+                        </div>
+                        <div class="ElementOfSubMenu">
+                            <input type="number" id="awardIdToRemoveSiteUserRewardForm" class="awardId" />
+                            <label for="awardIdToRemoveSiteUserRewardForm">Enter reward id which we will take away.</label>
+                        </div>
+                        <button type="submit">Delete award</button>
+                    </form>
+                    <form action="~/Index.cshtml" method="post" class="elementOfMenu" id="correctionOfAccessPermissionForm">
+                        <div class="ElementOfSubMenu">
+                            <input type="text" id="nameCorrectionOfAccessPermissionForm" class="userName" />
+                            <label for="nameCorrectionOfAccessPermissionForm">Enter the name of the user whose permissions you want to change.</label>
+                        </div>
+                        <div class="ElementOfSubMenu">
+                            <input type="checkbox" id="accessPermissionCorrectionOfAccessPermissionForm" class="accessPermission" />
+                            <label for="accessPermissionCorrectionOfAccessPermissionForm">Give administrator permissions.</label>
+                        </div>
+                        <button type="submit">Change access permissions.</button>
                     </form>
                     <div class="result">
                         <h2>Result</h2>

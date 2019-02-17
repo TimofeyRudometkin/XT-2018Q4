@@ -101,9 +101,9 @@ namespace Epam.Task11.UsersAndAwards.DAL.TextFiles
                 }
                 if (_check)
                 {
-                    using (StreamWriter streamWriterTextFiles = new StreamWriter(Path.Combine(_pathOfTextFiles.ToString(), _nameOfTextFileWithUsers.ToString()), true))
+                    using (StreamWriter streamWriterTextFiles = new StreamWriter(Path.Combine(_pathOfTextFiles.ToString(), _nameOfTextFileWithUsers.ToString()), false))
                     {
-                        for (int j = 0; j < _contentOfFile.Length - 1; j++)
+                        for (int j = 0; j < _contentOfFile.Length - 1; j += 4)
                         {
                             streamWriterTextFiles.Write($"{_contentOfFile[j]}{SEPARATORS[0]}{_contentOfFile[j + 1]}{SEPARATORS[0]}{_contentOfFile[j + 2]}{SEPARATORS[0]}{_contentOfFile[j + 3]}{SEPARATORS[0]}");
                         }
@@ -154,7 +154,7 @@ namespace Epam.Task11.UsersAndAwards.DAL.TextFiles
                 }
                 if (_check)
                 {
-                    using (StreamWriter streamWriterTextFiles = new StreamWriter(Path.Combine(_pathOfTextFiles.ToString(), _nameOfTextFileWithUsers.ToString()), true))
+                    using (StreamWriter streamWriterTextFiles = new StreamWriter(Path.Combine(_pathOfTextFiles.ToString(), _nameOfTextFileWithUsers.ToString()), false))
                     {
                         for (int j = 0; j < _contentOfFile.Length - 1; j+=4)
                         {

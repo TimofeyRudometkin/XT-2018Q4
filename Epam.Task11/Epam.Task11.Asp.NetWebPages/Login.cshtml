@@ -6,7 +6,7 @@
     var user = Request["UserName"];
     var password = Request["Password"];
 
-    if (user == "Admin" && password == "123")
+    if (user == "SuperUser" && password == "SuperUser")
     {
         FormsAuthentication.SetAuthCookie(user, createPersistentCookie: true);
     }

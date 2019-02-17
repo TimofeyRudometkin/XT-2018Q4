@@ -221,7 +221,24 @@ namespace Epam.Task11.UsersAndAwards.ConsolePL
                 Console.WriteLine();
             }
         }
-
+        public static void ShowSiteUsersAdmin(ISiteUserLogic siteUserLogic, IAwardLogic awardLogic)
+        {
+            foreach (var siteUser in siteUserLogic.GetAll())
+            {
+                Console.Write(siteUser.ToStringAdmin());
+                int[] listOfAwards = GetAwardsIdBySiteUsername(siteUserLogic, siteUser.Name);
+                if (!(listOfAwards == null))
+                {
+                    foreach (int awardId in listOfAwards)
+                    {
+                        Award award = new Award();
+                        award = GetAwardById(awardLogic, awardId);
+                        Console.Write($" award '{award.Title}' with id {award.Id}");
+                    }
+                }
+                Console.WriteLine();
+            }
+        }
         public static bool AddImageToSiteUser(ISiteUserLogic siteUserLogic, string siteUserName, string pathOfTheAddedImage)
         {
             return siteUserLogic.AddImage(siteUserName, pathOfTheAddedImage);

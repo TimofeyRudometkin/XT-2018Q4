@@ -22,11 +22,15 @@ namespace Epam.Task11.Asp.NetWebPages.RoleProvider
 
         public override string[] GetRolesForUser(string username)
         {
+            if(username == "SuperUser")
+            {
+                return new[] { "Admins", "User" };
+            }
             var _siteUserLogic = DependencyResolver.SiteUserLogic;
             var siteUser = Program.GetBySiteUserName(_siteUserLogic, username);
             switch (siteUser.AccessPermission)
             {
-                case "true":
+                case "True":
                     return new[] { "Admins", "User" };
                 default:
                     return new[] { "User" };

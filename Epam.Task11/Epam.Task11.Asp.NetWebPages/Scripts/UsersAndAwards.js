@@ -61,6 +61,35 @@
                 })
                 return false;
                 break;
+            case "deleteSiteUserByNameForm":
+                var inputUserId = "",
+                    inputUserName = $("#deleteSiteUserByNameForm .userName").val(),
+                    inputUserDateOfBirth = "",
+                    inputAwardId = "",
+                    inputAwardTitle = "",
+                    inputConfirmationForRemoval = "",
+                    inputListIndexOfUsers = "",
+                    inputPathOfImage = "";
+                $.ajax({
+                    method: "POST",
+                    url: "/UsersAndAwardsAjax",
+                    data: {
+                        userId: inputUserId,
+                        userName: inputUserName,
+                        userDateOfBirth: inputUserDateOfBirth,
+                        awardId: inputAwardId,
+                        awardTitle: inputAwardTitle,
+                        actionPlan: this.id,
+                        confirmationForRemoval: inputConfirmationForRemoval,
+                        listIndexOfUsers: inputListIndexOfUsers,
+                        pathOfImage: inputPathOfImage,
+                    },
+                    success: function (response) {
+                        $result.html(response);
+                    },
+                })
+                return false;
+                break;
             case "updateUserForm":
                 var inputUserId = $("#updateUserForm .userId").val(),
                     inputUserName = $("#updateUserForm .userName").val(),
@@ -120,6 +149,35 @@
                 return false;
                 break;
             case "showAllUsersForm":
+                var inputUserId = "",
+                    inputUserName = "",
+                    inputUserDateOfBirth = "",
+                    inputAwardId = "",
+                    inputAwardTitle = "",
+                    inputConfirmationForRemoval = "",
+                    inputListIndexOfUsers = "",
+                    inputPathOfImage = "";
+                $.ajax({
+                    method: "POST",
+                    url: "/UsersAndAwardsAjax",
+                    data: {
+                        userId: inputUserId,
+                        userName: inputUserName,
+                        userDateOfBirth: inputUserDateOfBirth,
+                        awardId: inputAwardId,
+                        awardTitle: inputAwardTitle,
+                        actionPlan: this.id,
+                        confirmationForRemoval: inputConfirmationForRemoval,
+                        listIndexOfUsers: inputListIndexOfUsers,
+                        pathOfImage: inputPathOfImage,
+                    },
+                    success: function (response) {
+                        $result.html(response);
+                    },
+                })
+                return false;
+                break;
+            case "showAllUsersAdminForm":
                 var inputUserId = "",
                     inputUserName = "",
                     inputUserDateOfBirth = "",
@@ -386,6 +444,93 @@
                 })
                 return false;
                 break;
+            case "toAwardSiteUserForm":
+                var inputUserId = "",
+                    inputUserName = $("#toAwardSiteUserForm .userName").val(),
+                    inputUserDateOfBirth = "",
+                    inputAwardId = $("#toAwardSiteUserForm .awardId").val(),
+                    inputAwardTitle = "",
+                    inputConfirmationForRemoval = "",
+                    inputListIndexOfUsers = "",
+                    inputPathOfImage = "";
+                $.ajax({
+                    method: "POST",
+                    url: "/UsersAndAwardsAjax",
+                    data: {
+                        userId: inputUserId,
+                        userName: inputUserName,
+                        userDateOfBirth: inputUserDateOfBirth,
+                        awardId: inputAwardId,
+                        awardTitle: inputAwardTitle,
+                        actionPlan: this.id,
+                        confirmationForRemoval: inputConfirmationForRemoval,
+                        listIndexOfUsers: inputListIndexOfUsers,
+                        pathOfImage: inputPathOfImage,
+                    },
+                    success: function (response) {
+                        $result.html(response);
+                    },
+                })
+                return false;
+                break;
+            case "toRemoveUserRewardForm":
+                var inputUserId = $("#toRemoveUserRewardForm .userId").val(),
+                    inputUserName = "",
+                    inputUserDateOfBirth = "",
+                    inputAwardId = $("#toRemoveUserRewardForm .awardId").val(),
+                    inputAwardTitle = "",
+                    inputConfirmationForRemoval = "",
+                    inputListIndexOfUsers = "",
+                    inputPathOfImage = "";
+                $.ajax({
+                    method: "POST",
+                    url: "/UsersAndAwardsAjax",
+                    data: {
+                        userId: inputUserId,
+                        userName: inputUserName,
+                        userDateOfBirth: inputUserDateOfBirth,
+                        awardId: inputAwardId,
+                        awardTitle: inputAwardTitle,
+                        actionPlan: this.id,
+                        confirmationForRemoval: inputConfirmationForRemoval,
+                        listIndexOfUsers: inputListIndexOfUsers,
+                        pathOfImage: inputPathOfImage,
+                    },
+                    success: function (response) {
+                        $result.html(response);
+                    },
+                })
+                return false;
+                break;
+            case "toRemoveSiteUserRewardForm":
+                var inputUserId = "",
+                    inputUserName = $("#toRemoveSiteUserRewardForm .userName").val(),
+                    inputUserDateOfBirth = "",
+                    inputAwardId = $("#toRemoveSiteUserRewardForm .awardId").val(),
+                    inputAwardTitle = "",
+                    inputConfirmationForRemoval = "",
+                    inputListIndexOfUsers = "",
+                    inputPathOfImage = "";
+                $.ajax({
+                    method: "POST",
+                    url: "/UsersAndAwardsAjax",
+                    data: {
+                        userId: inputUserId,
+                        userName: inputUserName,
+                        userDateOfBirth: inputUserDateOfBirth,
+                        awardId: inputAwardId,
+                        awardTitle: inputAwardTitle,
+                        actionPlan: this.id,
+                        confirmationForRemoval: inputConfirmationForRemoval,
+                        listIndexOfUsers: inputListIndexOfUsers,
+                        pathOfImage: inputPathOfImage,
+                    },
+                    success: function (response) {
+                        $result.html(response);
+                    },
+                })
+                return false;
+                break;
             case "addImageToUserByIdForm":
                 var inputUserId = $("#addImaeToUserByIdForm .userId").val(),
                     inputUserName = "",
@@ -395,6 +540,68 @@
                     inputConfirmationForRemoval = "",
                     inputListIndexOfUsers = "",
                     file = $("#imageAddImageToUserById .image").val();
+                $.ajax({
+                    method: "POST",
+                    url: "/UsersAndAwardsAjax",
+                    //processData: false,
+                    //contentType: false, 
+                    data: {
+                        userId: inputUserId,
+                        userName: inputUserName,
+                        userDateOfBirth: inputUserDateOfBirth,
+                        awardId: inputAwardId,
+                        awardTitle: inputAwardTitle,
+                        actionPlan: this.id,
+                        confirmationForRemoval: inputConfirmationForRemoval,
+                        listIndexOfUsers: inputListIndexOfUsers,
+                        file: file,
+                    },
+                    success: function (response) {
+                        $result.html(response);
+                    },
+                })
+                return false;
+                break;
+            case "addImageToSiteUserByNameForm":
+                var inputUserId = "",
+                    inputUserName = $("#addImageToSiteUserByNameForm .userName").val(),
+                    inputUserDateOfBirth = "",
+                    inputAwardId = "",
+                    inputAwardTitle = "",
+                    inputConfirmationForRemoval = "",
+                    inputListIndexOfUsers = "",
+                    file = $("#addImageToSiteUserByNameForm .image").val();
+                $.ajax({
+                    method: "POST",
+                    url: "/UsersAndAwardsAjax",
+                    //processData: false,
+                    //contentType: false, 
+                    data: {
+                        userId: inputUserId,
+                        userName: inputUserName,
+                        userDateOfBirth: inputUserDateOfBirth,
+                        awardId: inputAwardId,
+                        awardTitle: inputAwardTitle,
+                        actionPlan: this.id,
+                        confirmationForRemoval: inputConfirmationForRemoval,
+                        listIndexOfUsers: inputListIndexOfUsers,
+                        file: file,
+                    },
+                    success: function (response) {
+                        $result.html(response);
+                    },
+                })
+                return false;
+                break;
+            case "correctionOfAccessPermissionForm":
+                var inputUserId = "",
+                    inputUserName = $("#correctionOfAccessPermissionForm .userName").val(),
+                    inputUserDateOfBirth = "",
+                    inputAwardId = "",
+                    inputAwardTitle = $("#correctionOfAccessPermissionForm .accessPermission").is(':checked'),
+                    inputConfirmationForRemoval = "",
+                    inputListIndexOfUsers = "",
+                    file = "";
                 $.ajax({
                     method: "POST",
                     url: "/UsersAndAwardsAjax",
