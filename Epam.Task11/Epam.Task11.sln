@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Task11.UsersAndAwards.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Task11.UsersAndAwards.ConsolePL", "Epam.Task11.UsersAndAwards.ConsolePL\Epam.Task11.UsersAndAwards.ConsolePL.csproj", "{3169E929-B940-45BF-A6D3-BA5A4030FDE6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epam.Task11.UsersAndAwards.DAL.SqlDB", "Epam.Task11.UsersAndAwards.DAL.SqlDB\Epam.Task11.UsersAndAwards.DAL.SqlDB.csproj", "{75770670-9D10-4587-9D83-18172EA67A18}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,10 @@ Global
 		{3169E929-B940-45BF-A6D3-BA5A4030FDE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3169E929-B940-45BF-A6D3-BA5A4030FDE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3169E929-B940-45BF-A6D3-BA5A4030FDE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75770670-9D10-4587-9D83-18172EA67A18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75770670-9D10-4587-9D83-18172EA67A18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75770670-9D10-4587-9D83-18172EA67A18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75770670-9D10-4587-9D83-18172EA67A18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -85,6 +91,7 @@ Global
 		{F3C5DBAB-FAF7-48DD-B9BA-04E5672A28A3} = {4A642108-8D93-4737-B1F6-77FF6BF43E3D}
 		{AFC31C17-A9CE-4097-AC79-287317DE0D83} = {4A642108-8D93-4737-B1F6-77FF6BF43E3D}
 		{3169E929-B940-45BF-A6D3-BA5A4030FDE6} = {32B1BBA8-4860-4292-9DC7-46F4C274F72D}
+		{75770670-9D10-4587-9D83-18172EA67A18} = {48522A90-C678-47A4-B94A-337074AF9D6E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FCAB1CE8-125D-4BDD-96B7-CB985CFD77E4}

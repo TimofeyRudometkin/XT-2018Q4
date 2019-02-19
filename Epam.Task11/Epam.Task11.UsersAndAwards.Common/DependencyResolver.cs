@@ -2,6 +2,7 @@
 using Epam.Task11.UsersAndAwards.BLL.Interface;
 using Epam.Task11.UsersAndAwards.DAL.Interface;
 using Epam.Task11.UsersAndAwards.DAL.Memory;
+using Epam.Task11.UsersAndAwards.DAL.SqlDB;
 using Epam.Task11.UsersAndAwards.DAL.TextFiles;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,11 @@ namespace Epam.Task11.UsersAndAwards.Common
                                 _userDao = new UserTextFilesDao();
                                 break;
                             }
+                        case "sql":
+                            {
+                                _userDao = new UserSqlDao();
+                                break;
+                            }
                         default:
                             break;
                     }
@@ -67,6 +73,11 @@ namespace Epam.Task11.UsersAndAwards.Common
                                 _awardDao = new AwardTextFilesDao();
                                 break;
                             }
+                        case "sql":
+                            {
+                                _awardDao = new AwardSqlDao();
+                                break;
+                            }
                         default:
                             break;
                     }
@@ -95,6 +106,11 @@ namespace Epam.Task11.UsersAndAwards.Common
                         case "textfiles":
                             {
                                 _siteUserDao = new SiteUserTextFilesDao();
+                                break;
+                            }
+                        case "sql":
+                            {
+                                _siteUserDao = new SiteUserSqlDao();
                                 break;
                             }
                         default:

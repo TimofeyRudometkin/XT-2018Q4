@@ -23,7 +23,8 @@ namespace Epam.Task11.UsersAndAwards.Entities
 
         public string ToStringAdmin()
         {
-            return $"Site user '{Name}'{(AwardId.Length>0?(" with awars with id '"+AwardId.ToString()+"'") :"")} access permission '{(AccessPermission=="true"?"Admin":"user")}'.";
+            return $"Site user '{Name}'{(AwardId!=null?(" with awars with id '"+AwardId.ToString()+"'") :"")} access permission '" +
+                $"{(AccessPermission!=null?(AccessPermission == "true"?"Admin":"user"):"user")}'.";
         }
 
     }

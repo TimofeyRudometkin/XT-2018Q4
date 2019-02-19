@@ -41,7 +41,7 @@
         case "showUsersForm":
             foreach (var user in _userLogic.GetAll())
             {
-                <p>@($"User '{user.Name} with id '{user.Id}' date of birth '{user.DateOfBirthday}' {user.Age} years old.")</p>
+                <p>@($"User '{user.Name} with id '{user.Id}' date of birth '{user.DateOfBirthday.ToShortDateString()}' {user.Age} years old.")</p>
 
                 if (File.Exists($"{AppDomain.CurrentDomain.BaseDirectory}\\Content\\User {user.Id}.jpg"))
                 {
@@ -56,7 +56,7 @@
         case "showAllUsersForm":
             foreach (var user in _userLogic.GetAll())
             {
-                <p>@($"User '{user.Name} with id '{user.Id}' date of birth '{user.DateOfBirthday}' {user.Age} years old.")</p>
+                <p>@($"User '{user.Name} with id '{user.Id}' date of birth '{user.DateOfBirthday.ToShortDateString()}' {user.Age} years old.")</p>
                 if (File.Exists($"{AppDomain.CurrentDomain.BaseDirectory}\\Content\\User {user.Id}.jpg"))
                 {
                     <img src="@($"~/Content/User {user.Id}.jpg")" width="100" height="100" alt="image of user">
@@ -132,7 +132,7 @@
         case "showAllUsersAdminForm":
             foreach (var user in _userLogic.GetAll())
             {
-                <p>@($"User '{user.Name} with id '{user.Id}' date of birth '{user.DateOfBirthday}' {user.Age} years old.")</p>
+                <p>@($"User '{user.Name} with id '{user.Id}' date of birth '{user.DateOfBirthday.ToShortDateString()}' {user.Age} years old.")</p>
                 if (File.Exists($"{AppDomain.CurrentDomain.BaseDirectory}\\Content\\User {user.Id}.jpg"))
                 {
                     <img src="@($"~/Content/User {user.Id}.jpg")" width="100" height="100" alt="image of user">
